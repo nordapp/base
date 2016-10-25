@@ -25,7 +25,7 @@ public class SerializationDefaultTest {
 		
 		data = new Data();
 		
-		data.mgr = new ChildRelationMgr(null, null, true, false, false);
+		data.mgr = new ChildRelationMgr(true, false, false);
 		//data.mgr.initData();
 		
 		for(int i=0;i<10000;i++) {

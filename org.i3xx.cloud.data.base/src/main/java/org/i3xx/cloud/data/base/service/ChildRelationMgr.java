@@ -115,6 +115,23 @@ public class ChildRelationMgr {
 		}
 	}
 	
+	
+	/**
+	 * Note: For test purposes only
+	 * 
+	 * @param use_set If set to true the intern set is serialized/deserialized (use_bytes = false)
+	 * @param use_bytes If set to true a very fast String to byte conversion is used (use_set = false)
+	 * @param use_gzip If set to true the GZIP compression is used.
+	 */
+	protected ChildRelationMgr(boolean use_set, boolean use_bytes, boolean use_gzip) {
+		this.sset = use_set;
+		this.sser = use_bytes;
+		this.gzip = use_gzip;
+		this.repo = null;
+		this.uuid = null;
+		this.set = new LinkedHashSet<String>();
+	}
+	
 	/*
 	 * Keep the set final, moved this to constructor
 	 * @return

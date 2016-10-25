@@ -25,7 +25,7 @@ public class SerializationBytesTest {
 		
 		data = new Data();
 		
-		data.mgr = new ChildRelationMgr(null, null, false, true, false);
+		data.mgr = new ChildRelationMgr(false, true, false);
 		//data.mgr.initData();
 		
 		for(int i=0;i<10000;i++) {
