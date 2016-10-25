@@ -1,4 +1,4 @@
-package com.i3xx.cloud.data.object.common;
+package org.i3xx.cloud.data.object.common;
 
 /**
  * Basic information interface

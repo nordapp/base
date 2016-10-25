@@ -1,4 +1,4 @@
-package com.i3xx.cloud.data.object.util;
+package org.i3xx.cloud.data.object.util;
 
 import java.util.UUID;
 

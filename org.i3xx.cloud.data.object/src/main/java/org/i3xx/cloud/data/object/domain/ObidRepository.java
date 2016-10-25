@@ -1,4 +1,4 @@
-package com.i3xx.cloud.data.object.domain;
+package org.i3xx.cloud.data.object.domain;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OblogRepository extends CrudRepository<Oblog, String> {
+public interface ObidRepository extends CrudRepository<Obid, String> {
 	
 	/**
 	 * Search a Obid by it's id
@@ -14,7 +14,7 @@ public interface OblogRepository extends CrudRepository<Oblog, String> {
 	 * @param uuid
 	 * @return
 	 */
-	List<Oblog> findByUuid(String uuid);
+	List<Obid> findByUuid(String uuid);
 	
 	/**
 	 * Search a Obid by it's history
@@ -22,7 +22,7 @@ public interface OblogRepository extends CrudRepository<Oblog, String> {
 	 * @param uuid
 	 * @return
 	 */
-	List<Oblog> findByHistory(String uuid);
+	List<Obid> findByHistory(String uuid);
 
 	
 	/**
@@ -32,5 +32,5 @@ public interface OblogRepository extends CrudRepository<Oblog, String> {
 	 * @param history
 	 * @return
 	 */
-	List<Oblog> findByUuidAndHistory(String uuid, String history);
+	List<Obid> findByUuidAndHistory(String uuid, String history);
 }

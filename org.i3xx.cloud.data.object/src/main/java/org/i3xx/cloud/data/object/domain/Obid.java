@@ -1,22 +1,23 @@
-package com.i3xx.cloud.data.object.domain;
+package org.i3xx.cloud.data.object.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
-import com.i3xx.cloud.data.object.common.IbInfo;
+import org.i3xx.cloud.data.object.common.IbInfo;
 
 /**
  * @author Stefan Hauptmann
  * @version 1.0
- * @created 18-Okt-2016 17:54:41
+ * @created 18-Okt-2016 17:54:37
  */
  
  
  
- @Entity 
- @Table
-public class Oblog implements IbInfo {
+ @Entity
+ @Table(name="Obid", indexes={@Index(name="history_idx", columnList="HISTORY")})
+public class Obid implements IbInfo {
 	
 	private String UUID;
 	private String HISTORY;
@@ -30,7 +31,7 @@ public class Oblog implements IbInfo {
 	private String CREATEUSER;
 	private String OBUSER;
 
-	public Oblog(){
+	public Obid(){
 
 	}
 	
@@ -131,6 +132,10 @@ public class Oblog implements IbInfo {
 		OWNER = newVal;
 	}
 
+	public String getCreateuser(){
+		return CREATEUSER;
+	}
+
 	public String getLabel(){
 		return LABEL;
 	}
@@ -141,10 +146,6 @@ public class Oblog implements IbInfo {
 	 */
 	public void setLabel(String newVal){
 		LABEL = newVal;
-	}
-
-	public String getCreateuser(){
-		return CREATEUSER;
 	}
 
 	/**
@@ -166,4 +167,4 @@ public class Oblog implements IbInfo {
 	public void setObuser(String newVal){
 		OBUSER = newVal;
 	}
-}//end oblog
+}//end obid
