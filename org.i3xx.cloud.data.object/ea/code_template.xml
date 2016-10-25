@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<RefData version="1.0" exporter="EA.25">
+	<DataSet name="Java_Code_Template" table="t_template" filter="TemplateType='#TemplateType#' and TemplateName='#TemplateName#' and Style='#Style#'" stoplist=";TemplateID;">
+		<DataRow>
+			<Column name="TemplateID" value="{2188E49E-86CE-49ab-A25B-F5B5B8A916A7}"/>
+			<Column name="TemplateType" value="Java_Code_Template"/>
+			<Column name="TemplateName" value="Attribute Declaration"/>
+			<Column name="Template" value="%if classStereotype==&quot;enumeration&quot;%&#xA;%if attStereotype==&quot;enum&quot; or attIsEnumLiteral==&quot;T&quot;%&#xA;%PI=&quot;&quot;%&#xA;%attName%&#xA;%attTag:&quot;arguments&quot; ? &quot;(&quot; value &quot;)&quot;%&#xA;%endTemplate%&#xA;%endIf%&#xA;&#xA;%attTag:&quot;Attribute&quot;%&#xA;%attTag:&quot;annotations&quot;%&#xA;%PI=&quot; &quot;%&#xA;%CONVERT_SCOPE(attScope)%&#xA;%attStatic==&quot;T&quot; ? &quot;static&quot; : &quot;&quot;%&#xA;%attConst==&quot;T&quot; ? &quot;final&quot; : &quot;&quot;%&#xA;%attVolatile==&quot;T&quot; ? &quot;volatile&quot; : &quot;&quot;%&#xA;%attTag:&quot;transient&quot;==&quot;true&quot; ? &quot;transient&quot; : &quot;&quot;%&#xA;&#xA;%ConvertSqlType(attType)%&#xA;&#xA;%PI=&quot;&quot;%&#xA;%attName%&#xA;%if attCollection == &quot;T&quot; and attContainerType != &quot;&quot;%&#xA;%attContainerType%&#xA;%endIf%&#xA;%attInitial ? &quot; = &quot; value%&#xA;;"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{C063AAB3-372F-4151-AE66-B817612BC373}"/>
+			<Column name="TemplateType" value="Java_Code_Template"/>
+			<Column name="TemplateName" value="Operation Body"/>
+			<Column name="Style" value="FS=property set;"/>
+			<Column name="Template" value="%PI=&quot;\n&quot;%&#xA;$att=%opTag:&quot;attribute_name&quot;==&quot;&quot; ? &quot;&lt;unknown&gt;&quot; : value%&#xA;$write=&quot;\t&quot; + $att + &quot; = newVal;&quot;&#xA;&#xA;%if opAbstract == &quot;T&quot;%&#xA;;&#xA;%endTemplate%&#xA;&#xA;{&#xA;$wrap = %genOptWrapComment==&quot;-1&quot; ? &quot;-1&quot; : &quot;40&quot;%&#xA;$behavior = %WRAP_LINES(opBehavior, $wrap, &quot;\t//&quot;, &quot;&quot;)%&#xA;%if $behavior != &quot;&quot;%&#xA;$behavior\n\n&#xA;%endIf%&#xA;%if opCode != &quot;&quot;%&#xA;%WRAP_LINES(opCode, &quot;-1&quot;, &quot;\t&quot;, &quot;&quot;)%&#xA;%else%&#xA;$write&#xA;%endIf%&#xA;}"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{704CDD6D-A0F1-439c-8CBE-500B10C5E808}"/>
+			<Column name="TemplateType" value="Java_Code_Template"/>
+			<Column name="TemplateName" value="ConvertSqlType"/>
+			<Column name="Template" value="$COMMENT=&quot;Convert SQL type to JAVA type&quot;&#xA;$COMMENT=&quot;Convert the SQL type of Postgres to the corresponding JAVA type&quot;&#xA;&#xA;$varType = $parameter1&#xA;&#xA;%if $varType == &quot;&quot;%&#xA;$ParamType = &quot;int&quot;&#xA;%elseIf $varType == &quot;bigint&quot;%&#xA;$ParamType = &quot;long&quot;&#xA;%elseIf $varType == &quot;varchar&quot;%&#xA;$ParamType = &quot;String&quot;&#xA;%elseIf $varType == &quot;decimal&quot;%&#xA;$ParamType = &quot;double&quot;&#xA;%elseIf $varType == &quot;double precisition&quot;%&#xA;$ParamType = &quot;double&quot;&#xA;%else%&#xA;$ParamType = $varType&#xA;%endIf%&#xA;$ParamType&#xA;"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{C5851CF9-543E-4327-B6F7-07C0C2ECD8D3}"/>
+			<Column name="TemplateType" value="Java_Code_Template"/>
+			<Column name="TemplateName" value="Operation Body"/>
+			<Column name="Style" value="FS=property get;"/>
+			<Column name="Template" value="%PI=&quot;\n&quot;%&#xA;$att=%opTag:&quot;attribute_name&quot;==&quot;&quot; ? &quot;&lt;unknown&gt;&quot; : value%&#xA;$read=&quot;\treturn &quot; + $att + &quot;;&quot;&#xA;&#xA;%if opAbstract == &quot;T&quot;%&#xA;;&#xA;%endTemplate%&#xA;&#xA;{&#xA;$wrap = %genOptWrapComment==&quot;-1&quot; ? &quot;-1&quot; : &quot;40&quot;%&#xA;$behavior = %WRAP_LINES(opBehavior, $wrap, &quot;\t//&quot;, &quot;&quot;)%&#xA;%if $behavior != &quot;&quot;%&#xA;$behavior\n\n&#xA;%endIf%&#xA;%if opCode != &quot;&quot;%&#xA;%WRAP_LINES(opCode, &quot;-1&quot;, &quot;\t&quot;, &quot;&quot;)%&#xA;%else%&#xA;$read&#xA;%endIf%&#xA;}"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{D7F123F9-6A55-4c2f-8AB5-80EE86367296}"/>
+			<Column name="TemplateType" value="Java_Code_Template"/>
+			<Column name="TemplateName" value="Parameter"/>
+			<Column name="Style" value="FS=property set;"/>
+			<Column name="Template" value="%PI=&quot; &quot;%&#xA;%paramTag:&quot;annotations&quot;%&#xA;%paramFixed==&quot;T&quot; ? &quot;final&quot; : &quot;&quot;%&#xA;%ConvertSqlType(paramType)%&#xA;%paramTag:&quot;parameterList&quot; ? &quot;...&quot; %&#xA;%paramName%"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{9509A86E-EBDF-4a40-A190-AB8D21263052}"/>
+			<Column name="TemplateType" value="Java_Code_Template"/>
+			<Column name="TemplateName" value="Operation Declaration"/>
+			<Column name="Style" value="CS=aspect;FS=advice;"/>
+			<Column name="Template" value="%opTag:&quot;Attribute&quot;%&#xA;%opTag:&quot;annotations&quot;%&#xA;%PI=&quot; &quot;%&#xA;&#xA;%opReturnType%%opReturnArray==&quot;T&quot; ? &quot;[]&quot; : &quot;&quot;%&#xA;%opName%(%list=&quot;Parameter&quot; @separator=&quot;, &quot;%)&#xA;%if opTag:&quot;returning&quot; != &quot;&quot;%&#xA;returning %opTag:&quot;returning&quot;!=&quot;true&quot; ? &quot;(&quot; value &quot;)&quot;%&#xA;%endIf%&#xA;%if opTag:&quot;throwing&quot; != &quot;&quot;%&#xA;throwing %opTag:&quot;throwing&quot;!=&quot;true&quot; ? &quot;(&quot; value &quot;)&quot;%&#xA;%endIf%&#xA;%opTag:&quot;throws&quot;==&quot;&quot; ? &quot;&quot;: &quot;\n  throws &quot; value%&#xA;:&#xA;%opBehavior%"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{04BB788D-0CDA-4974-A014-C6D92DE6B7E8}"/>
+			<Column name="TemplateType" value="Java_Code_Template"/>
+			<Column name="TemplateName" value="Operation Declaration"/>
+			<Column name="Style" value="CS=aspect;"/>
+			<Column name="Template" value="%opTag:&quot;Attribute&quot;%&#xA;%opTag:&quot;annotations&quot;%&#xA;%PI=&quot; &quot;%&#xA;&#xA;%CONVERT_SCOPE(opScope)%&#xA;%opTag:&quot;native&quot; == &quot;true&quot; ? &quot;native&quot;%&#xA;%opSynchronized==&quot;T&quot; ? &quot;synchronized&quot; : &quot;&quot;%&#xA;%opAbstract==&quot;T&quot; ? &quot;abstract&quot; : &quot;&quot;%&#xA;%opStatic==&quot;T&quot; ? &quot;static&quot; : &quot;&quot;%&#xA;%opConst==&quot;T&quot; ? &quot;final&quot; : &quot;&quot;%&#xA;%opReturnType%%opReturnArray==&quot;T&quot; ? &quot;[]&quot; : &quot;&quot;%&#xA;&#xA;%opTag:&quot;generic&quot;%&#xA;%opStereotype==&quot;operator&quot; ? &quot;operator&quot; : &quot;&quot;%&#xA;%PI=&quot;&quot;%&#xA;%opTag:&quot;className&quot; ? value &quot;.&quot;%&#xA;%opName%&#xA;(%list=&quot;Parameter&quot; @separator=&quot;, &quot;%)&#xA;%opTag:&quot;throws&quot;==&quot;&quot; ? &quot;&quot;: &quot;\n  throws &quot; value%"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{010192D6-49BF-48c4-9404-806883822028}"/>
+			<Column name="TemplateType" value="Java_Code_Template"/>
+			<Column name="TemplateName" value="Operation Declaration"/>
+			<Column name="Style" value="FS=pointcut;"/>
+			<Column name="Template" value="%PI=&quot; &quot;%&#xA;%CONVERT_SCOPE(opScope)%&#xA;pointcut&#xA;%opName%&#xA;(%list=&quot;Parameter&quot; @separator=&quot;, &quot;%):&#xA;%opBehaviour%;"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{659B9DF2-EDAA-48aa-BCF2-E4E844CFB239}"/>
+			<Column name="TemplateType" value="Java_Code_Template"/>
+			<Column name="TemplateName" value="Operation Declaration"/>
+			<Column name="Style" value="FS=property get;"/>
+			<Column name="Template" value="%opTag:&quot;Attribute&quot;%&#xA;%opTag:&quot;annotations&quot;%&#xA;%PI=&quot; &quot;%&#xA;&#xA;%CONVERT_SCOPE(opScope)%&#xA;%opTag:&quot;native&quot; == &quot;true&quot; ? &quot;native&quot;%&#xA;%opSynchronized==&quot;T&quot; ? &quot;synchronized&quot; : &quot;&quot;%&#xA;%opAbstract==&quot;T&quot; ? &quot;abstract&quot; : &quot;&quot;%&#xA;%opStatic==&quot;T&quot; ? &quot;static&quot; : &quot;&quot;%&#xA;%opConst==&quot;T&quot; ? &quot;final&quot; : &quot;&quot;%&#xA;%ConvertSqlType(opReturnType)%%opReturnArray==&quot;T&quot; ? &quot;[]&quot; : &quot;&quot;%&#xA;&#xA;%opTag:&quot;generic&quot;%&#xA;%opStereotype==&quot;operator&quot; ? &quot;operator&quot; : &quot;&quot;%&#xA;%PI=&quot;&quot;%&#xA;%opName%&#xA;(%list=&quot;Parameter&quot; @separator=&quot;, &quot;%)&#xA;%opTag:&quot;throws&quot;==&quot;&quot; ? &quot;&quot;: &quot;\n  throws &quot; value%"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{1523E933-04E9-451f-AD0F-CA85823EE97C}"/>
+			<Column name="TemplateType" value="Java_Code_Template"/>
+			<Column name="TemplateName" value="Class Declaration"/>
+			<Column name="Template" value="$bases=%ClassInherits%&#xA;%if $bases != &quot;&quot;%&#xA;$bases=&quot; &quot; + $bases&#xA;%endIf%&#xA;$generic=%list=&quot;ClassParameter&quot; @separator=&quot;, &quot;%&#xA;%if $generic != &quot;&quot;%&#xA;$generic=&quot;&lt;&quot; + $generic + &quot;&gt;&quot;&#xA;%endIf%&#xA;&#xA;$annotations=%classTag:&quot;annotations&quot;%&#xA;%REPLACE($annotations, &quot;@&quot;, &quot;\n @&quot;)%&#xA;&#xA;%PI=&quot; &quot;%&#xA;%CONVERT_SCOPE(classScope)%&#xA;%classStereotype==&quot;static&quot; ? &quot;static&quot; : &quot;&quot;%&#xA;%classIsLeaf == &quot;T&quot; ? &quot;final&quot; : &quot;&quot;%&#xA;&#xA;%if elemType == &quot;Interface&quot;%&#xA;%PI=&quot;&quot;%&#xA;%classStereotype==&quot;annotation&quot; ? &quot;@&quot;%&#xA;interface %className%$generic$bases&#xA;%endTemplate%&#xA;&#xA;%classAbstract==&quot;T&quot; ? &quot;abstract&quot; : &quot;&quot;%&#xA;%classStereotype==&quot;enumeration&quot; ? &quot;enum&quot; : &quot;class&quot;%&#xA;%className%$generic$bases&#xA;&#xA;%if genOptStmJavaUseNewTemplate == &quot;T&quot; and stmContextHasStatemachine == &quot;T&quot;%&#xA;%if genOptStmJavaObjectOriented == &quot;T&quot;%&#xA;implements StateMachineLib.BehavioredClassifier&#xA;%else%&#xA;implements StateMachineContext&#xA;%endIf%&#xA;%endIf%&#xA;"/>
+		</DataRow>
+	</DataSet>
+</RefData>
