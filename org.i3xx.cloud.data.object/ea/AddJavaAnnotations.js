@@ -32,8 +32,9 @@ if ( thePackage != null && thePackage.PackageID != 0 )
 			
 			//The element of the package
 			var elem = thePackage.Elements.GetAt(i);
+			var tableName = elem.Name;
 			
-			Session.Output( "Working on element '" + elem.Name + "'");
+			Session.Output( "Working on element table '" + tableName + "'");
 			
 			var annot = null;
 			for(var k=0;k<elem.TaggedValues.Count;k++) {
@@ -46,7 +47,7 @@ if ( thePackage != null && thePackage.PackageID != 0 )
 				}//fi
 			}//for
 			
-			var stmt = "@Entity @Table(indexes={@Index(name=\"uuid_idx\", columnList=\"uuid\")})";
+			var stmt = "@Entity @Table(name=\""+tableName+"\", indexes={@Index(name=\"history_idx\", columnList=\"history\")})";
 			if(annot==null) {
 				//Add annotation
 				annot = elem.TaggedValues.AddNew("annotations", stmt);
@@ -59,7 +60,6 @@ if ( thePackage != null && thePackage.PackageID != 0 )
 				Session.Output( "Updateing annotation '" + annot.Name + "', '" + annot.Value + "'");
 				elem.TaggedValues.refresh;
 			}//fi
-			
 			
 		}//for
 	}
