@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<RefData version="1.0" exporter="EA.25">
+	<DataSet name="SpringDataRepository_Transform_Template" table="t_template" filter="TemplateType='#TemplateType#' and TemplateName='#TemplateName#' and Style='#Style#'" stoplist=";TemplateID;">
+		<DataRow>
+			<Column name="TemplateID" value="{AD07AF1D-B2FF-42fc-947D-81D49FFF8721}"/>
+			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
+			<Column name="TemplateName" value="Connector"/>
+			<Column name="Template" value="%connectorType%&#xA;%PI=&quot;\n  &quot;%&#xA;{&#xA;%TRANSFORM_CURRENT()%&#xA;%TRANSFORM_REFERENCE(&quot;Connector&quot;,connectorGUID)%&#xA;%if connectorIsAssociationClass==&quot;T&quot;%&#xA;AssociationClass&#xA;{&#xA;%TRANSFORM_REFERENCE(&quot;Class&quot;,connectorAssociationClassElemGUID)%&#xA;}&#xA;%endIf%&#xA;Source&#xA;{&#xA;%TRANSFORM_REFERENCE(&quot;Class&quot;,connectorSourceElemGUID)%&#xA;  access=%qt%%connectorSourceAccess == &quot;Public&quot; ? &quot;Private&quot; : value%%qt%&#xA;%TRANSFORM_CURRENT(&quot;Source&quot;,&quot;access&quot;)%&#xA;}&#xA;Target&#xA;{&#xA;%TRANSFORM_REFERENCE(&quot;Class&quot;,connectorDestElemGUID)%&#xA;  access=%qt%%connectorDestAccess == &quot;Public&quot; ? &quot;Private&quot; : value%%qt%&#xA;%TRANSFORM_CURRENT(&quot;Target&quot;,&quot;access&quot;)%&#xA;%PI=&quot;\n&quot;%&#xA;}&#xA;%list=&quot;TemplateParameterSubstitution&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;}"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{6DEE6A97-F4A1-4644-BAD4-5ECEC1CC91F5}"/>
+			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
+			<Column name="TemplateName" value="Class Base"/>
+			<Column name="Template" value="Parent&#xA;{&#xA;  name=%qt%%classBaseName%%qt%&#xA;  type=&quot;Parent&quot;&#xA;}"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{89B77C09-6994-4102-96BA-B362331A79C0}"/>
+			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
+			<Column name="TemplateName" value="Class Interface"/>
+			<Column name="Template" value="Parent&#xA;{&#xA;  name=%qt%%classBaseName%%qt%&#xA;  type=&quot;Implements&quot;&#xA;}"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{D63B0737-07D0-47eb-89F2-2B140077AF60}"/>
+			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
+			<Column name="TemplateName" value="Attribute__AsProperties"/>
+			<Column name="Template" value="%if classStereotype==&quot;enumeration&quot;%&#xA;%endTemplate%&#xA;&#xA;$COMMENT=%if attName!=&quot;uuid&quot; and attName!=&quot;history&quot;%&#xA;$COMMENT=%endTemplate%&#xA;&#xA;$type=%CONVERT_TYPE(&quot;Java&quot;,attType)%&#xA;%Properties(attName,$type,className)%"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{BA137494-5C6F-4dff-A7F7-151F854B4F22}"/>
+			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
+			<Column name="TemplateName" value="Properties"/>
+			<Column name="Template" value="$attName=$parameter1&#xA;$type=%ConvertSqlType($parameter2)%&#xA;$T=$parameter3&#xA;$propertyName=$attName&#xA;$propertyName=%REMOVE_PREFIX($propertyName,genOptPropertyPrefix)%&#xA;$propertyName=%CONVERT_NAME($propertyName, &quot;pascal case&quot;, &quot;camel case&quot;)%&#xA;$propertyName=%CONVERT_NAME($propertyName, &quot;HT()HT&quot;, &quot;Ht()ht&quot;)%&#xA;&#xA;$stereoType=&quot;&quot;&#xA;%if $attName==&quot;uuid&quot; or $attName==&quot;history&quot;%&#xA;  $stereoType=&quot;query&quot;&#xA; %else%&#xA;  $stereoType=&quot;comment&quot;&#xA;%endIf%&#xA;&#xA;Operation&#xA;{&#xA;  %TRANSFORM_REFERENCE()%&#xA;  name=%qt%queryBy$propertyName%qt%&#xA;  stereotype=%qt%$stereoType%qt%&#xA;  scope=&quot;&quot;&#xA;  type=%qt%List&lt;$T&gt;%qt%&#xA;  Parameter&#xA;  {&#xA;    name=&quot;newVal&quot;&#xA;    type=%qt%$type%qt%&#xA;  }&#xA;  code=%qt%%qt%&#xA;  Tag{name=&quot;attribute_name&quot; value=%qt%$attName%qt%}&#xA;}&#xA;"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{F2CC5D8C-5148-4f33-864E-AAFC08CDF5A1}"/>
+			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
+			<Column name="TemplateName" value="ConvertSqlType"/>
+			<Column name="Template" value="$COMMENT=&quot;Convert SQL type to JAVA type&quot;&#xA;$COMMENT=&quot;Convert the SQL type of Postgres to the corresponding JAVA type&quot;&#xA;&#xA;$varType = $parameter1&#xA;&#xA;%if $varType == &quot;&quot;%&#xA;$ParamType = &quot;int&quot;&#xA;%elseIf $varType == &quot;bigint&quot;%&#xA;$ParamType = &quot;long&quot;&#xA;%elseIf $varType == &quot;varchar&quot;%&#xA;$ParamType = &quot;String&quot;&#xA;%elseIf $varType == &quot;decimal&quot;%&#xA;$ParamType = &quot;double&quot;&#xA;%elseIf $varType == &quot;double precisition&quot;%&#xA;$ParamType = &quot;double&quot;&#xA;%elseIf $varType == &quot;integer&quot;%&#xA;$ParamType = &quot;int&quot;&#xA;%else%&#xA;$ParamType = $varType&#xA;%endIf%&#xA;$ParamType"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{A2EB4382-5984-4095-BD87-78D655C6B641}"/>
+			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
+			<Column name="TemplateName" value="File"/>
+			<Column name="Template" value="Package&#xA;{&#xA;  name=&quot;SpringBoot DataRepo Model&quot;&#xA;  namespaceroot=&quot;true&quot;&#xA;%list=&quot;Namespace&quot; @separator=&quot;\n\n&quot; @indent=&quot;  &quot;%&#xA;}"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{00617937-5026-4cb1-9A15-373CCD219AEA}"/>
+			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
+			<Column name="TemplateName" value="Attribute"/>
+			<Column name="Template" value="$type=%ConvertSqlType(attType)%&#xA;$propertyName=%attName%&#xA;$propertyName=%REMOVE_PREFIX($propertyName,genOptPropertyPrefix)%&#xA;$propertyName=%CONVERT_NAME($propertyName, &quot;pascal case&quot;, &quot;camel case&quot;)%&#xA;$propertyName=%CONVERT_NAME($propertyName, &quot;HT()HT&quot;, &quot;Ht()ht&quot;)%&#xA;&#xA;%if attName==&quot;uuid&quot; or attName==&quot;history&quot;%&#xA;Attribute&#xA;{&#xA;  %TRANSFORM_REFERENCE()%&#xA;  %TRANSFORM_CURRENT(&quot;name&quot;)%&#xA;  type=%qt%$type%qt%&#xA;  name=%qt%findBy$propertyName%qt%&#xA;}&#xA;%endIf%&#xA;"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{D09F7195-0CE3-4978-AA69-B61379B8BAB4}"/>
+			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
+			<Column name="TemplateName" value="Class"/>
+			<Column name="Template" value="Interface&#xA;{&#xA;  %TRANSFORM_REFERENCE(&quot;Class&quot;)%&#xA;  %TRANSFORM_CURRENT(&quot;language&quot;)%&#xA;  name=%qt%%className%Repository%qt%&#xA;  language=&quot;Java&quot;&#xA;  Parent&#xA;  {&#xA;	name=%qt%CrudRepository&lt;%className%, String&gt;%qt%&#xA;	type=&quot;Implements&quot;&#xA;  }&#xA;  Tag&#xA;  {&#xA;	name=&quot;dataClassname&quot;&#xA;	value=%qt%%className%%qt%&#xA;  }&#xA;  Tag&#xA;  {&#xA;	name=&quot;dataElemtype&quot;&#xA;	value=%qt%%elemType%%qt%&#xA;  }&#xA;%list=&quot;ClassParameter&quot; @separator=&quot;\n&quot; @indent=&quot;    &quot;%&#xA;%list=&quot;ClassBase&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%list=&quot;ClassInterface&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%list=&quot;InnerClass&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;$COMMENT=&quot;This causes some trouble&quot;&#xA;$COMMENT=%if elemType!=&quot;Interface&quot;%&#xA;$COMMENT=%list=&quot;Attribute&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;$COMMENT=%endIf%&#xA;%list=&quot;Attribute__AsProperties&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot; attScope==&quot;Public&quot;%&#xA;%list=&quot;Operation&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;}&#xA;%list=&quot;Connector&quot; @separator=&quot;\n&quot;%"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{890A6891-E322-4239-87D8-01E8DFE46733}"/>
+			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
+			<Column name="TemplateName" value="Namespace"/>
+			<Column name="Template" value="%if packagePath == &quot;&quot;%&#xA;%list=&quot;Namespace&quot; @separator=&quot;\n&quot;%&#xA;%list=&quot;Class&quot; @separator=&quot;\n&quot;%&#xA;%endTemplate%&#xA;&#xA;Package&#xA;{&#xA;  %TRANSFORM_CURRENT()%&#xA;%list=&quot;Namespace&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%list=&quot;Class&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;}"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{E09252E3-1205-4323-AB46-8756E239AC6A}"/>
+			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
+			<Column name="TemplateName" value="Template Parameter Substitution"/>
+			<Column name="Template" value="TTemplateParameterSubstitution&#xA;{&#xA;  Formal&#xA;  {&#xA;    name=%qt%%parameterSubstitutionFormal%%qt%  &#xA;  }&#xA;  Actual&#xA;  {&#xA;    name=%qt%%parameterSubstitutionActual%%qt%&#xA;	%TRANSFORM_REFERENCE(&quot;Class&quot;, parameterSubstitutionActualClassifier)%&#xA;  }&#xA;}&#xA;"/>
+		</DataRow>
+	</DataSet>
+</RefData>
