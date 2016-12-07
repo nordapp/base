@@ -1,0 +1,180 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.i3xx.cloud.data</groupId>
+  <artifactId>org.i3xx.cloud.data.coor</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>NordApp :: data :: coor</name>
+  <description>Spring data project. Coordinates the data processed by two independent processes</description>
+  
+  <properties>
+  	<project.inceptionYear>2016</project.inceptionYear>
+  	<java.version>1.8</java.version>
+  </properties>
+  
+  <dependencies>
+	
+	<dependency>
+		<groupId>org.i3xx.util</groupId>
+		<artifactId>org.i3xx.util.basic</artifactId>
+		<version>0.2.0-SNAPSHOT</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.i3xx.cloud.data</groupId>
+		<artifactId>org.i3xx.cloud.data.object</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-jpa</artifactId>
+	</dependency>
+	
+	<!-- Logging section -->
+	
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.17</version>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-log4j12</artifactId>
+	</dependency>
+	
+	<!-- Test section -->
+  	
+    <dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <scope>test</scope>
+    </dependency>
+	
+	
+  </dependencies>
+  
+  <build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.5.1</version>
+			<configuration>
+				<target>1.8</target>
+				<source>1.8</source>
+			</configuration>
+		</plugin>
+        
+		<plugin>
+		   <groupId>org.sonatype.plugins</groupId>
+		   <artifactId>nexus-staging-maven-plugin</artifactId>
+		   <version>1.6.3</version>
+		   <extensions>true</extensions>
+		   <configuration>
+		   	 <serverId>ossrh</serverId>
+		   	 <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+		   	 <autoReleaseAfterClose>true</autoReleaseAfterClose>
+		   </configuration>
+		</plugin>
+	</plugins>
+  </build>
+  
+  <dependencyManagement>
+   <dependencies>
+      <dependency>
+        <!-- Import dependency management from Spring Boot -->
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>1.4.0.RELEASE</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+   </dependencies>
+  </dependencyManagement>
+  
+  <distributionManagement>
+	<snapshotRepository>
+		<id>ossrh</id>
+		<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+	</snapshotRepository>
+    <repository>
+		<id>ossrh</id>
+		<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+	</repository>
+	
+  </distributionManagement>
+  
+  <profiles>
+    <profile>
+      <id>release-sign-artifacts</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+      
+      <build>
+        <plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<configuration>
+					<organizationName>${project.organizationName}</organizationName>
+					<inceptionYear>${project.inceptionYear}</inceptionYear>
+					<projectName>${project.name}</projectName>
+					<licenseName>apache_v2</licenseName>
+				</configuration>
+				<executions>
+					<execution>
+						<id>update-project-license</id>
+						<goals>
+							<goal>update-project-license</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>update-file-header</id>
+						<goals>
+							<goal>update-file-header</goal>
+						</goals>
+						<phase>process-sources</phase>
+						<configuration>
+							<roots>
+								<root>src/main/java</root>
+								<root>src/test/java</root>
+							</roots>
+						</configuration>
+					</execution>
+					<execution>
+						<id>download-licenses</id>
+						<goals>
+							<goal>download-licenses</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+        
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-gpg-plugin</artifactId>
+			  <executions>
+			    <execution>
+			      <id>sign-artifacts</id>
+			      <phase>verify</phase>
+			      <goals>
+			        <goal>sign</goal>
+			      </goals>
+			    </execution>
+			  </executions>
+			</plugin>
+			
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+  
+</project>
