@@ -130,6 +130,16 @@ public class LogAnalyzer {
 	}
 	
 	/**
+	 * This value can be used to test the last log entry
+	 * of the protocol.
+	 * 
+	 * @return The type of the latest log entry.
+	 */
+	public int getCurrentPartType() {
+		return list.isEmpty() ? 0 : list.get(list.size()-1).getType();
+	}
+	
+	/**
 	 * Analyzes the communication using the log. Doesn't change the log or the data.
 	 * 
 	 * @param newValue The value set or received

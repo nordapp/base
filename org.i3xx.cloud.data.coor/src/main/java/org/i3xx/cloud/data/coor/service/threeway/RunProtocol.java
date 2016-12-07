@@ -55,6 +55,21 @@ public class RunProtocol {
 	}
 	
 	/**
+	 * The default use case of the protocol handler.
+	 * ACK = 100
+	 * SYN = 200
+	 * The partner will not be analyzed or tested
+	 * The ACK flag is used.
+	 * 
+	 * @param handshake The handshake object that holds the log
+	 * @param partner The partner who runs the log
+	 * (default: writer: ObjectHandshake.PARTNER_A, reader: ObjectHandshake.PARTNER_B)
+	 */
+	public RunProtocol(IHandshake handshake, int partner) {
+		this(handshake, partner, 100, 200, true, true);
+	}
+	
+	/**
 	 * @return
 	 */
 	public boolean beginA() {

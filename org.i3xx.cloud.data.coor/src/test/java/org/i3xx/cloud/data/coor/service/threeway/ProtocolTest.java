@@ -29,6 +29,10 @@ public class ProtocolTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Full example of the protocol implementation
+	 * to show complexity and function
+	 */
 	@Test
 	public void testA() {
 		
@@ -112,13 +116,16 @@ public class ProtocolTest {
 		assertFalse( alyB.isRstFlag() );
 	}
 
+	/**
+	 * Example of the protocol using a single RunProtocol object.
+	 */
 	@Test
 	public void testB() {
 		
 		ObjectHandshake h = new ObjectHandshake();
 		h.setUuid( UuidTool.getOne() );
 		
-		RunProtocol run = new RunProtocol(h, IHandshake.PARTNER_A, 100, 200, true, true);
+		RunProtocol run = new RunProtocol(h, IHandshake.PARTNER_A, 100, 200, false, true);
 		
 		assertTrue(run.beginA());
 		assertTrue(run.commitA());
@@ -127,6 +134,9 @@ public class ProtocolTest {
 		assertTrue(run.commitB());
 	}
 
+	/**
+	 * Example of the protocol using two RunProtocol objects.
+	 */
 	@Test
 	public void testC() {
 		
@@ -150,8 +160,37 @@ public class ProtocolTest {
 		assertEquals(h.getLog(), "1-1-100-2-1-101-2-2-200-1-2-201-");
 	}
 
+	/**
+	 * Example of the protocol using two RunProtocol objects.
+	 */
 	@Test
 	public void testD() {
+		
+		ObjectHandshake h = new ObjectHandshake();
+		h.setUuid( UuidTool.getOne() );
+		
+		RunProtocol run = null;
+		
+		run = new RunProtocol(h, IHandshake.PARTNER_A);
+		assertTrue(run.beginA());
+		
+		run = new RunProtocol(h, IHandshake.PARTNER_A);
+		assertTrue(run.commitA());
+		
+		run = new RunProtocol(h, IHandshake.PARTNER_B);
+		assertTrue(run.beginB());
+		
+		run = new RunProtocol(h, IHandshake.PARTNER_B);
+		assertTrue(run.commitB());
+		
+		assertEquals(h.getLog(), "1-1-100-1-1-101-2-2-200-2-2-201-");
+	}
+
+	/**
+	 * Example using reset
+	 */
+	@Test
+	public void testE() {
 		
 		ObjectHandshake h = new ObjectHandshake();
 		h.setUuid( UuidTool.getOne() );
@@ -179,8 +218,11 @@ public class ProtocolTest {
 		assertEquals(h.getLog(), "1-1-100-2-1-101-2-2-200-1-4-201-");
 	}
 
+	/**
+	 * Example with the FIN flag
+	 */
 	@Test
-	public void testE() {
+	public void testF() {
 		
 		ObjectHandshake h = new ObjectHandshake();
 		h.setUuid( UuidTool.getOne() );
@@ -200,6 +242,59 @@ public class ProtocolTest {
 		assertTrue(run.commitB());
 		
 		assertEquals(h.getLog(), "1-8-100-2-8-101-2-2-200-1-2-201-");
+	}
+
+	/**
+	 * Example of the protocol using two RunProtocol objects and the RST flag.
+	 */
+	@Test
+	public void testG() {
+		
+		ObjectHandshake h = new ObjectHandshake();
+		h.setUuid( UuidTool.getOne() );
+		
+		RunProtocol run = null;
+		
+		run = new RunProtocol(h, IHandshake.PARTNER_A);
+		assertTrue(run.beginA());
+		
+		run = new RunProtocol(h, IHandshake.PARTNER_A);
+		assertTrue(run.commitA());
+		
+		run.reset();
+		
+		run = new RunProtocol(h, IHandshake.PARTNER_B);
+		assertFalse(run.beginB());
+		
+		run = new RunProtocol(h, IHandshake.PARTNER_B);
+		assertFalse(run.commitB());
+		
+		//analyze the reset
+		LogAnalyzer aly = run.getCurrentAnalyzer();
+		//The value, the reset occurs
+		assertEquals( 200, aly.getCurrentPartValue() );
+		//The part is not available
+		assertEquals( LogAnalyzer.THE_PART_IS_NOT_KNOWN, aly.getPart() );
+		
+		assertFalse( aly.isAfterPart0() );
+		assertFalse( aly.isAfterPart1() );
+		//The parts 0 and 1 run properly
+		assertTrue( aly.isAfterPart2() );
+		//The part 3 is not reached, because of the reset
+		assertFalse( aly.isAfterPart3() );
+		
+		//There is no part
+		assertFalse( aly.isPart1() );
+		assertFalse( aly.isPart2() );
+		assertFalse( aly.isPart3() );
+		assertFalse( aly.isPart4() );
+		
+		//There are 3 entries in the list.
+		assertEquals( 3, aly.getList().size() );
+		//The last entry has the RST_FLAG set
+		assertEquals( IHandshake.RST_FLAG, aly.getCurrentPartType() );
+		
+		assertEquals(h.getLog(), "1-1-100-1-1-101-1-4-200-");
 	}
 
 }
