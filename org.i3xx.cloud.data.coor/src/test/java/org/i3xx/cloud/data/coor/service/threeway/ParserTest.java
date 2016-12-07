@@ -27,10 +27,10 @@ public class ParserTest {
 		
 		LogWriter w = new LogWriter();
 		w.setList(new ArrayList<LogData>());
-		w.log(PARTNER_A, SYN_FLAG, 100);
-		w.log(PARTNER_B, SYN_FLAG, 101);
-		w.log(PARTNER_B, ACK_FLAG, 200);
-		w.log(PARTNER_A, ACK_FLAG, 201);
+		w.log(PARTNER_A, ACK_FLAG, 100);
+		w.log(PARTNER_B, ACK_FLAG, 101);
+		w.log(PARTNER_B, SYN_FLAG, 200);
+		w.log(PARTNER_A, SYN_FLAG, 201);
 		
 		assertEquals("1-1-100-2-1-101-2-2-200-1-2-201-", w.toString());
 	}
