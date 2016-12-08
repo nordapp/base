@@ -22,7 +22,7 @@ public interface ObjectToOb4Repository extends CrudRepository<ObjectToOb4, Strin
 	 * 
 	 * @param newVal
 	 */
-	List<ObjectToOb4> queryByUuidAndHistoryAndFirma(long id, int transid, String firma);
+	List<ObjectToOb4> queryByUuidAndHistory(String uuid, String history);
 
 	/**
 	 * 

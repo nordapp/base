@@ -7,9 +7,10 @@ import javax.persistence.Table;
 
 @Entity 
 @Table(name="objecttoob4", indexes={
+@Index(name="uuid_idx", columnList="uuid"),
 @Index(name="history_idx", columnList="history"),
-@Index(name="uuidindex_idx", columnList="uuidindex"),
-@Index(name="idindex_idx", columnList="idindex")})
+@Index(name="uuidindex_idx", columnList="uuid, history"),
+@Index(name="idindex_idx", columnList="ID, TRANSID, FIRMA")})
 public class ObjectToOb4 {
 	
 	/**  */
@@ -27,8 +28,6 @@ public class ObjectToOb4 {
 	private int TRANSID;
 	//Index
 	private int dirty;
-	private String uuidindex;
-	private String idindex;
 	
 	public ObjectToOb4() {
 		uuid = "";
@@ -37,8 +36,12 @@ public class ObjectToOb4 {
 		ID = 0L;
 		TRANSID = 0;
 	}
-
+	
 	@Id
+	public String getPrimary() {
+		return uuid+"_"+history;
+	}
+	
 	public String getUuid(){
 		return uuid;
 	}
@@ -105,36 +108,6 @@ public class ObjectToOb4 {
 	}
 	
 	// ------------------------------------------------------------------------
-	// index getter and setter
-	// ------------------------------------------------------------------------
-	
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setUuidindex(String newVal){
-		this.uuidindex = newVal;
-		dirty = 0;
-	}
-
-	public String getUuidindex(){
-		return this.uuidindex;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setIdindex(String newVal){
-		this.idindex = newVal;
-		dirty = 0;
-	}
-
-	public String getIdindex(){
-		return this.idindex;
-	}
-	
-	// ------------------------------------------------------------------------
 	// intern operations
 	// ------------------------------------------------------------------------
 	
@@ -142,10 +115,10 @@ public class ObjectToOb4 {
 	 * Finishes the operation and build the index
 	 */
 	public void finish() {
-		if( (dirty&UUID_IS_DIRTY)==UUID_IS_DIRTY )
-			buildUuidIndex();
-		if( (dirty&ID_IS_DIRTY)==ID_IS_DIRTY )
-			buildIdIndex();
+		//if( (dirty&UUID_IS_DIRTY)==UUID_IS_DIRTY )
+			//
+		//if( (dirty&ID_IS_DIRTY)==ID_IS_DIRTY )
+			//
 		
 		dirty = 0;
 	}
@@ -155,20 +128,6 @@ public class ObjectToOb4 {
 	 */
 	public boolean isDirty() {
 		return dirty!=0;
-	}
-	
-	/**
-	 * Builds the index: FIRMA '+' uuid '+' history
-	 */
-	private void buildUuidIndex() {
-		setUuidindex(getFirma()+"+"+getUuid()+"+"+getHistory());
-	}
-	
-	/**
-	 * Builds the index: FIRMA '+' ID '+' TRANSID
-	 */
-	private void buildIdIndex() {
-		setIdindex(getFirma()+"+"+getId()+"+"+getTransid());
 	}
 
 }
