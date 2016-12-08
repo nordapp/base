@@ -22,6 +22,7 @@ public class Obid implements IbInfo {
 	private String UUID;
 	private String HISTORY;
 	private String CLASSNAME;
+	private String MANDANT;
 	private String NAME;
 	private long CREATETIMESTAMP;
 	private long OBTIMESTAMP = 0;
@@ -70,6 +71,18 @@ public class Obid implements IbInfo {
 	 */
 	public void setClassname(String newVal){
 		CLASSNAME = newVal;
+	}
+
+	public String getMandant(){
+		return MANDANT;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setMandant(String newVal){
+		MANDANT = newVal;
 	}
 
 	public String getName(){
