@@ -38,6 +38,12 @@
 			<Column name="Template" value="$COMMENT=&quot;Convert SQL type to JAVA type&quot;&#xA;$COMMENT=&quot;Convert the SQL type of Postgres to the corresponding JAVA type&quot;&#xA;&#xA;$varType = $parameter1&#xA;&#xA;%if $varType == &quot;&quot;%&#xA;$ParamType = &quot;int&quot;&#xA;%elseIf $varType == &quot;bigint&quot;%&#xA;$ParamType = &quot;long&quot;&#xA;%elseIf $varType == &quot;varchar&quot;%&#xA;$ParamType = &quot;String&quot;&#xA;%elseIf $varType == &quot;decimal&quot;%&#xA;$ParamType = &quot;double&quot;&#xA;%elseIf $varType == &quot;double precisition&quot;%&#xA;$ParamType = &quot;double&quot;&#xA;%elseIf $varType == &quot;integer&quot;%&#xA;$ParamType = &quot;int&quot;&#xA;%else%&#xA;$ParamType = $varType&#xA;%endIf%&#xA;$ParamType"/>
 		</DataRow>
 		<DataRow>
+			<Column name="TemplateID" value="{2D6DEA49-AF4F-4cc7-A34B-E40C368B44BB}"/>
+			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
+			<Column name="TemplateName" value="Class"/>
+			<Column name="Template" value="Interface&#xA;{&#xA;  %TRANSFORM_REFERENCE(&quot;Class&quot;)%&#xA;  %TRANSFORM_CURRENT(&quot;language&quot;)%&#xA;  name=%qt%%className%Repository%qt%&#xA;  language=&quot;Java&quot;&#xA;  Parent&#xA;  {&#xA;	name=%qt%CrudRepository&lt;%className%, String&gt;%qt%&#xA;	type=&quot;Implements&quot;&#xA;  }&#xA;  Tag&#xA;  {&#xA;	name=&quot;dataClassname&quot;&#xA;	value=%qt%%className%%qt%&#xA;  }&#xA;  Tag&#xA;  {&#xA;	name=&quot;dataElemtype&quot;&#xA;	value=%qt%%elemType%%qt%&#xA;  }&#xA;%list=&quot;ClassParameter&quot; @separator=&quot;\n&quot; @indent=&quot;    &quot;%&#xA;%list=&quot;ClassBase&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%list=&quot;ClassInterface&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%list=&quot;InnerClass&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;$COMMENT=&quot;This causes some trouble&quot;&#xA;$COMMENT=%if elemType!=&quot;Interface&quot;%&#xA;$COMMENT=%list=&quot;Attribute&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;$COMMENT=%endIf%&#xA;&#xA;$T=%className%&#xA;Operation&#xA;{&#xA;  name=&quot;queryByUuidAndHistory&quot;&#xA;  stereotype=&quot;query&quot;&#xA;  scope=&quot;&quot;&#xA;  type=%qt%List&lt;$T&gt;%qt%&#xA;  Parameter&#xA;  {&#xA;    name=&quot;uuid&quot;&#xA;    type=&quot;String&quot;&#xA;  }&#xA;  Parameter&#xA;  {&#xA;    name=&quot;history&quot;&#xA;    type=&quot;String&quot;&#xA;  }&#xA;  code=%qt%%qt%&#xA;  Tag{name=&quot;attribute_name&quot; value=&quot;uuidAndHistory&quot;}&#xA;}&#xA;&#xA;%list=&quot;Attribute__AsProperties&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot; attScope==&quot;Public&quot;%&#xA;%list=&quot;Operation&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;}&#xA;%list=&quot;Connector&quot; @separator=&quot;\n&quot;%"/>
+		</DataRow>
+		<DataRow>
 			<Column name="TemplateID" value="{A2EB4382-5984-4095-BD87-78D655C6B641}"/>
 			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
 			<Column name="TemplateName" value="File"/>
@@ -47,13 +53,13 @@
 			<Column name="TemplateID" value="{00617937-5026-4cb1-9A15-373CCD219AEA}"/>
 			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
 			<Column name="TemplateName" value="Attribute"/>
-			<Column name="Template" value="$type=%ConvertSqlType(attType)%&#xA;$propertyName=%attName%&#xA;$propertyName=%REMOVE_PREFIX($propertyName,genOptPropertyPrefix)%&#xA;$propertyName=%CONVERT_NAME($propertyName, &quot;pascal case&quot;, &quot;camel case&quot;)%&#xA;$propertyName=%CONVERT_NAME($propertyName, &quot;HT()HT&quot;, &quot;Ht()ht&quot;)%&#xA;&#xA;%if attName==&quot;uuid&quot; or attName==&quot;history&quot;%&#xA;Attribute&#xA;{&#xA;  %TRANSFORM_REFERENCE()%&#xA;  %TRANSFORM_CURRENT(&quot;name&quot;)%&#xA;  type=%qt%$type%qt%&#xA;  name=%qt%findBy$propertyName%qt%&#xA;}&#xA;%endIf%&#xA;"/>
+			<Column name="Template" value="Attribute&#xA;{&#xA;  %TRANSFORM_CURRENT()%&#xA;}"/>
 		</DataRow>
 		<DataRow>
-			<Column name="TemplateID" value="{D09F7195-0CE3-4978-AA69-B61379B8BAB4}"/>
+			<Column name="TemplateID" value="{E2DF3C6F-C178-4c13-A805-680D64D9682F}"/>
 			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
-			<Column name="TemplateName" value="Class"/>
-			<Column name="Template" value="Interface&#xA;{&#xA;  %TRANSFORM_REFERENCE(&quot;Class&quot;)%&#xA;  %TRANSFORM_CURRENT(&quot;language&quot;)%&#xA;  name=%qt%%className%Repository%qt%&#xA;  language=&quot;Java&quot;&#xA;  Parent&#xA;  {&#xA;	name=%qt%CrudRepository&lt;%className%, String&gt;%qt%&#xA;	type=&quot;Implements&quot;&#xA;  }&#xA;  Tag&#xA;  {&#xA;	name=&quot;dataClassname&quot;&#xA;	value=%qt%%className%%qt%&#xA;  }&#xA;  Tag&#xA;  {&#xA;	name=&quot;dataElemtype&quot;&#xA;	value=%qt%%elemType%%qt%&#xA;  }&#xA;%list=&quot;ClassParameter&quot; @separator=&quot;\n&quot; @indent=&quot;    &quot;%&#xA;%list=&quot;ClassBase&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%list=&quot;ClassInterface&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%list=&quot;InnerClass&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;$COMMENT=&quot;This causes some trouble&quot;&#xA;$COMMENT=%if elemType!=&quot;Interface&quot;%&#xA;$COMMENT=%list=&quot;Attribute&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;$COMMENT=%endIf%&#xA;%list=&quot;Attribute__AsProperties&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot; attScope==&quot;Public&quot;%&#xA;%list=&quot;Operation&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;}&#xA;%list=&quot;Connector&quot; @separator=&quot;\n&quot;%"/>
+			<Column name="TemplateName" value="Parameter"/>
+			<Column name="Template" value="Parameter&#xA;{&#xA;  %TRANSFORM_CURRENT(&quot;type&quot;)%&#xA;  type=%qt%%CONVERT_TYPE(&quot;Java&quot;,paramType)%%qt%&#xA;}"/>
 		</DataRow>
 		<DataRow>
 			<Column name="TemplateID" value="{890A6891-E322-4239-87D8-01E8DFE46733}"/>
