@@ -8,14 +8,12 @@ import javax.persistence.Table;
 import org.i3xx.cloud.data.object.common.IbInfo;
 
 /**
+ * Each data object must have a link to this called id.
+ * 
  * @author Stefan Hauptmann
  * @version 1.0
  * @created 18-Okt-2016 17:54:37
  */
- 
- 
- 
- 
  @Entity 
  @Table(indexes={
  @Index(name="history_idx", columnList="history")})

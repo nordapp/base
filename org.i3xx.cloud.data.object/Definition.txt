@@ -1,0 +1,9 @@
+The system is built using the following rules
+
+§1 Each object has it's own UUID
+
+§2 Each object has a history that is a UUID
+
+§3 Each history is a common object with a UUID
+
+§4 To build a history, clone the object and put the UUID as value to the history field. Then set a new UUID.
