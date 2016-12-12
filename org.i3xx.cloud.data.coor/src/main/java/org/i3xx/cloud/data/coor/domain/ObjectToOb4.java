@@ -5,6 +5,10 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Table;
 
+/**
+ * @author Stefan
+ *
+ */
 @Entity 
 @Table(name="objecttoob4", indexes={
 @Index(name="uuid_idx", columnList="uuid"),
@@ -39,7 +43,31 @@ public class ObjectToOb4 {
 	
 	@Id
 	public String getPrimary() {
+		//
+		// The uuid is the object id to identify every object used by the software (except this mapping))
+		// The history is the object id to identify each object's history.
+		//
+		// UUID ::= 128-bit UUID @see https://en.wikipedia.org/wiki/Universally_unique_identifier
+		// uuid ::= UUID
+		// history ::= UUID
+		// primary ::= uuid '_' history
+		//
 		return uuid+"_"+history;
+	}
+	
+	/**
+	 * @param newValue
+	 */
+	public void setPrimary(String newValue) {
+		//
+		// UUID ::= 128-bit UUID @see https://en.wikipedia.org/wiki/Universally_unique_identifier
+		// primary ::= UUID '_' UUID
+		//
+		String[] s = newValue.split("\\_", 2);
+		if(s!=null && s.length>=1 && s[0]!=null)
+			uuid = s[0];
+		if(s!=null && s.length>=2 && s[1]!=null)
+			history = s[1];
 	}
 	
 	public String getUuid(){
