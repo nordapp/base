@@ -2,6 +2,7 @@ package org.i3xx.cloud.data.object.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 import org.i3xx.cloud.data.object.common.IbInfo;
@@ -14,8 +15,10 @@ import org.i3xx.cloud.data.object.common.IbInfo;
  
  
  
+ 
  @Entity 
- @Table
+ @Table(indexes={
+ @Index(name="history_idx", columnList="history")})
 public class Oblog implements IbInfo {
 	
 	private String UUID;
@@ -29,6 +32,8 @@ public class Oblog implements IbInfo {
 	private String LABEL;
 	private String CREATEUSER;
 	private String OBUSER;
+	private long FLAGS;
+	private String STEREOTYPES;
 
 	public Oblog(){
 
@@ -165,5 +170,44 @@ public class Oblog implements IbInfo {
 	 */
 	public void setObuser(String newVal){
 		OBUSER = newVal;
+	}
+
+	public long getFlags(){
+		return FLAGS;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setFlags(long newVal){
+		FLAGS = newVal;
+	}
+	
+	/**
+	 * @param flag
+	 */
+	public void setFlag(long flag) {
+		FLAGS &= flag;
+	}
+	
+	/**
+	 * @param flag
+	 * @return
+	 */
+	public boolean isFlag(long flag) {
+		return ((FLAGS & flag)==flag);
+	}
+
+	public String getStereotypes(){
+		return STEREOTYPES;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setStereotypes(String newVal){
+		STEREOTYPES = newVal;
 	}
 }//end oblog

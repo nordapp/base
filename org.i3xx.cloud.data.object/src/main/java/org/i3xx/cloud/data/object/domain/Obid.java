@@ -15,13 +15,17 @@ import org.i3xx.cloud.data.object.common.IbInfo;
  
  
  
- @Entity
- @Table(name="Obid", indexes={@Index(name="history_idx", columnList="HISTORY")})
+ 
+ @Entity 
+ @Table(indexes={
+ @Index(name="history_idx", columnList="history")})
 public class Obid implements IbInfo {
+	
 	
 	private String UUID;
 	private String HISTORY;
 	private String CLASSNAME;
+	private String STEREOTYPES;
 	private String MANDANT;
 	private String NAME;
 	private long CREATETIMESTAMP;
@@ -31,6 +35,7 @@ public class Obid implements IbInfo {
 	private String LABEL;
 	private String CREATEUSER;
 	private String OBUSER;
+	private long FLAGS;
 
 	public Obid(){
 
@@ -71,6 +76,18 @@ public class Obid implements IbInfo {
 	 */
 	public void setClassname(String newVal){
 		CLASSNAME = newVal;
+	}
+
+	public String getStrereotypes(){
+		return STEREOTYPES;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setStrereotypes(String newVal){
+		STEREOTYPES = newVal;
 	}
 
 	public String getMandant(){
@@ -179,5 +196,47 @@ public class Obid implements IbInfo {
 	 */
 	public void setObuser(String newVal){
 		OBUSER = newVal;
+	}
+	
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setFlags(long newVal) {
+		FLAGS = newVal;
+	}
+	
+	/**
+	 * @return
+	 */
+	public long getFlags() {
+		return FLAGS;
+	}
+	
+	/**
+	 * @param flag
+	 */
+	public void setFlag(long flag) {
+		FLAGS &= flag;
+	}
+	
+	/**
+	 * @param flag
+	 * @return
+	 */
+	public boolean isFlag(long flag) {
+		return ((FLAGS & flag)==flag);
+	}
+
+	public String getStereotypes(){
+		return STEREOTYPES;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setStereotypes(String newVal){
+		STEREOTYPES = newVal;
 	}
 }//end obid
