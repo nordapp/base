@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * @author Stefan
@@ -154,6 +155,7 @@ public class ObjectToOb4 {
 	/**
 	 * @return True if anything has changed
 	 */
+	@Transient
 	public boolean isDirty() {
 		return dirty!=0;
 	}
