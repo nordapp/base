@@ -1,8 +1,8 @@
 The system is built using the following rules
 
-§1 Each object has it's own UUID
+§1 Each object has it's own UUID that is always unique and not null
 
-§2 Each object has a history that is a UUID
+§2 Each object has a history that is a UUID but must not be unique but must be not null
 
 §3 Each history is a common object with a UUID
 

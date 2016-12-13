@@ -1,5 +1,6 @@
 package org.i3xx.cloud.data.coor.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Index;
@@ -14,8 +15,8 @@ import javax.persistence.Transient;
 @Table(name="objecttoob4", indexes={
 @Index(name="uuid_idx", columnList="uuid"),
 @Index(name="history_idx", columnList="history"),
-@Index(name="uuidindex_idx", columnList="uuid, history"),
-@Index(name="idindex_idx", columnList="ID, TRANSID, FIRMA")})
+@Index(name="uuidindex_idx", columnList="uuid,history"),
+@Index(name="idindex_idx", columnList="ID,TRANSID,FIRMA")})
 public class ObjectToOb4 {
 	
 	/**  */
@@ -25,13 +26,19 @@ public class ObjectToOb4 {
 	private static final int UUID_IS_DIRTY = 0x2;
 	
 	// OfficeBase_M5
+	@Column(name="uuid", length=36, unique=true, nullable=false)
 	private String uuid;
+	@Column(name="history", length=36, unique=false, nullable=false)
 	private String history;
 	// OfficeBase_M4
+	@Column(name="FIRMA", length=50, unique=false, nullable=false)
 	private String FIRMA;
+	@Column(name="ID", unique=false)
 	private long ID;
+	@Column(name="TRANSID", unique=false)
 	private int TRANSID;
 	//Index
+	@Transient
 	private int dirty;
 	
 	public ObjectToOb4() {
