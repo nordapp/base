@@ -49,8 +49,8 @@ public class ObjectToOb4 {
 		TRANSID = 0;
 	}
 	
-	@Id
-	public String getPrimary() {
+	@Transient
+	public String getUuidandhistory() {
 		//
 		// The uuid is the object id to identify every object used by the software (except this mapping))
 		// The history is the object id to identify each object's history.
@@ -66,7 +66,8 @@ public class ObjectToOb4 {
 	/**
 	 * @param newValue
 	 */
-	public void setPrimary(String newValue) {
+	@Transient
+	public void setUuidandhistory(String newValue) {
 		//
 		// UUID ::= 128-bit UUID @see https://en.wikipedia.org/wiki/Universally_unique_identifier
 		// primary ::= UUID '_' UUID
@@ -78,6 +79,7 @@ public class ObjectToOb4 {
 			history = s[1];
 	}
 	
+	@Id
 	public String getUuid(){
 		return uuid;
 	}
