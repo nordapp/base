@@ -50,13 +50,27 @@ function main() {
 function createIndex(theObject) {
 	Session.Output("Process '" + theObject.Name + "'.");
 	
-	var m = createMethod(theObject, "uuid_idx");
+	var m = createMethodPk(theObject, "PK_"+theObject.Name);
 	createParameter(m, "uuid", "varchar", true);
-	createTaggedValue(m, "property", "Unique=1;");
-	createTaggedValue(m, "Unique", "1");
+	setAttributePk(theObject, "uuid");
 	
+	//Index
 	var m = createMethod(theObject, "history_idx");
 	createParameter(m, "history", "varchar", true);
+	
+	
+	//Description:
+	
+	//Creates an index
+	//var m = createMethod(theObject, "uuid_idx");
+	//createParameter(m, "uuid", "varchar", true);
+	
+	//Drops an index
+	//dropMethod(theObject, "history_idx");
+	
+	//Makes the index unique
+	//createTaggedValue(m, "property", "Unique=1;");
+	//createTaggedValue(m, "Unique", "1");
 }
 
 
@@ -116,15 +130,73 @@ function createMethod(theObject, name) {
 	
 	var theMethod = findByName(theMethods, name);
 	if( theMethod == null ){
-		Session.Output( "Index created '" + name + "'." );
+		Session.Output( "  Index created '" + name + "'." );
 		theMethod = theMethods.AddNew(name, "index");
 	}else{
-		Session.Output( "Index updated '" + name + "'." );
+		Session.Output( "  Index updated '" + name + "'." );
 	}
 	theMethod.Stereotype = "index";
 	theMethod.Update();
 	
 	return theMethod;
+}
+
+/*
+ *  Drops the index as a method
+ * 
+ *  @param theObject The table to add the index
+ *  @param name The name of the index
+ */
+function dropMethod(theObject, name) {
+	var theMethods = theObject.Methods;
+	
+	var f = deleteByName(theMethods, name);
+	if( f ){
+		Session.Output( "  Method dropped '" + name + "'." );
+		theMethods.Refresh();
+	}
+}
+
+/*
+ *  Creates the index as a method
+ * 
+ *  @param theObject The table to add the index
+ *  @param name The name of the index
+ *  @return The method or null if not found
+ */
+function createMethodPk(theObject, name) {
+	var theMethods = theObject.Methods;
+	
+	var theMethod = findByName(theMethods, name);
+	if( theMethod == null ){
+		Session.Output( "  Primary Key created '" + name + "'." );
+		theMethod = theMethods.AddNew(name, "PK");
+	}else{
+		Session.Output( "  Primary Key updated '" + name + "'." );
+	}
+	theMethod.Stereotype = "PK";
+	theMethod.ReturnType = "";
+	//theMethod.ObjectType = 49;
+	theMethod.Update();
+	
+	return theMethod;
+}
+
+/*
+ *  Sets the field (attribute) as primary
+ * 
+ *  @param theObject The table to edit the field
+ *  @param name The name of the field
+ */
+function setAttributePk(theObject, name) {
+	var theAttributes = theObject.Attributes;
+	
+	var theAttribute = findByName(theAttributes, name);
+	if( theAttribute != null ){
+		theAttribute.IsOrdered = true;
+		theAttribute.IsStatic = true;
+		theAttribute.Update();
+	}
 }
 
 /*
@@ -190,6 +262,28 @@ function findByName(collection, name) {
 			break;
 		else
 			elem = null;
+	}//for
+	return elem;
+}
+
+/*
+ * Deletes an element in a collection by name
+ *
+ * @param collection The collection containing the element
+ * @param name The name of the element to find
+ * @return True if the element is deleted or false if it isn't found or deleted
+ */
+function deleteByName(collection, name) {
+	var elem = false;
+	for(var i=0;i<collection.Count;i++) {
+		elem = collection.GetAt(i);
+		if(elem.Name == name){
+			collection.Delete(i);
+			elem = true;
+			break;
+		}else{
+			elem = false;
+		}
 	}//for
 	return elem;
 }
