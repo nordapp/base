@@ -33,7 +33,7 @@ if ( thePackage != null && thePackage.PackageID != 0 )
 			
 			//The element of the package
 			var elem = thePackage.Elements.GetAt(i);
-			var tableName = elem.Name;
+			var tableName = elem.Name.toLowerCase();
 			
 			Session.Output( "Working on element table '" + tableName + "'");
 			
@@ -63,7 +63,10 @@ if ( thePackage != null && thePackage.PackageID != 0 )
 			}//fi
 			
 		}//for
-	}
+	}//fi
+	
+	Session.Output( "Done working '" + thePackage.Name + "' (ID=" +
+			thePackage.PackageID + ")" );
 }
 
 main();
