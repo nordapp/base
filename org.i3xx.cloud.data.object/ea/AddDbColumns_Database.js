@@ -18,7 +18,7 @@ function main() {
 	
 	//var thePackage = Repository.GetTreeSelectedPackage();
 	
-	Session.Output( "JavaScript RENAME DATABASE FIELDS" );
+	Session.Output( "JavaScript ADD/UPDATE DATABASE FIELDS" );
 	Session.Output( "=======================================" );
 	
 	// Test the selection
@@ -41,6 +41,7 @@ function main() {
 		}
 	}
 	
+	Session.Output( "Processing finished" );
 }
 
 function searchPackages(thePackage) {
@@ -81,6 +82,16 @@ function processTable(table) {
 	Session.Output( "Working " + table.MetaType + ": " + table.Name + " (attributes=" + table.Attributes.Count + ")");
 	var p = 0;
 	
+	p = findByName( table, "guid" );
+	if( p == -1 ) {
+		var fld = table.Attributes.AddNew("guid", "bigint");
+		fld.Stereotype = "column";
+		//fld.isUnique = true;
+		//fld.Length = 36;
+		fld.Update();
+	}
+	
+	/*
 	p = findByName( table, "id" );
 	if( p > -1 ) {
 		table.Attributes.DeleteAt(p, true);
@@ -104,7 +115,7 @@ function processTable(table) {
 		fld.Length = 36;
 		fld.Update();
 	}
-	
+	*/
 }
 
 function findByName(table, columnName) {

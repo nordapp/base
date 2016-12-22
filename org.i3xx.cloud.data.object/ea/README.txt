@@ -16,3 +16,7 @@ springdatagenerator_transform_template.xml
 springdataobjects_transform_template.xml
 springdatarepo_transform_template.xml
 
+Stefan 22.12.2016 update by OfficeBase4_M5_crm:
+
+AddDbColumns_Database.js
+CreateIndex_Database_Builder.js

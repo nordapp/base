@@ -58,6 +58,12 @@ function createIndex(theObject) {
 	var m = createMethod(theObject, "history_idx");
 	createParameter(m, "history", "varchar", true);
 	
+	//Index
+	var m = createMethod(theObject, "guid_idx");
+	createParameter(m, "guid", "varchar", true);
+	createTaggedValue(m, "property", "Unique=1;");
+	createTaggedValue(m, "Unique", "1");
+	
 	
 	//Description:
 	
