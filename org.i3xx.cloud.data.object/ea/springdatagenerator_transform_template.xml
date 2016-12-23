@@ -2,28 +2,28 @@
 <RefData version="1.0" exporter="EA.25">
 	<DataSet name="SpringClassGenerator_Transform_Template" table="t_template" filter="TemplateType='#TemplateType#' and TemplateName='#TemplateName#' and Style='#Style#'" stoplist=";TemplateID;">
 		<DataRow>
-			<Column name="TemplateID" value="{92ACA685-290C-4f25-A330-1CD2396C2FE4}"/>
+			<Column name="TemplateID" value="{4C42E6FC-6DCF-4fce-8D65-00542FC1A697}"/>
+			<Column name="TemplateType" value="SpringClassGenerator_Transform_Template"/>
+			<Column name="TemplateName" value="Class"/>
+			<Column name="Template" value="%Class__DAO_Generator%&#xA;&#xA;"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{7D54F5C0-8BD3-445f-8349-B494A7C32C48}"/>
 			<Column name="TemplateType" value="SpringClassGenerator_Transform_Template"/>
 			<Column name="TemplateName" value="File"/>
 			<Column name="Template" value="Package&#xA;{&#xA;  name=&quot;SpringBoot DataRepo Model&quot;&#xA;  namespaceroot=&quot;true&quot;&#xA;%list=&quot;Namespace&quot; @separator=&quot;\n\n&quot; @indent=&quot;  &quot;%&#xA;}"/>
 		</DataRow>
 		<DataRow>
-			<Column name="TemplateID" value="{86055DA4-ADF6-4074-8B75-9288DAE47CCC}"/>
+			<Column name="TemplateID" value="{73838C65-A758-4e13-A2B4-53650D8D62FD}"/>
 			<Column name="TemplateType" value="SpringClassGenerator_Transform_Template"/>
 			<Column name="TemplateName" value="Namespace"/>
-			<Column name="Template" value="%if packagePath == &quot;&quot;%&#xA;%list=&quot;Namespace&quot; @separator=&quot;\n&quot;%&#xA;%list=&quot;Class&quot; @separator=&quot;\n&quot;%&#xA;%endTemplate%&#xA;&#xA;%if packageName ==&quot;domain&quot;%&#xA;&#xA;Package&#xA;{&#xA;  %TRANSFORM_CURRENT()%&#xA;  &#xA;  Class&#xA;  {&#xA;    %TRANSFORM_REFERENCE(&quot;DAO_Generation&quot;, classGUID)%&#xA;    %TRANSFORM_CURRENT(&quot;name&quot;,&quot;stereotype&quot;,&quot;language&quot;)%&#xA;    name=&quot;DAO_Generation_Class&quot;&#xA;    stereotype=&quot;dao generator&quot;&#xA;    language=&quot;Java&quot;&#xA;	&#xA;%list=&quot;Class&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;  }&#xA;}&#xA;%else%&#xA;Package&#xA;{&#xA;  %TRANSFORM_CURRENT()%&#xA;&#xA;%list=&quot;Namespace&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%list=&quot;Class&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;}&#xA;%endIf%  &#xA;"/>
+			<Column name="Template" value="%if packagePath == &quot;&quot;%&#xA;%list=&quot;Namespace&quot; @separator=&quot;\n&quot;%&#xA;%list=&quot;Class&quot; @separator=&quot;\n&quot;%&#xA;%endTemplate%&#xA;&#xA;%if packageName ==&quot;domain&quot;%&#xA;&#xA;Package&#xA;{&#xA;  %TRANSFORM_CURRENT()%&#xA;  &#xA;  Class&#xA;  {&#xA;    %TRANSFORM_REFERENCE(&quot;DAO_Generation&quot;, classGUID)%&#xA;    %TRANSFORM_CURRENT(&quot;name&quot;,&quot;stereotype&quot;,&quot;language&quot;)%&#xA;    name=&quot;DAO_Generation_Class&quot;&#xA;    stereotype=&quot;dao generator&quot;&#xA;    language=&quot;Java&quot;&#xA;	&#xA;	Attribute&#xA;	{&#xA;	  name=&quot;daoGenerator&quot;&#xA;	  type=&quot;DAO_Generation_Class&quot;&#xA;	  scope=&quot;private&quot;&#xA;	  default=&quot;null&quot;&#xA;	  static=&quot;true&quot;&#xA;	}&#xA;	&#xA;	Operation&#xA;	{&#xA;	  name=&quot;of&quot;&#xA;	  stereotype=&quot;built in&quot;&#xA;	  type=&quot;DAO_Generation_Class&quot;&#xA;	  static=&quot;true&quot;&#xA;	  &#xA;	  code=&quot;//singleton\nif(daoGenerator==null)\n	daoGenerator = new DAO_Generation_Class();\n\nreturn daoGenerator;&quot;&#xA;	}&#xA;	&#xA;%list=&quot;Class&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;  }&#xA;}&#xA;%else%&#xA;Package&#xA;{&#xA;  %TRANSFORM_CURRENT()%&#xA;&#xA;%list=&quot;Namespace&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%list=&quot;Class&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;}&#xA;%endIf%  &#xA;"/>
 		</DataRow>
 		<DataRow>
-			<Column name="TemplateID" value="{8CCCE141-0983-42f3-8BB8-EDD97C9A4DC8}"/>
+			<Column name="TemplateID" value="{6E0E649C-30B7-448f-A38C-362CD053662B}"/>
 			<Column name="TemplateType" value="SpringClassGenerator_Transform_Template"/>
 			<Column name="TemplateName" value="Class__DAO_Generator"/>
 			<Column name="Template" value="$className=%className%&#xA;&#xA;Operation&#xA;{&#xA;  name=%qt%generate$className%qt%&#xA;  stereotype=&quot;dao generator type&quot;&#xA;  type=%qt%$className%qt%&#xA;  &#xA;  code=%qt%return ( new $className() );%qt%&#xA;}&#xA;"/>
-		</DataRow>
-		<DataRow>
-			<Column name="TemplateID" value="{62D86CE2-3C9E-4c55-A992-D425423FF44C}"/>
-			<Column name="TemplateType" value="SpringClassGenerator_Transform_Template"/>
-			<Column name="TemplateName" value="Class"/>
-			<Column name="Template" value="%Class__DAO_Generator%&#xA;&#xA;"/>
 		</DataRow>
 	</DataSet>
 </RefData>
