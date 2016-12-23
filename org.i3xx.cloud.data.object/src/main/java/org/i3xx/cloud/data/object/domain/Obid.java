@@ -13,9 +13,11 @@ import javax.persistence.Transient;
  * @created 13-Dez-2016 12:40:15
  */
 
+ 
  @Entity 
- @Table(indexes={
- @Index(name="history_idx", columnList="history")})
+ @Table(name="Obid", indexes={
+ @Index(name="history_idx", columnList="history"),
+ @Index(name="guid_idx", columnList="guid")})
 public class Obid {
 
 	private String CLASSNAME;
@@ -32,6 +34,7 @@ public class Obid {
 	private String STEREOTYPES;
 	private int TRANSID = 0;
 	private String uuid;
+	private long guid;
 
 
 
@@ -113,7 +116,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal    newVal
+	 * @param newVal
 	 */
 	public void setClassname(String newVal){
 		CLASSNAME = newVal;
@@ -121,7 +124,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal    newVal
+	 * @param newVal
 	 */
 	public void setCreatetimestamp(long newVal){
 		CREATETIMESTAMP = newVal;
@@ -129,7 +132,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal    newVal
+	 * @param newVal
 	 */
 	public void setCreateuser(String newVal){
 		CREATEUSER = newVal;
@@ -146,7 +149,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal    newVal
+	 * @param newVal
 	 */
 	public void setFlags(long newVal){
 		FLAGS = newVal;
@@ -154,7 +157,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal    newVal
+	 * @param newVal
 	 */
 	public void setHistory(String newVal){
 		history = newVal;
@@ -162,7 +165,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal    newVal
+	 * @param newVal
 	 */
 	public void setLabel(String newVal){
 		LABEL = newVal;
@@ -178,7 +181,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal    newVal
+	 * @param newVal
 	 */
 	public void setName(String newVal){
 		NAME = newVal;
@@ -186,7 +189,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal    newVal
+	 * @param newVal
 	 */
 	public void setObtimestamp(long newVal){
 		OBTIMESTAMP = newVal;
@@ -194,7 +197,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal    newVal
+	 * @param newVal
 	 */
 	public void setObuser(String newVal){
 		OBUSER = newVal;
@@ -202,7 +205,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal    newVal
+	 * @param newVal
 	 */
 	public void setOwner(String newVal){
 		OWNER = newVal;
@@ -210,7 +213,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal    newVal
+	 * @param newVal
 	 */
 	public void setStereotypes(String newVal){
 		STEREOTYPES = newVal;
@@ -218,7 +221,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal    newVal
+	 * @param newVal
 	 */
 	public void setTransid(int newVal){
 		TRANSID = newVal;
@@ -226,9 +229,25 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal    newVal
+	 * @param newVal
 	 */
 	public void setUuid(String newVal){
 		uuid = newVal;
+	}
+
+	public long getGuid(){
+		return guid;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setGuid(long newVal){
+		guid = newVal;
+	}
+
+	public String version(){
+		return "23-Dez-2016 13:15:16";
 	}
 }//end Obid

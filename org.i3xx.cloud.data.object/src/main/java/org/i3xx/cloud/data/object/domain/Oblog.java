@@ -9,18 +9,22 @@ import javax.persistence.Transient;
 /**
  * @author Administrator
  * @version 1.0
- * @created 13-Dez-2016 12:39:08
+ * @created 23-Dez-2016 13:25:51
  */
 
- @Entity 
- @Table(indexes={
- @Index(name="history_idx", columnList="history")})
+ @Entity
+ @Table(name="Oblog", indexes={
+ 
+ @Index(name="history_idx", columnList="history"),
+ 
+ @Index(name="guid_idx", columnList="guid")})
 public class Oblog {
 
 	private String CLASSNAME;
 	private long CREATETIMESTAMP;
 	private String CREATEUSER;
 	private long FLAGS;
+	private long guid;
 	private String history;
 	private String LABEL;
 	private String MANDANT;
@@ -32,15 +36,13 @@ public class Oblog {
 	private int TRANSID = 0;
 	private String uuid;
 
-
-
-	public void finalize() throws Throwable {
-
-	}
 	public Oblog(){
 
 	}
 
+	public void finalize() throws Throwable {
+
+	}
 	public String getClassname(){
 		return CLASSNAME;
 	}
@@ -55,6 +57,10 @@ public class Oblog {
 
 	public long getFlags(){
 		return FLAGS;
+	}
+
+	public long getGuid(){
+		return guid;
 	}
 
 	public String getHistory(){
@@ -100,7 +106,7 @@ public class Oblog {
 
 	/**
 	 * 
-	 * @param flag
+	 * @param flag    flag
 	 */
 	@Transient
 	public boolean isFlag(long flag){
@@ -133,7 +139,7 @@ public class Oblog {
 
 	/**
 	 * 
-	 * @param flag
+	 * @param flag    flag
 	 */
 	@Transient
 	public void setFlag(long flag){
@@ -146,6 +152,14 @@ public class Oblog {
 	 */
 	public void setFlags(long newVal){
 		FLAGS = newVal;
+	}
+
+	/**
+	 * 
+	 * @param newVal    newVal
+	 */
+	public void setGuid(long newVal){
+		guid = newVal;
 	}
 
 	/**
@@ -166,7 +180,7 @@ public class Oblog {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setMandant(String newVal){
 		MANDANT = newVal;
@@ -226,5 +240,9 @@ public class Oblog {
 	 */
 	public void setUuid(String newVal){
 		uuid = newVal;
+	}
+
+	public String version(){
+		return "23-Dez-2016 13:15:16";
 	}
 }//end Oblog

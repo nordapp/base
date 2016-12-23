@@ -84,7 +84,7 @@ public class CreateObjectServiceImpl implements CreateObjectService {
 	 * @return
 	 */
 	public Obid getOne(String uuid) {
-		List<Obid> list = obidRepository.findByUuid(uuid);
+		List<Obid> list = obidRepository.queryByUuid(uuid);
 		if(list.size()==0) {
 			return null;
 		}else if(list.size()==1) {
@@ -102,7 +102,7 @@ public class CreateObjectServiceImpl implements CreateObjectService {
 	 * @return
 	 */
 	public List<Obid> getAll(String uuid) {
-		List<Obid> list = obidRepository.findByUuid(uuid);
+		List<Obid> list = obidRepository.queryByUuid(uuid);
 		return list;
 	}
 }
