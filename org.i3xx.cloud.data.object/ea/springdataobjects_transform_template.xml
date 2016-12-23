@@ -18,7 +18,7 @@
 			<Column name="TemplateID" value="{44FF2518-70C9-4442-9182-A6CB679D3035}"/>
 			<Column name="TemplateType" value="SpringDataObjects_Transform_Template"/>
 			<Column name="TemplateName" value="Class"/>
-			<Column name="Template" value="%if elemType != &quot;Class&quot; and elemType != &quot;Interface&quot; and elemType != &quot;Enumeration&quot;%&#xA;%endTemplate%&#xA;&#xA;$dateTime=%eaDateTime%&#xA;&#xA;%elemType%&#xA;{&#xA;  %TRANSFORM_REFERENCE(&quot;Class&quot;)%&#xA;  %TRANSFORM_CURRENT(&quot;language&quot;,&quot;stereotype&quot;)%&#xA;  language=&quot;Java&quot;&#xA;  stereotype=&quot;data object&quot;&#xA;%list=&quot;ClassParameter&quot; @separator=&quot;\n&quot; @indent=&quot;    &quot;%&#xA;%list=&quot;ClassBase&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%list=&quot;ClassInterface&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%list=&quot;InnerClass&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%if elemType!=&quot;Interface&quot;%&#xA;%list=&quot;Attribute&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%endIf%&#xA;&#xA;  Operation&#xA;  {&#xA;	name=&quot;version&quot;&#xA;	type=&quot;String&quot;&#xA;	stereotype=&quot;builtin&quot;&#xA;	&#xA;	code=&quot;return \&quot;$dateTime\&quot;;&quot;&#xA;  }&#xA;  &#xA;%list=&quot;Attribute__AsProperties&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot; attScope==&quot;Public&quot;%&#xA;%list=&quot;Operation&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;}&#xA;%list=&quot;Connector&quot; @separator=&quot;\n&quot;%"/>
+			<Column name="Template" value="%if elemType != &quot;Class&quot; and elemType != &quot;Interface&quot; and elemType != &quot;Enumeration&quot;%&#xA;%endTemplate%&#xA;&#xA;$dateTime=%eaDateTime%&#xA;$className=%className%&#xA;&#xA;%elemType%&#xA;{&#xA;  %TRANSFORM_REFERENCE(&quot;Class&quot;)%&#xA;  %TRANSFORM_CURRENT(&quot;language&quot;,&quot;stereotype&quot;)%&#xA;  language=&quot;Java&quot;&#xA;  stereotype=&quot;data object&quot;&#xA;%list=&quot;ClassParameter&quot; @separator=&quot;\n&quot; @indent=&quot;    &quot;%&#xA;%list=&quot;ClassBase&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%list=&quot;ClassInterface&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%list=&quot;InnerClass&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%if elemType!=&quot;Interface&quot;%&#xA;%list=&quot;Attribute&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;%endIf%&#xA;  &#xA;  Tag&#xA;  {&#xA;    name=&quot;annotations&quot;&#xA;	value=&quot;@Entity @Table(name=\&quot;$className\&quot;, indexes={@Index(name=\&quot;history_idx\&quot;, columnList=\&quot;history\&quot;),@Index(name=\&quot;guid_idx\&quot;, columnList=\&quot;guid\&quot;)})&quot;&#xA;  }&#xA;  &#xA;  &#xA;  Operation&#xA;  {&#xA;	name=&quot;version&quot;&#xA;	type=&quot;String&quot;&#xA;	stereotype=&quot;builtin&quot;&#xA;	&#xA;	code=&quot;return \&quot;$dateTime\&quot;;&quot;&#xA;  }&#xA;  &#xA;%list=&quot;Attribute__AsProperties&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot; attScope==&quot;Public&quot;%&#xA;%list=&quot;Operation&quot; @separator=&quot;\n&quot; @indent=&quot;  &quot;%&#xA;}&#xA;%list=&quot;Connector&quot; @separator=&quot;\n&quot;%"/>
 		</DataRow>
 		<DataRow>
 			<Column name="TemplateID" value="{FDF419BE-FAF4-4ae8-824A-622D8F0B6665}"/>
@@ -36,7 +36,7 @@
 			<Column name="TemplateID" value="{FD2A8E68-9E98-4e34-A435-93BBE71158A8}"/>
 			<Column name="TemplateType" value="SpringDataObjects_Transform_Template"/>
 			<Column name="TemplateName" value="Attribute"/>
-			<Column name="Template" value="$type=%CONVERT_TYPE(&quot;Java&quot;,attType)%&#xA;Attribute&#xA;{&#xA;  %TRANSFORM_REFERENCE()%&#xA;  %TRANSFORM_CURRENT(&quot;scope&quot;,&quot;type&quot;,&quot;stereotype&quot;)%&#xA;  scope=%qt%%attScope == &quot;Public&quot; ? &quot;Private&quot; : value%%qt%&#xA;  type=%qt%%CONVERT_TYPE(&quot;Java&quot;,attType)%%qt%&#xA;  type=%qt%%ConvertSqlType($type)%%qt%&#xA;%if classStereotype==&quot;enumeration&quot;%&#xA;  stereotype=&quot;enum&quot;&#xA;%else%&#xA;  stereotype=%qt%%attStereotype%%qt%&#xA;%endIf%&#xA;}"/>
+			<Column name="Template" value="$type=%CONVERT_TYPE(&quot;Java&quot;,attType)%&#xA;$COMMENT=&quot;Note: The 'static' keyword below avoids a 'static' attribute in the Java class for the primary key.&quot;&#xA;$COMMENT=&quot;Needs to skip processing 'static' because it is not possible to set the value 'false'.&quot;&#xA;Attribute&#xA;{&#xA;  %TRANSFORM_REFERENCE()%&#xA;  %TRANSFORM_CURRENT(&quot;scope&quot;,&quot;type&quot;,&quot;stereotype&quot;,&quot;static&quot;)%&#xA;  scope=%qt%%attScope == &quot;Public&quot; ? &quot;Private&quot; : value%%qt%&#xA;  type=%qt%%CONVERT_TYPE(&quot;Java&quot;,attType)%%qt%&#xA;  type=%qt%%ConvertSqlType($type)%%qt%&#xA;%if classStereotype==&quot;enumeration&quot;%&#xA;  stereotype=&quot;enum&quot;&#xA;%else%&#xA;  stereotype=%qt%%attStereotype%%qt%&#xA;%endIf%&#xA;}"/>
 		</DataRow>
 		<DataRow>
 			<Column name="TemplateID" value="{C48D0A01-7D30-4362-825F-4985E4BBB84D}"/>
@@ -85,6 +85,13 @@
 			<Column name="TemplateType" value="SpringDataObjects_Transform_Template"/>
 			<Column name="TemplateName" value="Parameter"/>
 			<Column name="Template" value="Parameter&#xA;{&#xA;  %TRANSFORM_CURRENT(&quot;type&quot;)%&#xA;  type=%qt%%CONVERT_TYPE(&quot;Java&quot;,paramType)%%qt%&#xA;}"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{987018E3-8260-4505-9716-8DCFB7414669}"/>
+			<Column name="TemplateType" value="SpringDataObjects_Transform_Template"/>
+			<Column name="TemplateName" value="Operation"/>
+			<Column name="Style" value="CS=PK;"/>
+			<Column name="Template" value="$COMMENT=&quot;Do not generate operations with the stereotype PK&quot;"/>
 		</DataRow>
 	</DataSet>
 </RefData>

@@ -29,7 +29,7 @@
 			<Column name="TemplateID" value="{BA137494-5C6F-4dff-A7F7-151F854B4F22}"/>
 			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
 			<Column name="TemplateName" value="Properties"/>
-			<Column name="Template" value="$attName=$parameter1&#xA;$type=%ConvertSqlType($parameter2)%&#xA;$T=$parameter3&#xA;$propertyName=$attName&#xA;$propertyName=%REMOVE_PREFIX($propertyName,genOptPropertyPrefix)%&#xA;$propertyName=%CONVERT_NAME($propertyName, &quot;pascal case&quot;, &quot;camel case&quot;)%&#xA;$propertyName=%CONVERT_NAME($propertyName, &quot;HT()HT&quot;, &quot;Ht()ht&quot;)%&#xA;&#xA;$stereoType=&quot;&quot;&#xA;%if $attName==&quot;uuid&quot; or $attName==&quot;history&quot;%&#xA;  $stereoType=&quot;query&quot;&#xA; %else%&#xA;  $stereoType=&quot;comment&quot;&#xA;%endIf%&#xA;&#xA;Operation&#xA;{&#xA;  %TRANSFORM_REFERENCE()%&#xA;  name=%qt%queryBy$propertyName%qt%&#xA;  stereotype=%qt%$stereoType%qt%&#xA;  scope=&quot;&quot;&#xA;  type=%qt%List&lt;$T&gt;%qt%&#xA;  Parameter&#xA;  {&#xA;    name=&quot;newVal&quot;&#xA;    type=%qt%$type%qt%&#xA;  }&#xA;  code=%qt%%qt%&#xA;  Tag{name=&quot;attribute_name&quot; value=%qt%$attName%qt%}&#xA;}&#xA;"/>
+			<Column name="Template" value="$attName=$parameter1&#xA;$type=%ConvertSqlType($parameter2)%&#xA;$T=$parameter3&#xA;$propertyName=$attName&#xA;$propertyName=%REMOVE_PREFIX($propertyName,genOptPropertyPrefix)%&#xA;$propertyName=%CONVERT_NAME($propertyName, &quot;pascal case&quot;, &quot;camel case&quot;)%&#xA;$propertyName=%CONVERT_NAME($propertyName, &quot;HT()HT&quot;, &quot;Ht()ht&quot;)%&#xA;&#xA;$stereoType=&quot;&quot;&#xA;%if $attName==&quot;uuid&quot; or $attName==&quot;history&quot; or $attName==&quot;guid&quot;%&#xA;  $stereoType=&quot;query&quot;&#xA; %else%&#xA;  $stereoType=&quot;comment&quot;&#xA;%endIf%&#xA;&#xA;Operation&#xA;{&#xA;  %TRANSFORM_REFERENCE()%&#xA;  name=%qt%queryBy$propertyName%qt%&#xA;  stereotype=%qt%$stereoType%qt%&#xA;  scope=&quot;&quot;&#xA;  type=%qt%List&lt;$T&gt;%qt%&#xA;  Parameter&#xA;  {&#xA;    name=&quot;newVal&quot;&#xA;    type=%qt%$type%qt%&#xA;  }&#xA;  code=%qt%%qt%&#xA;  Tag{name=&quot;attribute_name&quot; value=%qt%$attName%qt%}&#xA;}&#xA;"/>
 		</DataRow>
 		<DataRow>
 			<Column name="TemplateID" value="{F2CC5D8C-5148-4f33-864E-AAFC08CDF5A1}"/>
@@ -67,6 +67,13 @@
 			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
 			<Column name="TemplateName" value="Parameter"/>
 			<Column name="Template" value="Parameter&#xA;{&#xA;  %TRANSFORM_CURRENT(&quot;type&quot;)%&#xA;  type=%qt%%CONVERT_TYPE(&quot;Java&quot;,paramType)%%qt%&#xA;}"/>
+		</DataRow>
+		<DataRow>
+			<Column name="TemplateID" value="{4177F4C4-9088-4834-9252-1D464A8897D0}"/>
+			<Column name="TemplateType" value="SpringDataRepository_Transform_Template"/>
+			<Column name="TemplateName" value="Operation"/>
+			<Column name="Style" value="CS=PK;"/>
+			<Column name="Template" value="$COMMENT=&quot;Do not generate operations with the stereotype PK&quot;"/>
 		</DataRow>
 		<DataRow>
 			<Column name="TemplateID" value="{890A6891-E322-4239-87D8-01E8DFE46733}"/>
