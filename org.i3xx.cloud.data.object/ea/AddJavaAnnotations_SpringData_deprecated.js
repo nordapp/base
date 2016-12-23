@@ -48,7 +48,7 @@ if ( thePackage != null && thePackage.PackageID != 0 )
 				}//fi
 			}//for
 			
-			var stmt = "@Entity @Table(name=\""+tableName+"\", indexes={@Index(name=\"history_idx\", columnList=\"history\")})";
+			var stmt = "@Entity @Table(name=\""+tableName+"\", indexes={@Index(name=\"history_idx\", columnList=\"history\"),@Index(name=\"guid_idx\", columnList=\"guid\")})";
 			if(annot==null) {
 				//Add annotation
 				annot = elem.TaggedValues.AddNew("annotations", stmt);
