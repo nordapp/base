@@ -2,10 +2,10 @@
 
 /*
  * Script Name: AddDbColumns
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Stefan Hauptmann
  * Purpose: Adding the fields 'uuid' and 'history' to a database table and removing the fields 'id' and 'up'
- * Date: 20.11.2016
+ * Date: 22.12.2016
  */
 
 function main() {

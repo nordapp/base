@@ -1,6 +1,7 @@
 
 /*
  * Script Name: AnalyzeObject_ProjectBrowser
+ * Version: 1.0.0
  * Author: Stefan Hauptmann
  * Purpose: Getting a sight into the Enterprise Architect model
  * Date: 22.11.2016

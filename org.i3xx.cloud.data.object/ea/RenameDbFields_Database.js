@@ -2,6 +2,7 @@
 
 /*
  * Script Name: RenameDbFields
+ * Version: 1.0.0
  * Author: Stefan Hauptmann
  * Purpose: Rename the fields of the OfficeBase field name schema to the default Spring schema
  * Date: 22.11.2016

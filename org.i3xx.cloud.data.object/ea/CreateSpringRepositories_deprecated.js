@@ -2,6 +2,7 @@
 
 /*
  * Script Name: CreateSpringRepositories
+ * Version: 1.0.0
  * Author: Stefan Hauptmann
  * Purpose: Generate the repositories used by SpringBoot from the 'SpringBoot DataRepo Model'
  * Deprecated: Replaced by transformation 'SpringDataRepository'

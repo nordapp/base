@@ -2,6 +2,7 @@
 
 /*
  * Script Name: AddJavaAnnotations
+ * Version: 1.0.0
  * Author: Stefan Hauptmann
  * Purpose: Adding the annotation @Table to the generated java model
  * Date: 22.11.2016

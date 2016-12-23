@@ -32,5 +32,37 @@ springdatarepo_transform_template.xml
 
 Stefan 23.12.2016 update by OfficeBase4_M5_crm
 
+java_code_template.xml
 springdataobjects_transform_template.xml
 springdatarepo_transform_template.xml
+
+Stefan 32.12.2016 update to OfficeBase_M5_crm
+
+AddDbColumns_Database.js
+AddJavaAnnotations_SpringData.js
+CreateIndex_Database_Builder.js
+
+Stefan 32.12.2016 update to OfficeBase_M5_base
+
+AddDbColumns_Database.js
+AddJavaAnnotations_SpringData.js
+CreateIndex_Database_Builder.js
+
+java_code_template.xml
+springdataobjects_transform_template.xml
+springdatarepo_transform_template.xml
+
+Stefan 32.12.2016 update to OfficeBase_M5_op
+
+AddDbColumns_Database.js
+AddJavaAnnotations_SpringData.js
+CreateIndex_Database_Builder.js
+
+java_code_template.xml
+springdataobjects_transform_template.xml
+springdatarepo_transform_template.xml
+
+Stefan 32.12.2016 update by OfficeBase_M5_base
+
+springdatarepo_transform_template.xml
+

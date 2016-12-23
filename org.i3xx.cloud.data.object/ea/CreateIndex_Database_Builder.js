@@ -1,9 +1,10 @@
 
 /*
  * Script Name: AddJavaAnnotations
+ * Version: 1.0.1
  * Author: Stefan Hauptmann
  * Purpose: Adding the annotation @Table to the generated java model
- * Date: 22.11.2016
+ * Date: 22.12.2016
  */
 var otElement = 4;
 var otPackage = 5;
