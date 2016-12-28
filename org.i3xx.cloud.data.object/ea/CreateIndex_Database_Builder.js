@@ -1,10 +1,10 @@
 
 /*
  * Script Name: AddJavaAnnotations
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Stefan Hauptmann
  * Purpose: Adding the annotation @Table to the generated java model
- * Date: 22.12.2016
+ * Date: 28.12.2016
  */
 var otElement = 4;
 var otPackage = 5;
@@ -51,22 +51,42 @@ function main() {
 function createIndex(theObject) {
 	Session.Output("Process '" + theObject.Name + "'.");
 	
-	var m = createMethodPk(theObject, "PK_"+theObject.Name);
+	//var m = createMethodPk(theObject, "PK_"+theObject.Name);
+	//createParameter(m, "uuid", "varchar", true);
+	//setAttributePk(theObject, "uuid");
+	
+	//Index
+	//var m = createMethod(theObject, "history_idx");
+	//createParameter(m, "history", "varchar", true);
+	
+	//Index
+	//var m = createMethod(theObject, "guid_idx");
+	//createParameter(m, "guid", "varchar", true);
+	//createTaggedValue(m, "property", "Unique=1;");
+	//createTaggedValue(m, "Unique", "1");
+	
+	
+	var m = findMethod(theObject, "PK_"+theObject.Name);
+	dropParameter(m, "uuid");
+	dropMethod(theObject, "PK_"+theObject.Name);
+	dropAttributePk(theObject, "uuid");
+	
+	var m = createMethod(theObject, "uuid_idx");
 	createParameter(m, "uuid", "varchar", true);
-	setAttributePk(theObject, "uuid");
 	
-	//Index
-	var m = createMethod(theObject, "history_idx");
-	createParameter(m, "history", "varchar", true);
+	dropMethod(theObject, "guid_idx");
 	
-	//Index
-	var m = createMethod(theObject, "guid_idx");
-	createParameter(m, "guid", "varchar", true);
-	createTaggedValue(m, "property", "Unique=1;");
-	createTaggedValue(m, "Unique", "1");
+	var m = createMethodPk(theObject, "PK_"+theObject.Name);
+	createParameter(m, "guid", "bigint", true);
+	setAttributePk(theObject, "guid");
 	
 	
 	//Description:
+	
+	//Creates the primary key
+	//var m = createMethodPk(theObject, "PK_"+theObject.Name);
+	//createParameter(m, "uuid", "varchar", true);
+	//setAttributePk(theObject, "uuid");
 	
 	//Creates an index
 	//var m = createMethod(theObject, "uuid_idx");
@@ -78,6 +98,13 @@ function createIndex(theObject) {
 	//Makes the index unique
 	//createTaggedValue(m, "property", "Unique=1;");
 	//createTaggedValue(m, "Unique", "1");
+	
+	//Drops the primary key
+	//var m = findMethod(theObject, "PK_"+theObject.Name);
+	//dropParameter(m, "uuid");
+	//dropMethod(theObject, "PK_"+theObject.Name);
+	//dropAttributePk(theObject, "uuid");
+
 }
 
 
@@ -130,7 +157,7 @@ function searchPackages(thePackage) {
  * 
  *  @param theObject The table to add the index
  *  @param name The name of the index
- *  @return The method or null if not found
+ *  @return The method
  */
 function createMethod(theObject, name) {
 	var theMethods = theObject.Methods;
@@ -145,6 +172,20 @@ function createMethod(theObject, name) {
 	theMethod.Stereotype = "index";
 	theMethod.Update();
 	
+	return theMethod;
+}
+
+/*
+ *  Gets the index as a method
+ * 
+ *  @param theObject The table to add the index
+ *  @param name The name of the index
+ *  @return The method or null if not found
+ */
+function findMethod(theObject, name) {
+	var theMethods = theObject.Methods;
+	
+	var theMethod = findByName(theMethods, name);
 	return theMethod;
 }
 
@@ -207,6 +248,24 @@ function setAttributePk(theObject, name) {
 }
 
 /*
+ *  Sets the field (attribute) as primary
+ * 
+ *  @param theObject The table to edit the field
+ *  @param name The name of the field
+ */
+function dropAttributePk(theObject, name) {
+	var theAttributes = theObject.Attributes;
+	
+	var theAttribute = findByName(theAttributes, name);
+	if( theAttribute != null ){
+		theAttribute.IsOrdered = false;
+		theAttribute.IsStatic = false;
+		theAttribute.IsConstant = false; //only works after set this, but I don't know why ???
+		theAttribute.Update();
+	}
+}
+
+/*
  *  Creates the index fields
  *  
  *  @param theMethod The index (method) to add the database field
@@ -233,7 +292,28 @@ function createParameter(theMethod, name, type, ascending) {
 }
 
 /*
- *  Creates the tagged values (unique information)
+ *  Deletes an element in a collection by name
+ *
+ *  @param theMethod The index (method) to add the database field
+ *  @param name The name of the database field
+ *  @return True if the element is deleted or false if it isn't found or deleted
+ */
+function dropParameter(theMethod, name) {
+	//if the method is not found
+	if(theMethod==null)
+		return false;
+	
+	var theParameters = theMethod.Parameters;
+	var f = deleteByName(theParameters, name);
+	if( f ) {
+		Session.Output( "  Parameter dropped '" + name + "'." );
+		theParameters.Refresh();
+	}
+	return f;
+}
+
+/*
+ *  Creates the tagged value (unique information)
  *  
  *  @param theMethod The index (method) to add the database field
  *  @param name The name of the tagged value
@@ -252,6 +332,25 @@ function createTaggedValue(theMethod, name, value) {
 	theTaggedValue.NAME = name;
 	theTaggedValue.Value = value;
 	theTaggedValue.Update();
+}
+
+/*
+ *  Drops the tagged value (unique information)
+ *  
+ *  @param theMethod The index (method) to add the database field
+ *  @param name The name of the tagged value
+ *  @param value The value of the tagged value
+ *  @return True if the element is deleted or false if it isn't found or deleted
+ */
+function dropTaggedValue(theMethod, name, value) {
+	var theTaggedValues = theMethod.TaggedValues;
+	
+	var f = deleteByName(theTaggedValues, name);
+	if( f ) {
+		Session.Output( "  TaggedValue dropped '" + name + "'." );
+		theParameters.Refresh();
+	}
+	return f;
 }
 
 /*
