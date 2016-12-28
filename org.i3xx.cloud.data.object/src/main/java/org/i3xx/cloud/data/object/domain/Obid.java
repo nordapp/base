@@ -7,10 +7,9 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 /**
- * Each data object must have a link to this called id.
  * @author Administrator
  * @version 1.0
- * @created 13-Dez-2016 12:40:15
+ * @created 28-Dez-2016 16:48:22
  */
 
  
@@ -24,6 +23,7 @@ public class Obid {
 	private long CREATETIMESTAMP;
 	private String CREATEUSER;
 	private long FLAGS;
+	private long guid;
 	private String history;
 	private String LABEL;
 	private String MANDANT;
@@ -34,17 +34,14 @@ public class Obid {
 	private String STEREOTYPES;
 	private int TRANSID = 0;
 	private String uuid;
-	private long guid;
 
-
-
-	public void finalize() throws Throwable {
-
-	}
 	public Obid(){
 
 	}
 
+	public void finalize() throws Throwable {
+
+	}
 	public String getClassname(){
 		return CLASSNAME;
 	}
@@ -62,6 +59,10 @@ public class Obid {
 	 */
 	public long getFlags(){
 		return FLAGS;
+	}
+
+	public long getGuid(){
+		return guid;
 	}
 
 	public String getHistory(){
@@ -107,7 +108,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param flag
+	 * @param flag    flag
 	 */
 	@Transient
 	public boolean isFlag(long flag){
@@ -116,7 +117,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setClassname(String newVal){
 		CLASSNAME = newVal;
@@ -124,7 +125,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setCreatetimestamp(long newVal){
 		CREATETIMESTAMP = newVal;
@@ -132,7 +133,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setCreateuser(String newVal){
 		CREATEUSER = newVal;
@@ -140,7 +141,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param flag
+	 * @param flag    flag
 	 */
 	@Transient
 	public void setFlag(long flag){
@@ -149,7 +150,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setFlags(long newVal){
 		FLAGS = newVal;
@@ -157,7 +158,15 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
+	 */
+	public void setGuid(long newVal){
+		guid = newVal;
+	}
+
+	/**
+	 * 
+	 * @param newVal    newVal
 	 */
 	public void setHistory(String newVal){
 		history = newVal;
@@ -165,7 +174,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setLabel(String newVal){
 		LABEL = newVal;
@@ -173,7 +182,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setMandant(String newVal){
 		MANDANT = newVal;
@@ -181,7 +190,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setName(String newVal){
 		NAME = newVal;
@@ -189,7 +198,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setObtimestamp(long newVal){
 		OBTIMESTAMP = newVal;
@@ -197,7 +206,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setObuser(String newVal){
 		OBUSER = newVal;
@@ -205,7 +214,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setOwner(String newVal){
 		OWNER = newVal;
@@ -213,7 +222,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setStereotypes(String newVal){
 		STEREOTYPES = newVal;
@@ -221,7 +230,7 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setTransid(int newVal){
 		TRANSID = newVal;
@@ -229,25 +238,14 @@ public class Obid {
 
 	/**
 	 * 
-	 * @param newVal
+	 * @param newVal    newVal
 	 */
 	public void setUuid(String newVal){
 		uuid = newVal;
 	}
 
-	public long getGuid(){
-		return guid;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setGuid(long newVal){
-		guid = newVal;
-	}
-
+	@Transient
 	public String version(){
-		return "23-Dez-2016 13:15:16";
+		return "28-Dez-2016 16:44:31";
 	}
 }//end Obid

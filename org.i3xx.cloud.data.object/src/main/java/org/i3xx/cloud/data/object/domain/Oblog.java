@@ -9,14 +9,13 @@ import javax.persistence.Transient;
 /**
  * @author Administrator
  * @version 1.0
- * @created 23-Dez-2016 13:25:51
+ * @created 28-Dez-2016 16:48:22
  */
 
- @Entity
+ 
+ @Entity 
  @Table(name="Oblog", indexes={
- 
  @Index(name="history_idx", columnList="history"),
- 
  @Index(name="guid_idx", columnList="guid")})
 public class Oblog {
 
@@ -242,7 +241,8 @@ public class Oblog {
 		uuid = newVal;
 	}
 
+	@Transient
 	public String version(){
-		return "23-Dez-2016 13:15:16";
+		return "28-Dez-2016 16:44:31";
 	}
 }//end Oblog
