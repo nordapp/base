@@ -5,14 +5,16 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
 
 /**
  * @author Administrator
  * @version 1.0
- * @created 28-Dez-2016 16:48:22
+ * @created 29-Dez-2016 13:24:13
  */
 
- 
  @Entity 
  @Table(name="Obid", indexes={
  @Index(name="history_idx", columnList="history"),
@@ -61,6 +63,10 @@ public class Obid {
 		return FLAGS;
 	}
 
+
+	 @Id 
+	 @GeneratedValue(strategy=GenerationType.SEQUENCE) 
+	 @Column(name="id", updatable=false, nullable=false)
 	public long getGuid(){
 		return guid;
 	}
@@ -101,7 +107,8 @@ public class Obid {
 		return TRANSID;
 	}
 
-	@Id
+
+	 @Id
 	public String getUuid(){
 		return uuid;
 	}
@@ -246,6 +253,6 @@ public class Obid {
 
 	@Transient
 	public String version(){
-		return "28-Dez-2016 16:44:31";
+		return "28-Dez-2016 18:10:46";
 	}
 }//end Obid

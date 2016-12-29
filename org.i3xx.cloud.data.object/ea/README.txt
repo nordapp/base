@@ -1,5 +1,14 @@
 Changed Transformations
 
+Stefan 29.12.2016 setup OfficeBase_M5_base set shared import file
+
+- shared_export.xml
+  -> java_code_template.xml
+  -> springdatagenerator_transform_template.xml
+  -> springdataobjects_transform_template.xml
+  -> springdatarepo_transform_template.xml
+  -> springob4tospring_transform_template.xml
+
 Stefan 28.12.2016 update to OfficeBase4_M5_base
 
 - CreateIndex_Database_Builder.js
