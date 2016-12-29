@@ -13,6 +13,8 @@ function main() {
 	var otElement = 4;
 	var otPackage = 5;
 	
+	var tpFilter = "Table";
+	
 	// Show the script output window
 	Repository.EnsureOutputVisible( "Script" );
 	
@@ -62,7 +64,7 @@ function searchPackages(thePackage) {
 			//The element of the package
 			var elem = thePackage.Elements.GetAt(i);
 			
-			if( elem != null && elem.MetaType == "Table" ) {
+			if( elem != null && elem.MetaType == tpFilter ) {
 				processTable(elem);
 			}else{
 				Session.Output("Skipping " + elem.MetaType + ": " + elem.Name + " (stereotype=" + elem.Stereotype + ")");
@@ -73,7 +75,7 @@ function searchPackages(thePackage) {
 
 function filterTable(theElement) {
 	
-	if( theElement != null && theElement.MetaType == "Table" ) {
+	if( theElement != null && theElement.MetaType == tpFilter ) {
 		processTable(theElement);
 	}
 }

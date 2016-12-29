@@ -9,6 +9,8 @@
 var otElement = 4;
 var otPackage = 5;
 
+var tpFilter = "Table";
+
 function main() {
 	
 	// Show the script output window
@@ -117,7 +119,7 @@ function createIndex(theObject) {
  */
 function filterTable(theObject) {
 	
-	if( theObject != null && theObject.MetaType == "Table" ) {
+	if( theObject != null && theObject.MetaType == tpFilter ) {
 		createIndex(theObject);
 	}
 }
@@ -143,7 +145,7 @@ function searchPackages(thePackage) {
 			//The element of the package
 			var elem = thePackage.Elements.GetAt(i);
 			
-			if( elem != null && elem.MetaType == "Table" ) {
+			if( elem != null && elem.MetaType == tpFilter ) {
 				createIndex(elem);
 			}else{
 				Session.Output("Skipping " + elem.MetaType + ": " + elem.Name + " (stereotype=" + elem.Stereotype + ")");
@@ -348,7 +350,7 @@ function dropTaggedValue(theMethod, name, value) {
 	var f = deleteByName(theTaggedValues, name);
 	if( f ) {
 		Session.Output( "  TaggedValue dropped '" + name + "'." );
-		theParameters.Refresh();
+		theTaggedValues.Refresh();
 	}
 	return f;
 }

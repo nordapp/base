@@ -1,6 +1,17 @@
 Changed Transformations
 
+Stefan 29.12.2016 update to OfficeBase_M5_op
+Stefan 29.12.2016 update to OfficeBase_M5_crm
+Stefan 29.12.2016 update to OfficeBase_M5_base
+
+- CreateIndex_Database_Builder.js
+
+Stefan 29.12.2016 setup OfficeBase_M5_crm get shared import file
+Stefan 29.12.2016 setup OfficeBase_M5_op get shared import file
+
 Stefan 29.12.2016 setup OfficeBase_M5_base set shared import file
+
+Update SpringDataRepo: annotations
 
 - shared_export.xml
   -> java_code_template.xml
