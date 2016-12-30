@@ -12,7 +12,7 @@ import javax.persistence.Column;
 /**
  * @author Administrator
  * @version 1.0
- * @created 30-Dez-2016 13:16:15
+ * @created 30-Dez-2016 13:40:07
  */
 
  @Entity 
@@ -104,8 +104,6 @@ public class Oblog {
 		return TRANSID;
 	}
 
-
-	 @Id
 	public String getUuid(){
 		return uuid;
 	}
