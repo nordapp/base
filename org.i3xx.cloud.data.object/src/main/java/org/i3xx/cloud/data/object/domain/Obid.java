@@ -12,7 +12,7 @@ import javax.persistence.Column;
 /**
  * @author Administrator
  * @version 1.0
- * @created 29-Dez-2016 13:24:13
+ * @created 30-Dez-2016 09:47:43
  */
 
  @Entity 
@@ -66,7 +66,7 @@ public class Obid {
 
 	 @Id 
 	 @GeneratedValue(strategy=GenerationType.SEQUENCE) 
-	 @Column(name="id", updatable=false, nullable=false)
+	 @Column(name="guid", updatable=false, nullable=false)
 	public long getGuid(){
 		return guid;
 	}
@@ -253,6 +253,6 @@ public class Obid {
 
 	@Transient
 	public String version(){
-		return "28-Dez-2016 18:10:46";
+		return "30-Dez-2016 09:47:25";
 	}
 }//end Obid

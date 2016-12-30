@@ -1,5 +1,18 @@
 Changed Transformations
 
+Stefan 30.12.2016 update to OfficeBase_M5_op
+Stefan 30.12.2016 update to OfficeBase_M5_crm
+Stefan 30.12.2016 update to OfficeBase_M5_base
+
+Fix SpringDataRepo: annotations
+
+- shared_export.xml
+  -> java_code_template.xml
+  -> springdatagenerator_transform_template.xml
+  -> springdataobjects_transform_template.xml
+  -> springdatarepo_transform_template.xml
+  -> springob4tospring_transform_template.xml
+
 Stefan 29.12.2016 update to OfficeBase_M5_op
 Stefan 29.12.2016 update to OfficeBase_M5_crm
 Stefan 29.12.2016 update to OfficeBase_M5_base
