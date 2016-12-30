@@ -1,10 +1,10 @@
 
 /*
- * Script Name: AddJavaAnnotations
- * Version: 1.0.2
+ * Script Name: CreateIndex
+ * Version: 1.0.3
  * Author: Stefan Hauptmann
- * Purpose: Adding the annotation @Table to the generated java model
- * Date: 28.12.2016
+ * Purpose: Create and edit indexes
+ * Date: 30.12.2016
  */
 var otElement = 4;
 var otPackage = 5;
@@ -68,24 +68,28 @@ function createIndex(theObject) {
 	//createTaggedValue(m, "Unique", "1");
 	
 	
-	var m = findMethod(theObject, "PK_"+theObject.Name);
+	var m = findMethod(theObject, "uuid_idx");
 	dropParameter(m, "uuid");
-	dropMethod(theObject, "PK_"+theObject.Name);
-	dropAttributePk(theObject, "uuid");
+	dropMethod(theObject, "uuid_idx");
 	
-	var m = createMethod(theObject, "uuid_idx");
+	var m = findMethod(theObject, "history_idx");
+	dropParameter(m, "history");
+	dropMethod(theObject, "history_idx");
+	
+	var m = createMethod(theObject, theObject.Name+"_uuid_idx");
 	createParameter(m, "uuid", "varchar", true);
 	
-	dropMethod(theObject, "guid_idx");
-	
-	var m = createMethodPk(theObject, "PK_"+theObject.Name);
-	createParameter(m, "guid", "bigint", true);
-	setAttributePk(theObject, "guid");
+	var m = createMethod(theObject, theObject.Name+"_history_idx");
+	createParameter(m, "history", "varchar", true);
 	
 	
 	//Description:
 	
 	//Creates the primary key
+	//var m = createMethodPk(theObject, "PK_"+theObject.Name);
+	//createParameter(m, "guid", "bigint", true);
+	//setAttributePk(theObject, "guid");
+	
 	//var m = createMethodPk(theObject, "PK_"+theObject.Name);
 	//createParameter(m, "uuid", "varchar", true);
 	//setAttributePk(theObject, "uuid");

@@ -12,13 +12,13 @@ import javax.persistence.Column;
 /**
  * @author Administrator
  * @version 1.0
- * @created 30-Dez-2016 09:47:43
+ * @created 30-Dez-2016 13:16:15
  */
 
  @Entity 
  @Table(name="Obid", indexes={
- @Index(name="history_idx", columnList="history"),
- @Index(name="guid_idx", columnList="guid")})
+ @Index(name="Obid_history_idx", columnList="history"),
+ @Index(name="Obid_uuid_idx", columnList="uuid")})
 public class Obid {
 
 	private String CLASSNAME;
@@ -253,6 +253,6 @@ public class Obid {
 
 	@Transient
 	public String version(){
-		return "30-Dez-2016 09:47:25";
+		return "30-Dez-2016 13:13:56";
 	}
 }//end Obid
