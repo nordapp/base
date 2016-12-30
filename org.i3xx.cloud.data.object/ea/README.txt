@@ -12,6 +12,8 @@ Fix SpringDataRepo: annotations
   -> springdataobjects_transform_template.xml
   -> springdatarepo_transform_template.xml
   -> springob4tospring_transform_template.xml
+  
+Fix CreateIndex_Database_builder.js
 
 Stefan 29.12.2016 update to OfficeBase_M5_op
 Stefan 29.12.2016 update to OfficeBase_M5_crm
