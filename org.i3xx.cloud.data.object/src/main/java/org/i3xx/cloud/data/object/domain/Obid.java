@@ -12,7 +12,7 @@ import javax.persistence.Column;
 /**
  * @author Administrator
  * @version 1.0
- * @created 30-Dez-2016 13:40:07
+ * @created 30-Dez-2016 16:03:07
  */
 
  @Entity 
@@ -44,14 +44,20 @@ public class Obid {
 	public void finalize() throws Throwable {
 
 	}
+
+	 @Column(name="CLASSNAME", columnDefinition="varchar")
 	public String getClassname(){
 		return CLASSNAME;
 	}
 
+
+	 @Column(name="CREATETIMESTAMP", columnDefinition="bigint")
 	public long getCreatetimestamp(){
 		return CREATETIMESTAMP;
 	}
 
+
+	 @Column(name="CREATEUSER", columnDefinition="varchar")
 	public String getCreateuser(){
 		return CREATEUSER;
 	}
@@ -59,6 +65,8 @@ public class Obid {
 	/**
 	 * @return
 	 */
+
+	 @Column(name="FLAGS", columnDefinition="bigint")
 	public long getFlags(){
 		return FLAGS;
 	}
@@ -71,42 +79,62 @@ public class Obid {
 		return guid;
 	}
 
+
+	 @Column(name="history", columnDefinition="varchar")
 	public String getHistory(){
 		return history;
 	}
 
+
+	 @Column(name="LABEL", columnDefinition="varchar")
 	public String getLabel(){
 		return LABEL;
 	}
 
+
+	 @Column(name="MANDANT", columnDefinition="varchar")
 	public String getMandant(){
 		return MANDANT;
 	}
 
+
+	 @Column(name="NAME", columnDefinition="varchar")
 	public String getName(){
 		return NAME;
 	}
 
+
+	 @Column(name="OBTIMESTAMP", columnDefinition="bigint")
 	public long getObtimestamp(){
 		return OBTIMESTAMP;
 	}
 
+
+	 @Column(name="OBUSER", columnDefinition="varchar")
 	public String getObuser(){
 		return OBUSER;
 	}
 
+
+	 @Column(name="OWNER", columnDefinition="varchar")
 	public String getOwner(){
 		return OWNER;
 	}
 
+
+	 @Column(name="STEREOTYPES", columnDefinition="varchar")
 	public String getStereotypes(){
 		return STEREOTYPES;
 	}
 
+
+	 @Column(name="TRANSID", columnDefinition="integer")
 	public int getTransid(){
 		return TRANSID;
 	}
 
+
+	 @Column(name="uuid", columnDefinition="varchar")
 	public String getUuid(){
 		return uuid;
 	}
@@ -124,6 +152,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="CLASSNAME", columnDefinition="varchar")
 	public void setClassname(String newVal){
 		CLASSNAME = newVal;
 	}
@@ -132,6 +161,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="CREATETIMESTAMP", columnDefinition="bigint")
 	public void setCreatetimestamp(long newVal){
 		CREATETIMESTAMP = newVal;
 	}
@@ -140,6 +170,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="CREATEUSER", columnDefinition="varchar")
 	public void setCreateuser(String newVal){
 		CREATEUSER = newVal;
 	}
@@ -157,6 +188,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="FLAGS", columnDefinition="bigint")
 	public void setFlags(long newVal){
 		FLAGS = newVal;
 	}
@@ -165,6 +197,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="guid", columnDefinition="bigint")
 	public void setGuid(long newVal){
 		guid = newVal;
 	}
@@ -173,6 +206,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="history", columnDefinition="varchar")
 	public void setHistory(String newVal){
 		history = newVal;
 	}
@@ -181,6 +215,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="LABEL", columnDefinition="varchar")
 	public void setLabel(String newVal){
 		LABEL = newVal;
 	}
@@ -189,6 +224,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="MANDANT", columnDefinition="varchar")
 	public void setMandant(String newVal){
 		MANDANT = newVal;
 	}
@@ -197,6 +233,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="NAME", columnDefinition="varchar")
 	public void setName(String newVal){
 		NAME = newVal;
 	}
@@ -205,6 +242,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="OBTIMESTAMP", columnDefinition="bigint")
 	public void setObtimestamp(long newVal){
 		OBTIMESTAMP = newVal;
 	}
@@ -213,6 +251,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="OBUSER", columnDefinition="varchar")
 	public void setObuser(String newVal){
 		OBUSER = newVal;
 	}
@@ -221,6 +260,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="OWNER", columnDefinition="varchar")
 	public void setOwner(String newVal){
 		OWNER = newVal;
 	}
@@ -229,6 +269,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="STEREOTYPES", columnDefinition="varchar")
 	public void setStereotypes(String newVal){
 		STEREOTYPES = newVal;
 	}
@@ -237,6 +278,7 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="TRANSID", columnDefinition="integer")
 	public void setTransid(int newVal){
 		TRANSID = newVal;
 	}
@@ -245,12 +287,13 @@ public class Obid {
 	 * 
 	 * @param newVal    newVal
 	 */
+	@Column(name="uuid", columnDefinition="varchar")
 	public void setUuid(String newVal){
 		uuid = newVal;
 	}
 
 	@Transient
 	public String version(){
-		return "30-Dez-2016 13:13:56";
+		return "30-Dez-2016 16:02:50";
 	}
 }//end Obid
