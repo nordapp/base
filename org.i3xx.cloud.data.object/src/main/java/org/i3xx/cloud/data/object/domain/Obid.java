@@ -12,7 +12,7 @@ import javax.persistence.Column;
 /**
  * @author Administrator
  * @version 1.0
- * @created 30-Dez-2016 16:03:07
+ * @created 04-Jan-2017 12:24:58
  */
 
  @Entity 
@@ -294,6 +294,6 @@ public class Obid {
 
 	@Transient
 	public String version(){
-		return "30-Dez-2016 16:02:50";
+		return "04-Jan-2017 12:22:10";
 	}
 }//end Obid

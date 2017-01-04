@@ -1,5 +1,13 @@
 Changed Transformations
 
+Stefan 04.01.2017 update to OfficeBase_M5_op
+Stefan 04.01.2017 update to OfficeBase_M5_crm
+Stefan 04.01.2017 update to OfficeBase_M5_base
+
+Fix SpringDataObjects:
+
+- DDL and code generation, use numeric instead of decimal in @Column annotation
+
 Stefan 30.12.2016 update to OfficeBase_M5_op
 Stefan 30.12.2016 update to OfficeBase_M5_crm
 Stefan 30.12.2016 update to OfficeBase_M5_base
