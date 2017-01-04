@@ -2,6 +2,8 @@ package org.i3xx.cloud.data.coor.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Table;
@@ -12,11 +14,11 @@ import javax.persistence.Transient;
  *
  */
 @Entity 
-@Table(name="objecttoob4", indexes={
-@Index(name="uuid_idx", columnList="uuid"),
-@Index(name="history_idx", columnList="history"),
-@Index(name="uuidindex_idx", columnList="uuid,history"),
-@Index(name="idindex_idx", columnList="ID,TRANSID,FIRMA")})
+@Table(name="Objecttoob4", indexes={
+@Index(name="Objecttoob4_uuid_idx", columnList="uuid"),
+@Index(name="Objecttoob4_history_idx", columnList="history"),
+@Index(name="Objecttoob4_uuidindex_idx", columnList="uuid,history"),
+@Index(name="Objecttoob4_idindex_idx", columnList="ID,TRANSID,FIRMA")})
 public class ObjectToOb4 {
 	
 	/**  */
@@ -38,10 +40,12 @@ public class ObjectToOb4 {
 	@Column(name="TRANSID", unique=false)
 	private int TRANSID;
 	//Index
+	private long guid;
 	@Transient
 	private int dirty;
 	
 	public ObjectToOb4() {
+		guid = 0;
 		uuid = "";
 		history = "";
 		FIRMA = "";
@@ -79,7 +83,24 @@ public class ObjectToOb4 {
 			history = s[1];
 	}
 	
-	@Id
+	
+	@Id 
+	@GeneratedValue(strategy=GenerationType.SEQUENCE) 
+	@Column(name="guid", updatable=false, nullable=false)
+	public long getGuid() {
+		return guid;
+	}
+	
+	/**
+	 * 
+	 * @param newVal
+	 */
+	@Column(name="guid", columnDefinition="bigint")
+	public void setGuid(long newVal) {
+		guid = newVal;
+	}
+	
+	@Column(name="uuid", columnDefinition="varchar")
 	public String getUuid(){
 		return uuid;
 	}
@@ -88,11 +109,13 @@ public class ObjectToOb4 {
 	 * 
 	 * @param newVal
 	 */
+	@Column(name="uuid", columnDefinition="varchar")
 	public void setUuid(String newVal){
 		uuid = newVal;
 		dirty |= UUID_IS_DIRTY;
 	}
 
+	@Column(name="history", columnDefinition="varchar")
 	public String getHistory(){
 		return history;
 	}
@@ -101,11 +124,13 @@ public class ObjectToOb4 {
 	 * 
 	 * @param newVal
 	 */
+	@Column(name="history", columnDefinition="varchar")
 	public void setHistory(String newVal){
 		history = newVal;
 		dirty |= UUID_IS_DIRTY;
 	}
 
+	@Column(name="ID", columnDefinition="bigint")
 	public long getId(){
 		return ID;
 	}
@@ -114,11 +139,13 @@ public class ObjectToOb4 {
 	 * 
 	 * @param newVal
 	 */
+	@Column(name="ID", columnDefinition="bigint")
 	public void setId(long newVal){
 		ID = newVal;
 		dirty |= ID_IS_DIRTY;
 	}
-
+	
+	@Column(name="TRANSID", columnDefinition="integer")
 	public int getTransid(){
 		return TRANSID;
 	}
@@ -127,11 +154,13 @@ public class ObjectToOb4 {
 	 * 
 	 * @param newVal
 	 */
+	@Column(name="TRANSID", columnDefinition="integer")
 	public void setTransid(int newVal){
 		TRANSID = newVal;
 		dirty |= ID_IS_DIRTY;
 	}
 
+	@Column(name="FIRMA", columnDefinition="varchar")
 	public String getFirma(){
 		return FIRMA;
 	}
@@ -140,6 +169,7 @@ public class ObjectToOb4 {
 	 * 
 	 * @param newVal
 	 */
+	@Column(name="FIRMA", columnDefinition="varchar")
 	public void setFirma(String newVal){
 		FIRMA = newVal;
 		dirty = ( UUID_IS_DIRTY | ID_IS_DIRTY );
