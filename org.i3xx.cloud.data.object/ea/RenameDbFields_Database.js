@@ -7,13 +7,13 @@
  * Purpose: Rename the fields of the OfficeBase field name schema to the default Spring schema
  * Date: 22.11.2016
  */
+	
+var tpFilter = "Table";
 
 function main() {
 	
 	var otElement = 4;
 	var otPackage = 5;
-	
-	var tpFilter = "Table";
 	
 	// Show the script output window
 	Repository.EnsureOutputVisible( "Script" );
@@ -43,6 +43,7 @@ function main() {
 		}
 	}
 	
+	Session.Output( "Processing finished" );
 }
 
 function searchPackages(thePackage) {
@@ -89,6 +90,13 @@ function processTable(table) {
 		
 		if( attr != null && attr.Stereotype == "column" ) {
 			var name = attr.Name;
+			
+			if(name=="guid" && attr.Type!="bigserial") {
+				attr.Type = "bigserial";
+				attr.Update();
+			}
+			
+			/*
 			var p = name.indexOf("_");
 			if(p>-1) {
 				var temp = name.substring(p+1);
@@ -97,6 +105,7 @@ function processTable(table) {
 				attr.Update();
 				//Session.Output(name + " -> " + temp);
 			}
+			*/
 		}else{
 			Session.Output("Skipping " + attr.MetaType + ": " + attr.Name + " (stereotype=" + attr.Stereotype + ")");
 		}//fi

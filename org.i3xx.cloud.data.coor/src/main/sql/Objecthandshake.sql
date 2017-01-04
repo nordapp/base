@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS Objecthandshake CASCADE
 
 CREATE TABLE Objecthandshake
 (
-	guid bigint NULL,
+	guid bigserial NOT NULL,
 	uuid varchar(36) NULL,
 	history varchar(36) NULL,
 	transid varchar(36) NULL,

@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS Objecttoob4 CASCADE
 
 CREATE TABLE Objecttoob4
 (
-	guid bigint NULL,
+	guid bigserial NOT NULL,
 	uuid varchar(36) NULL,
 	history varchar(36) NULL,
 	ID bigint NULL   DEFAULT 0,

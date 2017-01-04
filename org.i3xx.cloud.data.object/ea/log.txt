@@ -1,0 +1,1457 @@
+Package
+{
+  name="SpringBoot DataRepo Model"
+  namespaceroot="true"
+Package
+{
+  notes=""
+  scope="Public"
+  version="1.0"
+  author="Administrator"
+  alias=""
+  name="com"
+  stereotype=""
+Package
+{
+  notes=""
+  scope="Public"
+  version="1.0"
+  author="Administrator"
+  alias=""
+  name="i3xx"
+  stereotype=""
+Package
+{
+  notes=""
+  scope="Public"
+  version="1.0"
+  author="Administrator"
+  alias=""
+  name="cloud"
+  stereotype=""
+Package
+{
+  notes=""
+  scope="Public"
+  version="1.0"
+  author="Administrator"
+  alias=""
+  name="data"
+  stereotype=""
+Package
+{
+  notes=""
+  scope="Public"
+  version="1.0"
+  author="Administrator"
+  alias=""
+  name="crm"
+  stereotype=""
+Package
+{
+  notes=""
+  scope="Public"
+  version="1.0"
+  author="Administrator"
+  alias=""
+  name="domain"
+  stereotype=""
+Interface
+{
+  XRef{namespace="SpringDataRepository" name="Class" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  notes=""
+  scope="Public"
+  multiplicity=""
+  version="1.0"
+  author="Stefan"
+  alias=""
+  name="Anl1"
+  complexity="1"
+  stereotype="table"
+  concurrency=""
+  persistence=""
+  arguments=""
+  phase="1.0"
+  status="Proposed"
+  visibility=""
+  cardinality=""
+  name="Anl1Repository"
+  language="Java"
+  Parent
+  {
+	name="CrudRepository<Anl1, String>"
+	type="Implements"
+  }
+  Tag
+  {
+	name="dataClassname"
+	value="Anl1"
+  }
+  Tag
+  {
+	name="dataElemtype"
+	value="Class"
+  }
+Operation
+{
+  name="queryByUuidAndHistory"
+  stereotype="query"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="uuid"
+    type="String"
+  }
+  Parameter
+  {
+    name="history"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="uuidAndHistory"}
+}
+ 
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByUuid"
+  stereotype="query"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="uuid"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByAnzsch"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="ANZSCH"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByBeitragssatz"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="BEITRAGSSATZ"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByJh"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="JH"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByLaufzeit"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="LAUFZEIT"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryBySelbstbehalt"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="SELBSTBEHALT"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryBySischein"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="SISCHEIN"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByVersgefahren"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="VERSGEFAHREN"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByVerssache2"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="VERSSACHE2"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByVerssache1"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="VERSSACHE1"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByVsumme"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="VSUMME"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByBed"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="BED"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByRisiko"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="RISIKO"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryBySumme1"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="SUMME1"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryBySumme2"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="SUMME2"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByChanged"
+  stereotype="comment"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="CHANGED"}
+}
+ 
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByHistory"
+  stereotype="query"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="history"}
+}
+ 
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{BFA67C17-6B91-4a8a-9D90-7F327EEA091D}"}
+  name="queryByGuid"
+  stereotype="query"
+  scope=""
+  type="List<Anl1>"
+  Parameter
+  {
+    name="newVal"
+    type="bigserial"
+  }
+  code=""
+  Tag{name="attribute_name" value="guid"}
+}
+}
+Interface
+{
+  XRef{namespace="SpringDataRepository" name="Class" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  notes=""
+  scope="Public"
+  multiplicity=""
+  version="1.0"
+  author="Stefan"
+  alias=""
+  name="G1"
+  complexity="1"
+  stereotype="table"
+  concurrency=""
+  persistence=""
+  arguments=""
+  phase="1.0"
+  status="Proposed"
+  visibility=""
+  cardinality=""
+  name="G1Repository"
+  language="Java"
+  Parent
+  {
+	name="CrudRepository<G1, String>"
+	type="Implements"
+  }
+  Tag
+  {
+	name="dataClassname"
+	value="G1"
+  }
+  Tag
+  {
+	name="dataElemtype"
+	value="Class"
+  }
+Operation
+{
+  name="queryByUuidAndHistory"
+  stereotype="query"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="uuid"
+    type="String"
+  }
+  Parameter
+  {
+    name="history"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="uuidAndHistory"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByErh2"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="ERH2"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByBeitrag3"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="BEITRAG3"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByErh3"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="ERH3"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByBeitrag4"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="BEITRAG4"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByRischl"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="RISCHL"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByKe"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="KE"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByWeitris"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="WEITRIS"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByDeklart"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="DEKLART"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByAusschl"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="AUSSCHL"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByEinsch"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="EINSCH"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByAnzsch"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="ANZSCH"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByJh"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="JH"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByRisiko"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="RISIKO"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByVsumme"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="VSUMME"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByQm"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="QM"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByBeitrsatz"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="BEITRSATZ"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByVersgef"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="VERSGEF"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByZusatz"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="ZUSATZ"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByBeitrag2"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="BEITRAG2"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByBed"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="BED"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByForm"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="FORM"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByFormart"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="FORMART"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByBeitrag1"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="BEITRAG1"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByErh1"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="ERH1"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByBerart"
+  stereotype="comment"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="BERART"}
+}
+ 
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByUuid"
+  stereotype="query"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="uuid"}
+}
+ 
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByHistory"
+  stereotype="query"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="history"}
+}
+ 
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{6428834F-D867-43a3-9487-0CE8320A0352}"}
+  name="queryByGuid"
+  stereotype="query"
+  scope=""
+  type="List<G1>"
+  Parameter
+  {
+    name="newVal"
+    type="bigserial"
+  }
+  code=""
+  Tag{name="attribute_name" value="guid"}
+}
+}
+Interface
+{
+  XRef{namespace="SpringDataRepository" name="Class" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  notes=""
+  scope="Public"
+  multiplicity=""
+  version="1.0"
+  author="Stefan"
+  alias=""
+  name="Hv1"
+  complexity="1"
+  stereotype="table"
+  concurrency=""
+  persistence=""
+  arguments=""
+  phase="1.0"
+  status="Proposed"
+  visibility=""
+  cardinality=""
+  name="Hv1Repository"
+  language="Java"
+  Parent
+  {
+	name="CrudRepository<Hv1, String>"
+	type="Implements"
+  }
+  Tag
+  {
+	name="dataClassname"
+	value="Hv1"
+  }
+  Tag
+  {
+	name="dataElemtype"
+	value="Class"
+  }
+Operation
+{
+  name="queryByUuidAndHistory"
+  stereotype="query"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="uuid"
+    type="String"
+  }
+  Parameter
+  {
+    name="history"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="uuidAndHistory"}
+}
+ 
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByUuid"
+  stereotype="query"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="uuid"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByBeitrag4"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="BEITRAG4"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByDecktsd1"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="DECKTSD1"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByDecktsd2"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="DECKTSD2"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByDecktsd3"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="DECKTSD3"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByDecktsd4"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="DECKTSD4"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByErh1"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="ERH1"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByErh2"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="ERH2"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByErh4"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="ERH4"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByJahresmax"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="JAHRESMAX"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByRisiko"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="RISIKO"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryBySart1"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="SART1"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryBySart2"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="SART2"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryBySart3"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="SART3"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByAnzsch"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="ANZSCH"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByBed"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="BED"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryBySart4"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="SART4"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryBySbabsolut"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="SBABSOLUT"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryBySbprozent"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="SBPROZENT"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryBySchjh"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="SCHJH"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByWagnis"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="WAGNIS"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByWagnisart1"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="WAGNISART1"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByWagnisart2"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="WAGNISART2"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByWagnisart3"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="WAGNISART3"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByWagnismenge"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="WAGNISMENGE"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByWeitwagn"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="WEITWAGN"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByZusatz"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="ZUSATZ"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByBeitrag1"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="BEITRAG1"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByBeitrag2"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="BEITRAG2"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByBeitrag3"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="BEITRAG3"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryBySbmin"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="SBMIN"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryBySbmax"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="SBMAX"}
+}
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByUmsatzgrenze"
+  stereotype="comment"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="double"
+  }
+  code=""
+  Tag{name="attribute_name" value="UMSATZGRENZE"}
+}
+ 
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByHistory"
+  stereotype="query"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="String"
+  }
+  code=""
+  Tag{name="attribute_name" value="history"}
+}
+ 
+Operation
+{
+  XRef{namespace="SpringDataRepository" name="Properties" source="{A281DE4F-2513-4cf1-BC54-BBDC7F6E0F0F}"}
+  name="queryByGuid"
+  stereotype="query"
+  scope=""
+  type="List<Hv1>"
+  Parameter
+  {
+    name="newVal"
+    type="bigserial"
+  }
+  code=""
+  Tag{name="attribute_name" value="guid"}
+}
+}
+}
+}
+}
+}
+}
+}
+}

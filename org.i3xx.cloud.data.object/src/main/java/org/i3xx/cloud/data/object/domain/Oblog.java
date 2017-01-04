@@ -8,11 +8,12 @@ import javax.persistence.Transient;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
+import javax.persistence.SequenceGenerator;
 
 /**
  * @author Administrator
  * @version 1.0
- * @created 04-Jan-2017 12:24:59
+ * @created 04-Jan-2017 22:42:47
  */
 
  @Entity 
@@ -70,7 +71,8 @@ public class Oblog {
 
 
 	 @Id 
-	 @GeneratedValue(strategy=GenerationType.SEQUENCE) 
+	 @SequenceGenerator(name="Oblog_guid_seq", sequenceName="Oblog_guid_seq", allocationSize=1) 
+	 @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Oblog_guid_seq") 
 	 @Column(name="guid", updatable=false, nullable=false)
 	public long getGuid(){
 		return guid;
@@ -149,7 +151,7 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="CLASSNAME", columnDefinition="varchar")
+	 
 	public void setClassname(String newVal){
 		CLASSNAME = newVal;
 	}
@@ -158,7 +160,7 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="CREATETIMESTAMP", columnDefinition="bigint")
+	 
 	public void setCreatetimestamp(long newVal){
 		CREATETIMESTAMP = newVal;
 	}
@@ -167,7 +169,7 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="CREATEUSER", columnDefinition="varchar")
+	 
 	public void setCreateuser(String newVal){
 		CREATEUSER = newVal;
 	}
@@ -185,7 +187,7 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="FLAGS", columnDefinition="bigint")
+	 
 	public void setFlags(long newVal){
 		FLAGS = newVal;
 	}
@@ -194,16 +196,7 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="guid", columnDefinition="bigint")
-	public void setGuid(long newVal){
-		guid = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal    newVal
-	 */
-	@Column(name="history", columnDefinition="varchar")
+	 
 	public void setHistory(String newVal){
 		history = newVal;
 	}
@@ -212,7 +205,7 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="LABEL", columnDefinition="varchar")
+	 
 	public void setLabel(String newVal){
 		LABEL = newVal;
 	}
@@ -221,7 +214,7 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="MANDANT", columnDefinition="varchar")
+	 
 	public void setMandant(String newVal){
 		MANDANT = newVal;
 	}
@@ -230,7 +223,7 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="NAME", columnDefinition="varchar")
+	 
 	public void setName(String newVal){
 		NAME = newVal;
 	}
@@ -239,7 +232,7 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="OBTIMESTAMP", columnDefinition="bigint")
+	 
 	public void setObtimestamp(long newVal){
 		OBTIMESTAMP = newVal;
 	}
@@ -248,7 +241,7 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="OBUSER", columnDefinition="varchar")
+	 
 	public void setObuser(String newVal){
 		OBUSER = newVal;
 	}
@@ -257,7 +250,7 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="OWNER", columnDefinition="varchar")
+	 
 	public void setOwner(String newVal){
 		OWNER = newVal;
 	}
@@ -266,7 +259,7 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="STEREOTYPES", columnDefinition="varchar")
+	 
 	public void setStereotypes(String newVal){
 		STEREOTYPES = newVal;
 	}
@@ -275,7 +268,7 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="TRANSID", columnDefinition="integer")
+	 
 	public void setTransid(int newVal){
 		TRANSID = newVal;
 	}
@@ -284,13 +277,13 @@ public class Oblog {
 	 * 
 	 * @param newVal    newVal
 	 */
-	@Column(name="uuid", columnDefinition="varchar")
+	 
 	public void setUuid(String newVal){
 		uuid = newVal;
 	}
 
 	@Transient
 	public String version(){
-		return "04-Jan-2017 12:22:10";
+		return "04-Jan-2017 22:39:42";
 	}
 }//end Oblog
