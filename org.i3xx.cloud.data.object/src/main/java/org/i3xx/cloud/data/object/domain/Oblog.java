@@ -13,7 +13,7 @@ import javax.persistence.SequenceGenerator;
 /**
  * @author Administrator
  * @version 1.0
- * @created 05-Jan-2017 11:14:02
+ * @created 05-Jan-2017 14:02:41
  */
 
  @Entity 
@@ -153,7 +153,7 @@ public class Oblog {
 	 */
 	 
 	public void setClassname(String newVal){
-		CLASSNAME = newVal;
+		CLASSNAME=newVal;
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class Oblog {
 	 */
 	 
 	public void setCreatetimestamp(long newVal){
-		CREATETIMESTAMP = newVal;
+		CREATETIMESTAMP=newVal;
 	}
 
 	/**
@@ -171,7 +171,7 @@ public class Oblog {
 	 */
 	 
 	public void setCreateuser(String newVal){
-		CREATEUSER = newVal;
+		CREATEUSER=newVal;
 	}
 
 	/**
@@ -189,7 +189,7 @@ public class Oblog {
 	 */
 	 
 	public void setFlags(long newVal){
-		FLAGS = newVal;
+		FLAGS=newVal;
 	}
 
 	/**
@@ -198,7 +198,7 @@ public class Oblog {
 	 */
 	 
 	public void setGuid(long newVal){
-		//readonly
+		guid=newVal;
 	}
 
 	/**
@@ -207,7 +207,7 @@ public class Oblog {
 	 */
 	 
 	public void setHistory(String newVal){
-		history = newVal;
+		history=newVal;
 	}
 
 	/**
@@ -216,7 +216,7 @@ public class Oblog {
 	 */
 	 
 	public void setLabel(String newVal){
-		LABEL = newVal;
+		LABEL=newVal;
 	}
 
 	/**
@@ -225,7 +225,7 @@ public class Oblog {
 	 */
 	 
 	public void setMandant(String newVal){
-		MANDANT = newVal;
+		MANDANT=newVal;
 	}
 
 	/**
@@ -234,7 +234,7 @@ public class Oblog {
 	 */
 	 
 	public void setName(String newVal){
-		NAME = newVal;
+		NAME=newVal;
 	}
 
 	/**
@@ -243,7 +243,7 @@ public class Oblog {
 	 */
 	 
 	public void setObtimestamp(long newVal){
-		OBTIMESTAMP = newVal;
+		OBTIMESTAMP=newVal;
 	}
 
 	/**
@@ -252,7 +252,7 @@ public class Oblog {
 	 */
 	 
 	public void setObuser(String newVal){
-		OBUSER = newVal;
+		OBUSER=newVal;
 	}
 
 	/**
@@ -261,7 +261,7 @@ public class Oblog {
 	 */
 	 
 	public void setOwner(String newVal){
-		OWNER = newVal;
+		OWNER=newVal;
 	}
 
 	/**
@@ -270,7 +270,7 @@ public class Oblog {
 	 */
 	 
 	public void setStereotypes(String newVal){
-		STEREOTYPES = newVal;
+		STEREOTYPES=newVal;
 	}
 
 	/**
@@ -279,7 +279,7 @@ public class Oblog {
 	 */
 	 
 	public void setTransid(int newVal){
-		TRANSID = newVal;
+		TRANSID=newVal;
 	}
 
 	/**
@@ -288,11 +288,11 @@ public class Oblog {
 	 */
 	 
 	public void setUuid(String newVal){
-		uuid = newVal;
+		uuid=newVal;
 	}
 
 	@Transient
 	public String version(){
-		return "05-Jan-2017 11:13:44";
+		return "05-Jan-2017 14:02:01";
 	}
 }//end Oblog
