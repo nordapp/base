@@ -13,7 +13,7 @@ import javax.persistence.SequenceGenerator;
 /**
  * @author Administrator
  * @version 1.0
- * @created 04-Jan-2017 22:42:47
+ * @created 05-Jan-2017 11:14:02
  */
 
  @Entity 
@@ -194,6 +194,15 @@ public class Oblog {
 
 	/**
 	 * 
+	 * @param newVal
+	 */
+	 
+	public void setGuid(long newVal){
+		//readonly
+	}
+
+	/**
+	 * 
 	 * @param newVal    newVal
 	 */
 	 
@@ -284,6 +293,6 @@ public class Oblog {
 
 	@Transient
 	public String version(){
-		return "04-Jan-2017 22:39:42";
+		return "05-Jan-2017 11:13:44";
 	}
 }//end Oblog
