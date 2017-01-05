@@ -1,5 +1,11 @@
 Changed Transformations
 
+Stefan 05.01.2017 update to OfficeBase_M5_op
+Stefan 05.01.2017 update to OfficeBase_M5_crm
+Stefan 05.01.2017 update to OfficeBase_M5_base
+
+Fix hibernate exception: Could not locate setter method for readonly property
+
 Stefan 04.01.2017 update to OfficeBase_M5_op
 Stefan 04.01.2017 update to OfficeBase_M5_crm
 Stefan 04.01.2017 update to OfficeBase_M5_base
