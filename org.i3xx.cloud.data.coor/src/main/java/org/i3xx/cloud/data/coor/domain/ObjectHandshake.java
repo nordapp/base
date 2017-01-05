@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -75,10 +76,6 @@ public class ObjectHandshake implements IHandshake {
 	private String log;
 
 	public ObjectHandshake() {
-		guid = 0;
-		uuid = "";
-		history = "";
-		transid = "";
 		syn = 0;
 		ack = 0;
 		fin = 0;
@@ -89,7 +86,8 @@ public class ObjectHandshake implements IHandshake {
 
 	
 	@Id 
-	@GeneratedValue(strategy=GenerationType.SEQUENCE) 
+	@SequenceGenerator(name="Objecthandshake_guid_seq", sequenceName="Objecthandshake_guid_seq", allocationSize=1) 
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Objecthandshake_guid_seq") 
 	@Column(name="guid", updatable=false, nullable=false)
 	public long getGuid() {
 		return guid;
@@ -99,7 +97,6 @@ public class ObjectHandshake implements IHandshake {
 	 * 
 	 * @param newVal
 	 */
-	@Column(name="guid", columnDefinition="bigint")
 	public void setGuid(long newVal) {
 		guid = newVal;
 	}
@@ -113,7 +110,6 @@ public class ObjectHandshake implements IHandshake {
 	 * 
 	 * @param newVal
 	 */
-	@Column(name="uuid", columnDefinition="varchar")
 	public void setUuid(String newVal){
 		uuid = newVal;
 	}
@@ -127,7 +123,6 @@ public class ObjectHandshake implements IHandshake {
 	 * 
 	 * @param newVal
 	 */
-	@Column(name="history", columnDefinition="varchar")
 	public void setHistory(String newVal){
 		history = newVal;
 	}
@@ -143,7 +138,6 @@ public class ObjectHandshake implements IHandshake {
 	/**
 	 * @param transid the transid to set
 	 */
-	@Column(name="transid", columnDefinition="varchar")
 	public void setTransid(String transid) {
 		this.transid = transid;
 	}
@@ -159,7 +153,6 @@ public class ObjectHandshake implements IHandshake {
 	/**
 	 * @param syn the syn to set
 	 */
-	@Column(name="SYN", columnDefinition="integer")
 	public void setSyn(int syn) {
 		this.syn = syn;
 	}
@@ -175,7 +168,6 @@ public class ObjectHandshake implements IHandshake {
 	/**
 	 * @param ack the ack to set
 	 */
-	@Column(name="ACK", columnDefinition="integer")
 	public void setAck(int ack) {
 		this.ack = ack;
 	}
@@ -191,7 +183,6 @@ public class ObjectHandshake implements IHandshake {
 	/**
 	 * @param timeout the timeout to set
 	 */
-	@Column(name="TIMEOUT", columnDefinition="bigint")
 	public void setTimeout(long timeout) {
 		this.timeout = timeout;
 	}
@@ -207,7 +198,6 @@ public class ObjectHandshake implements IHandshake {
 	/**
 	 * @param fin the fin to set
 	 */
-	@Column(name="FIN", columnDefinition="integer")
 	public void setFin(int fin) {
 		this.fin = fin;
 	}
@@ -223,7 +213,6 @@ public class ObjectHandshake implements IHandshake {
 	/**
 	 * @param rst the rst to set
 	 */
-	@Column(name="RST", columnDefinition="integer")
 	public void setRst(int rst) {
 		this.rst = rst;
 	}
@@ -239,7 +228,6 @@ public class ObjectHandshake implements IHandshake {
 	/**
 	 * @param log the log to set
 	 */
-	@Column(name="LOG", columnDefinition="varchar")
 	public void setLog(String log) {
 		this.log = log;
 	}

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -45,12 +46,13 @@ public class ObjectToOb4 {
 	private int dirty;
 	
 	public ObjectToOb4() {
-		guid = 0;
-		uuid = "";
-		history = "";
-		FIRMA = "";
-		ID = 0L;
+		uuid = null;
+		history = null;
+		FIRMA = null;
+		ID = 0;
 		TRANSID = 0;
+		guid = 0;
+		dirty = 0;
 	}
 	
 	@Transient
@@ -85,7 +87,8 @@ public class ObjectToOb4 {
 	
 	
 	@Id 
-	@GeneratedValue(strategy=GenerationType.SEQUENCE) 
+	@SequenceGenerator(name="Objecttoob4_guid_seq", sequenceName="Objecttoob4_guid_seq", allocationSize=1) 
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Objecttoob4_guid_seq") 
 	@Column(name="guid", updatable=false, nullable=false)
 	public long getGuid() {
 		return guid;
@@ -95,7 +98,6 @@ public class ObjectToOb4 {
 	 * 
 	 * @param newVal
 	 */
-	@Column(name="guid", columnDefinition="bigint")
 	public void setGuid(long newVal) {
 		guid = newVal;
 	}
@@ -109,7 +111,6 @@ public class ObjectToOb4 {
 	 * 
 	 * @param newVal
 	 */
-	@Column(name="uuid", columnDefinition="varchar")
 	public void setUuid(String newVal){
 		uuid = newVal;
 		dirty |= UUID_IS_DIRTY;
@@ -124,12 +125,11 @@ public class ObjectToOb4 {
 	 * 
 	 * @param newVal
 	 */
-	@Column(name="history", columnDefinition="varchar")
 	public void setHistory(String newVal){
 		history = newVal;
 		dirty |= UUID_IS_DIRTY;
 	}
-
+	
 	@Column(name="ID", columnDefinition="bigint")
 	public long getId(){
 		return ID;
@@ -139,7 +139,6 @@ public class ObjectToOb4 {
 	 * 
 	 * @param newVal
 	 */
-	@Column(name="ID", columnDefinition="bigint")
 	public void setId(long newVal){
 		ID = newVal;
 		dirty |= ID_IS_DIRTY;
@@ -154,7 +153,6 @@ public class ObjectToOb4 {
 	 * 
 	 * @param newVal
 	 */
-	@Column(name="TRANSID", columnDefinition="integer")
 	public void setTransid(int newVal){
 		TRANSID = newVal;
 		dirty |= ID_IS_DIRTY;
@@ -169,7 +167,6 @@ public class ObjectToOb4 {
 	 * 
 	 * @param newVal
 	 */
-	@Column(name="FIRMA", columnDefinition="varchar")
 	public void setFirma(String newVal){
 		FIRMA = newVal;
 		dirty = ( UUID_IS_DIRTY | ID_IS_DIRTY );
@@ -182,6 +179,7 @@ public class ObjectToOb4 {
 	/**
 	 * Finishes the operation and build the index
 	 */
+	@Transient
 	public void finish() {
 		//if( (dirty&UUID_IS_DIRTY)==UUID_IS_DIRTY )
 			//
