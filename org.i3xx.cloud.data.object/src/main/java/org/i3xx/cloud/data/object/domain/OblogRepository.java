@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
  * @version 1.0
  * @created 04-Jan-2017 22:33:54
  */
-public interface OblogRepository extends CrudRepository<Oblog, String> {
+public interface OblogRepository extends CrudRepository<Oblog, Long> {
 
 	/**
 	 * 

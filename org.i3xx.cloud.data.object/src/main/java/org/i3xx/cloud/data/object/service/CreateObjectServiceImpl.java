@@ -1,6 +1,5 @@
 package org.i3xx.cloud.data.object.service;
 
-import java.util.Comparator;
 import java.util.List;
 
 import org.i3xx.cloud.data.object.domain.Obid;
@@ -27,13 +26,14 @@ public class CreateObjectServiceImpl implements CreateObjectService {
 	 */
 	public String createObject(String classname, String uuidUser, String uuidOwner) {
 		long currentTime = System.currentTimeMillis();
+		String uuid = UuidTool.getOne();
 		
 		Obid obid = new Obid();
 		
-		obid.setUuid(UuidTool.getOne());
+		obid.setUuid(uuid);
 		obid.setClassname(classname);
 		
-		obid.setHistory("");
+		obid.setHistory(uuid);
 		
 		obid.setCreatetimestamp(currentTime);
 		obid.setTransid(0);
@@ -57,13 +57,17 @@ public class CreateObjectServiceImpl implements CreateObjectService {
 	 * @return
 	 */
 	public String cloneObject(Obid origin) {
+		String uuid = UuidTool.getOne();
+		boolean isCurrentState = origin.getHistory()==null || origin.getHistory().equals("") || 
+				origin.getUuid().equals(origin.getHistory());
+		
 		Obid obid = new Obid();
 		
-		obid.setUuid(UuidTool.getOne());
+		obid.setUuid(uuid);
 		obid.setClassname(origin.getClassname());
 		obid.setName(origin.getName());
 		
-		obid.setHistory(origin.getHistory());
+		obid.setHistory( isCurrentState ? uuid : origin.getHistory() );
 		
 		obid.setCreatetimestamp(origin.getCreatetimestamp());
 		obid.setTransid(origin.getTransid());
@@ -90,9 +94,7 @@ public class CreateObjectServiceImpl implements CreateObjectService {
 		}else if(list.size()==1) {
 			return list.get(0);
 		}else{
-			Comparator<Obid> c = (a, b) -> a.getTransid()>b.getTransid()?1:
-				a.getTransid()<b.getTransid()?-1:0;
-			list.sort(c);
+			//should not happen
 			return list.get(0);
 		}
 	}
@@ -104,5 +106,13 @@ public class CreateObjectServiceImpl implements CreateObjectService {
 	public List<Obid> getAll(String uuid) {
 		List<Obid> list = obidRepository.queryByUuid(uuid);
 		return list;
+	}
+	
+	/**
+	 * @param uuid
+	 * @return
+	 */
+	public Obid findOne(Long guid) {
+		return obidRepository.findOne(guid);
 	}
 }

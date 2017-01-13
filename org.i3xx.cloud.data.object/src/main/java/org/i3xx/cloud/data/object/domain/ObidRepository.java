@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
  * @version 1.0
  * @created 04-Jan-2017 22:33:54
  */
-public interface ObidRepository extends CrudRepository<Obid, String> {
+public interface ObidRepository extends CrudRepository<Obid, Long> {
 
 	/**
 	 * 
