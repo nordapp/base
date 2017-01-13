@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 /**
  * @author Administrator
  * @version 1.0
- * @created 13-Jan-2017 21:40:43
+ * @created 13-Jan-2017 22:21:46
  */
 
  @Service
@@ -27,6 +27,22 @@ public class DAO_Creator_Service {
 	public void finalize() throws Throwable {
 
 	}
+	/**
+	 * 
+	 * @param className
+	 * @param guid
+	 */
+	public void deleteObject(String className, long guid){
+		if (className!=null && className.equalsIgnoreCase("Obid")){
+			 obidService.delete(guid);
+		}
+	
+		if (className!=null && className.equalsIgnoreCase("Oblog")){
+			 oblogService.delete(guid);
+		}
+		throw new IllegalArgumentException(className+" is not a valid argument.");
+	}
+
 	/**
 	 * 
 	 * @param className
@@ -129,22 +145,6 @@ public class DAO_Creator_Service {
 	
 		if (className!=null && className.equalsIgnoreCase("Oblog")){
 			 oblogService.save((Oblog)obj);
-		}
-		throw new IllegalArgumentException(className+" is not a valid argument.");
-	}
-
-	/**
-	 * 
-	 * @param className
-	 * @param guid
-	 */
-	public void saveObject(String className, long guid){
-		if (className!=null && className.equalsIgnoreCase("Obid")){
-			 obidService.delete(guid);
-		}
-	
-		if (className!=null && className.equalsIgnoreCase("Oblog")){
-			 oblogService.delete(guid);
 		}
 		throw new IllegalArgumentException(className+" is not a valid argument.");
 	}
