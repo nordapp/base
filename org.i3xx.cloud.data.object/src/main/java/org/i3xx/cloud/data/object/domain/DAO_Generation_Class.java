@@ -4,7 +4,7 @@ package org.i3xx.cloud.data.object.domain;
 /**
  * @author Administrator
  * @version 1.0
- * @created 13-Jan-2017 21:30:41
+ * @created 13-Jan-2017 21:40:43
  */
 public class DAO_Generation_Class {
 

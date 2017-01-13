@@ -9,7 +9,7 @@ import org.i3xx.util.basic.core.IGeneratorService;
 /**
  * @author Administrator
  * @version 1.0
- * @created 13-Jan-2017 21:30:41
+ * @created 13-Jan-2017 21:40:44
  */
 
  @Service
@@ -76,7 +76,6 @@ public class ObidService implements IGeneratorService<Obid> {
 			obj = new Obid();
 			obj.setUuid(uuid);
 			obj.setHistory(uuid);
-			obidRepository.save(obj);
 		}else{
 			obj = list.get(0);
 		}
@@ -97,7 +96,6 @@ public class ObidService implements IGeneratorService<Obid> {
 			obj = new Obid();
 			obj.setUuid(uuid);
 			obj.setHistory(history);
-			obidRepository.save(obj);
 		}else{
 			obj = list.get(0);
 		}
@@ -133,6 +131,6 @@ public class ObidService implements IGeneratorService<Obid> {
 
 	@Transient
 	public String version(){
-		return "13-Jan-2017 21:26:57";
+		return "13-Jan-2017 21:40:06";
 	}
 }//end ObidService
