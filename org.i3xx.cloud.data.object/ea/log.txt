@@ -1,10 +1,9 @@
 
----------- SpringClassGeneratorService ----------
+---------- SpringDataService ----------
 Package
 {
   name="SpringBoot DataRepo Model"
   namespaceroot="true"
-  
 Package
 {
   notes=""
@@ -14,7 +13,6 @@ Package
   alias=""
   name="com"
   stereotype=""
-  
 Package
 {
   notes=""
@@ -24,7 +22,6 @@ Package
   alias=""
   name="i3xx"
   stereotype=""
-  
 Package
 {
   notes=""
@@ -34,7 +31,6 @@ Package
   alias=""
   name="cloud"
   stereotype=""
-  
 Package
 {
   notes=""
@@ -44,7 +40,6 @@ Package
   alias=""
   name="data"
   stereotype=""
-  
 Package
 {
   notes=""
@@ -54,7 +49,6 @@ Package
   alias=""
   name="op"
   stereotype=""
-  
 Package
 {
   notes=""
@@ -64,117 +58,282 @@ Package
   alias=""
   name="domain"
   stereotype=""
-  
-  
-  Class
-  {
-	XRef{namespace="SpringClassGeneratorService" name="Class" source="{BD535DB4-86CD-4452-B876-5AFC6135C74B}"}
-    notes=""
+Class
+{
+  XRef{namespace="SpringDataService" name="Class" source="{25FE7EFB-7EB7-4045-A374-592921369464}"}
+  notes=""
   scope="Public"
+  multiplicity=""
   version="1.0"
-  author="Stefan Hauptmann"
+  author="Stefan"
   alias=""
-    name="DAO_Creator_Service"
-    stereotype="dao generator"
-    language="Java"
+  complexity="1"
+  concurrency=""
+  persistence=""
+  arguments=""
+  phase="1.0"
+  status="Proposed"
+  visibility=""
+  cardinality=""
+  language="Java"
+  stereotype="data object"
+  name="OpadresseService"
+  
+  Parent
+  {
+	name="IGeneratorService<Opadresse>"
+	type="Implements"
+  }
+  
+  Tag
+  {
+    name="annotations"
+	value="@Service"
+  }
+  
+  Attribute
+  {
+	name="opadresseRepository"
+	type="OpadresseRepository"
+	scope="Private"
+	
+	Tag
+	{
+      name="annotations"
+	  value="@Autowired"
+	}
+  }
+  
+  
+  Operation
+  {
+	name="getObject"
+	type="Opadresse"
+	stereotype="builtin"
+	
+	code="List<Opadresse> list = opadresseRepository.queryByGuid(guid);
+if(!list.isEmpty()){
+	return list.get(0);
+}
+return null;
+"
+	
+	Parameter
+	{
+		name="guid"
+		type="Long"
+	}
+ 	
+	Tag
+	{
+	  name="annotations"
+	  value="@Transient"
+	}
+  }
+  
+  
+  Operation
+  {
+	name="getObject"
+	type="Opadresse"
+	stereotype="builtin"
+	
+	code="List<Opadresse> list = opadresseRepository.queryByUuid(uuid);
+if(!list.isEmpty()){
+	return list.get(0);
+}
+return null;
+"
+	
+	Parameter
+	{
+		name="uuid"
+		type="String"
+	}
+ 	
+	Tag
+	{
+	  name="annotations"
+	  value="@Transient"
+	}
+  }
+  
+  
+  Operation
+  {
+	name="getOrCreateObject"
+	type="Opadresse"
+	stereotype="builtin"
+	
+	code="List<Opadresse> list = opadresseRepository.queryByUuid(uuid);
+Opadresse obj = null;
+if(list.isEmpty()){
+	obj = new Opadresse();
+	obj.setUuid(uuid);
+	obj.setHistory(uuid);
+	opadresseRepository.save(obj);
+}else{
+	obj = list.get(0);
+}
+return obj;
+"
+	
+	Parameter
+	{
+		name="uuid"
+		type="String"
+	}
+ 	
+	Tag
+	{
+	  name="annotations"
+	  value="@Transient"
+	}
+  }
+  
+  
+  Operation
+  {
+	name="getOrCreateObject"
+	type="Opadresse"
+	stereotype="builtin"
+	
+	code="List<Opadresse> list = opadresseRepository.queryByUuidAndHistory(uuid, history);
+Opadresse obj = null;
+if(list.isEmpty()){
+	obj = new Opadresse();
+	obj.setUuid(uuid);
+	obj.setHistory(history);
+	opadresseRepository.save(obj);
+}else{
+	obj = list.get(0);
+}
+return obj;
+"
+  
+	Parameter
+	{
+		name="uuid"
+		type="String"
+	}
+  
+	Parameter
+	{
+		name="history"
+		type="String"
+	}
 	
 	Tag
 	{
 	  name="annotations"
-	  value="@Service"
+	  value="@Transient"
 	}
-	
-	Attribute
-	{
-	  name="daoCreatorService"
-	  type="DAO_Creator_Service"
-	  scope="private"
-	  default="null"
-	  static="true"
-	}
-	
-	Attribute
-{
-  name="opadresseService"
-  type="OpadresseService"
-  scope="Private"
-  
-  Tag
-  {
-	name="annotations"
-	value="@Autowired"
   }
+  
+  
+  Operation
+  {
+ 	name="getOrCreateObject"
+	type="Opadresse"
+	stereotype="builtin"
+	
+	code="Opadresse obj = getObject(guid);
+if(obj==null) {
+	obj = getOrCreateObject(uuid, history);
 }
-	
-	Operation
+return obj;
+"
+ 
+	Parameter
 	{
-	  name="of"
-	  stereotype="built in"
-	  type="DAO_Creator_Service"
-	  static="true"
-	  
-	  code="//singleton
-if(daoCreatorService==null)
-  daoCreatorService = new DAO_Creator_Service();
-return daoCreatorService;"
-	}
-	
-	
-	
-	Operation
-	{
-	  name="getObject"
-	  stereotype="dao generator type"
-	  type="Object"
-	  
-	  Parameter
-	  {
-		name="className"
-		type="String"
-	  }
-	  
-	  Parameter
-	  {
 		name="guid"
-		type="long"
-	  }
-	  
-	  code="throw new IllegalArgumentException(className+\" is not a valid argument.\");"
+		type="Long"
 	}
-	
-	
-	Operation
+  
+	Parameter
 	{
-	  name="getObject"
-	  stereotype="dao generator type"
-	  type="Object"
-	  
-	  Parameter
-	  {
-		name="className"
-		type="String"
-	  }
-	  
-	  Parameter
-	  {
 		name="uuid"
 		type="String"
-	  }
-	  
-	  code="throw new IllegalArgumentException(className+\" is not a valid argument.\");"
+	}
+  
+	Parameter
+	{
+		name="history"
+		type="String"
 	}
 	
+	Tag
+	{
+	  name="annotations"
+	  value="@Transient"
+	}
   }
- 
+  
+  
+  Operation
+  {
+	name="save"
+	type="void"
+	stereotype="builtin"
+	
+	code="opadresseRepository.save(obj);"
+	
+	Parameter
+	{
+		name="obj"
+		type=""Opadresse""
+	}
+ 	
+	Tag
+	{
+	  name="annotations"
+	  value="@Transient"
+	}
+  }
+  
+  
+  Operation
+  {
+	name="delete"
+	type="void"
+	stereotype="builtin"
+	
+	code="opadresseRepository.delete(guid);"
+	
+	Parameter
+	{
+		name="guid"
+		type="Long"
+	}
+ 	
+	Tag
+	{
+	  name="annotations"
+	  value="@Transient"
+	}
+  }
+  
+  
+  Operation
+  {
+	name="version"
+	type="String"
+	stereotype="builtin"
+	
+	code="return \"13-Jan-2017 21:04:16\";"
+	
+	Tag
+	{
+	  name="annotations"
+	  value="@Transient"
+	}
+  }
+  
 }
- 
 }
- 
 }
- 
 }
- 
 }
- 
+}
 }
 }

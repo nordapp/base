@@ -4,7 +4,7 @@ package org.i3xx.cloud.data.object.domain;
 /**
  * @author Administrator
  * @version 1.0
- * @created 04-Jan-2017 22:33:54
+ * @created 13-Jan-2017 21:30:41
  */
 public class DAO_Generation_Class {
 
@@ -28,8 +28,7 @@ public class DAO_Generation_Class {
 	public static DAO_Generation_Class of(){
 		//singleton
 		if(daoGenerator==null)
-			daoGenerator = new DAO_Generation_Class();
-	
+		  daoGenerator = new DAO_Generation_Class();
 		return daoGenerator;
 	}
 }//end DAO_Generation_Class
