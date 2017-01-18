@@ -1,9 +1,10 @@
 
----------- SpringDataService ----------
+---------- SpringClassGeneratorService ----------
 Package
 {
   name="SpringBoot DataRepo Model"
   namespaceroot="true"
+  
 Package
 {
   notes=""
@@ -11,8 +12,9 @@ Package
   version="1.0"
   author="Stefan Hauptmann"
   alias=""
-  name="com"
+  name="org"
   stereotype=""
+  
 Package
 {
   notes=""
@@ -22,6 +24,7 @@ Package
   alias=""
   name="i3xx"
   stereotype=""
+  
 Package
 {
   notes=""
@@ -31,6 +34,7 @@ Package
   alias=""
   name="cloud"
   stereotype=""
+  
 Package
 {
   notes=""
@@ -40,6 +44,7 @@ Package
   alias=""
   name="data"
   stereotype=""
+  
 Package
 {
   notes=""
@@ -47,8 +52,9 @@ Package
   version="1.0"
   author="Stefan Hauptmann"
   alias=""
-  name="op"
+  name="object"
   stereotype=""
+  
 Package
 {
   notes=""
@@ -58,282 +64,307 @@ Package
   alias=""
   name="domain"
   stereotype=""
-Class
-{
-  XRef{namespace="SpringDataService" name="Class" source="{25FE7EFB-7EB7-4045-A374-592921369464}"}
-  notes=""
-  scope="Public"
-  multiplicity=""
-  version="1.0"
-  author="Stefan"
-  alias=""
-  complexity="1"
-  concurrency=""
-  persistence=""
-  arguments=""
-  phase="1.0"
-  status="Proposed"
-  visibility=""
-  cardinality=""
-  language="Java"
-  stereotype="data object"
-  name="OpadresseService"
   
-  Parent
+  
+  Class
   {
-	name="IGeneratorService<Opadresse>"
-	type="Implements"
-  }
+	XRef{namespace="SpringClassGeneratorService" name="Class" source="{289499A4-AD3B-4fc2-A1D0-53D6AD1AB3E8}"}
+    notes=""
+  scope="Public"
+  version="1.0"
+  author="Stefan Hauptmann"
+  alias=""
+    name="DAO_Creator_Service"
+    stereotype="dao generator"
+    language="Java"
+	
+	Tag
+	{
+	  name="annotations"
+	  value="@Service(value=\"org-i3xx-cloud-data-object-domain-DAO_Creator_Service\")"
+	}
+	
+	Attribute
+	{
+	  name="daoCreatorService"
+	  type="DAO_Creator_Service"
+	  scope="private"
+	  default="null"
+	  static="true"
+	}
+	
+	Attribute
+{
+  name="obidService"
+  type="ObidService"
+  scope="Private"
   
   Tag
   {
-    name="annotations"
-	value="@Service"
+	name="annotations"
+	value="@Autowired"
   }
-  
-  Attribute
-  {
-	name="opadresseRepository"
-	type="OpadresseRepository"
-	scope="Private"
-	
-	Tag
-	{
-      name="annotations"
-	  value="@Autowired"
-	}
-  }
-  
-  
-  Operation
-  {
-	name="getObject"
-	type="Opadresse"
-	stereotype="builtin"
-	
-	code="List<Opadresse> list = opadresseRepository.queryByGuid(guid);
-if(!list.isEmpty()){
-	return list.get(0);
 }
-return null;
-"
+Attribute
+{
+  name="oblogService"
+  type="OblogService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
 	
-	Parameter
+	Operation
 	{
+	  name="of"
+	  stereotype="built in"
+	  type="DAO_Creator_Service"
+	  static="true"
+	  
+	  code="//singleton
+if(daoCreatorService==null)
+  daoCreatorService = new DAO_Creator_Service();
+return daoCreatorService;"
+	}
+	
+	
+	
+	Operation
+	{
+	  name="getObject"
+	  stereotype="dao generator type"
+	  type="Object"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
 		name="guid"
-		type="Long"
-	}
- 	
-	Tag
-	{
-	  name="annotations"
-	  value="@Transient"
-	}
-  }
-  
-  
-  Operation
-  {
-	name="getObject"
-	type="Opadresse"
-	stereotype="builtin"
-	
-	code="List<Opadresse> list = opadresseRepository.queryByUuid(uuid);
-if(!list.isEmpty()){
-	return list.get(0);
+		type="long"
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
+	return obidService.getObject(guid);
 }
-return null;
-"
+
+if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
+	return oblogService.getObject(guid);
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
+	}
 	
-	Parameter
+	
+	Operation
 	{
+	  name="getObject"
+	  stereotype="dao generator type"
+	  type="Object"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
 		name="uuid"
 		type="String"
-	}
- 	
-	Tag
-	{
-	  name="annotations"
-	  value="@Transient"
-	}
-  }
-  
-  
-  Operation
-  {
-	name="getOrCreateObject"
-	type="Opadresse"
-	stereotype="builtin"
-	
-	code="List<Opadresse> list = opadresseRepository.queryByUuid(uuid);
-Opadresse obj = null;
-if(list.isEmpty()){
-	obj = new Opadresse();
-	obj.setUuid(uuid);
-	obj.setHistory(uuid);
-	opadresseRepository.save(obj);
-}else{
-	obj = list.get(0);
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
+	return obidService.getObject(uuid);
 }
-return obj;
-"
+
+if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
+	return oblogService.getObject(uuid);
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
+	}
 	
-	Parameter
+	
+	Operation
 	{
+	  name="getOrCreateObject"
+	  stereotype="dao generator type"
+	  type="Object"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
+		name="guid"
+		type="long"
+	  }
+	  
+	  Parameter
+	  {
 		name="uuid"
 		type="String"
-	}
- 	
-	Tag
-	{
-	  name="annotations"
-	  value="@Transient"
-	}
-  }
-  
-  
-  Operation
-  {
-	name="getOrCreateObject"
-	type="Opadresse"
-	stereotype="builtin"
-	
-	code="List<Opadresse> list = opadresseRepository.queryByUuidAndHistory(uuid, history);
-Opadresse obj = null;
-if(list.isEmpty()){
-	obj = new Opadresse();
-	obj.setUuid(uuid);
-	obj.setHistory(history);
-	opadresseRepository.save(obj);
-}else{
-	obj = list.get(0);
-}
-return obj;
-"
-  
-	Parameter
-	{
-		name="uuid"
-		type="String"
-	}
-  
-	Parameter
-	{
+	  }
+	  
+	  Parameter
+	  {
 		name="history"
 		type="String"
-	}
-	
-	Tag
-	{
-	  name="annotations"
-	  value="@Transient"
-	}
-  }
-  
-  
-  Operation
-  {
- 	name="getOrCreateObject"
-	type="Opadresse"
-	stereotype="builtin"
-	
-	code="Opadresse obj = getObject(guid);
-if(obj==null) {
-	obj = getOrCreateObject(uuid, history);
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
+	return obidService.getOrCreateObject(guid, uuid, history);
 }
-return obj;
-"
- 
-	Parameter
-	{
-		name="guid"
-		type="Long"
+
+if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
+	return oblogService.getOrCreateObject(guid, uuid, history);
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 	}
-  
-	Parameter
+	
+	
+	Operation
 	{
+	  name="getOrCreateObject"
+	  stereotype="dao generator type"
+	  type="Object"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
 		name="uuid"
 		type="String"
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
+	return obidService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
+	return oblogService.getOrCreateObject(uuid);
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 	}
-  
-	Parameter
+	
+	
+	Operation
 	{
+	  name="getOrCreateObject"
+	  stereotype="dao generator type"
+	  type="Object"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
+		name="uuid"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
 		name="history"
 		type="String"
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
+	return obidService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
+	return oblogService.getOrCreateObject(uuid, history);
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 	}
 	
-	Tag
-	{
-	  name="annotations"
-	  value="@Transient"
-	}
-  }
-  
-  
-  Operation
-  {
-	name="save"
-	type="void"
-	stereotype="builtin"
 	
-	code="opadresseRepository.save(obj);"
 	
-	Parameter
+	Operation
 	{
+	  name="saveObject"
+	  stereotype="dao generator type"
+	  type="void"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
 		name="obj"
-		type=""Opadresse""
+		type="Object"
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
+	 obidService.save((Obid)obj);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
+	 oblogService.save((Oblog)obj);
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 	}
- 	
-	Tag
-	{
-	  name="annotations"
-	  value="@Transient"
-	}
-  }
-  
-  
-  Operation
-  {
-	name="delete"
-	type="void"
-	stereotype="builtin"
 	
-	code="opadresseRepository.delete(guid);"
 	
-	Parameter
+	
+	Operation
 	{
+	  name="deleteObject"
+	  stereotype="dao generator type"
+	  type="void"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
 		name="guid"
-		type="Long"
-	}
- 	
-	Tag
-	{
-	  name="annotations"
-	  value="@Transient"
-	}
-  }
-  
-  
-  Operation
-  {
-	name="version"
-	type="String"
-	stereotype="builtin"
-	
-	code="return \"13-Jan-2017 21:04:16\";"
-	
-	Tag
-	{
-	  name="annotations"
-	  value="@Transient"
+		type="long"
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
+	 obidService.delete(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
+	 oblogService.delete(guid);
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 	}
   }
-  
+ 
 }
+ 
 }
+ 
 }
+ 
 }
+ 
 }
-}
+ 
 }
 }

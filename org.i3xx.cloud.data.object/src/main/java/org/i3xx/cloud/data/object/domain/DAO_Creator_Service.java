@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 /**
  * @author Administrator
  * @version 1.0
- * @created 13-Jan-2017 22:21:46
+ * @created 17-Jan-2017 17:15:41
  */
 
- @Service
+ @Service(value="org.i3xx.cloud.data.object.domain.DAO_Creator_Service")
 public class DAO_Creator_Service {
 
 	private static DAO_Creator_Service daoCreatorService = null;

@@ -2,9 +2,17 @@ package org.i3xx.cloud.data.base.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Childrelation", indexes={
+@Index(name="Childrelation_history_idx", columnList="history"),
+@Index(name="Childrelation_uuid_idx", columnList="uuid")})
 public class ChildRelation {
 	
 	// The byte array contains a java.util.Set<String>
@@ -20,25 +28,42 @@ public class ChildRelation {
 	// The inodes are similar to the EXT2 file system
 	public static final int SET_OF_INODES = 0x8;
 	
-	@Id
+	private long guid;
+	private String history;
 	private String uuid;
-	
-	//http://stackoverflow.com/questions/3503841/jpa-mysql-blob-returns-data-too-long
-	//MEDIUMBLOB 16777215
-	@Column(length=100000)
 	private byte[] list;
 	
 	//The type of the serialization
-	private int type;
+	private int subtype;
 	
 	public ChildRelation() {
-		uuid = "";
+		guid = 0;
+		uuid = null;
+		history = null;
 		list = new byte[0];
+		subtype = 0;
+	}
+
+	@Id 
+	@SequenceGenerator(name="Childrelation_guid_seq", sequenceName="Childrelation_guid_seq", allocationSize=1) 
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Childrelation_guid_seq") 
+	@Column(name="guid", updatable=false, nullable=false)
+	public long getGuid(){
+		return guid;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setGuid(long newVal){
+		guid=newVal;
 	}
 
 	/**
 	 * @return the uuid
 	 */
+	@Column(name="uuid", columnDefinition="varchar")
 	public String getUuid(){
 		return uuid;
 	}
@@ -51,9 +76,25 @@ public class ChildRelation {
 		uuid = newVal;
 	}
 
+	@Column(name="history", columnDefinition="varchar")
+	public String getHistory(){
+		return history;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setHistory(String newVal){
+		history=newVal;
+	}
+
 	/**
 	 * @return the list
 	 */
+	//http://stackoverflow.com/questions/3503841/jpa-mysql-blob-returns-data-too-long
+	//MEDIUMBLOB 16777215
+	@Column(name="LIST", length=100000, columnDefinition="bytea")
 	public byte[] getList() {
 		return list;
 	}
@@ -66,16 +107,17 @@ public class ChildRelation {
 	}
 
 	/**
-	 * @return the type
+	 * @return the subtype
 	 */
-	public int getType() {
-		return type;
+	@Column(name="SUBTYPE", columnDefinition="varchar")
+	public int getSubtype() {
+		return subtype;
 	}
 
 	/**
-	 * @param type the type to set
+	 * @param type the subtype to set
 	 */
-	public void setType(int type) {
-		this.type = type;
+	public void setSubtype(int type) {
+		this.subtype = type;
 	}
 }
