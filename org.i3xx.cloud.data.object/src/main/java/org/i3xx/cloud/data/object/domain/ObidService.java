@@ -9,7 +9,7 @@ import org.i3xx.util.basic.core.IGeneratorService;
 /**
  * @author Administrator
  * @version 1.0
- * @created 20-Jan-2017 13:20:15
+ * @created 20-Jan-2017 15:10:58
  */
 
  @Service
@@ -131,6 +131,6 @@ public class ObidService implements IGeneratorService<Obid> {
 
 	@Transient
 	public String version(){
-		return "13-Jan-2017 21:40:06";
+		return "20-Jan-2017 15:10:37";
 	}
 }//end ObidService
