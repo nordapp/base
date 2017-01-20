@@ -1,3 +1,8 @@
+Fix Transformation : springclassgenerator_transform_template.xml
+Stefan 20.01.2017 update to OfficeBase_M5_base
+Stefan 20.01.2017 update to OfficeBase_M5_op
+Stefan 20.01.2017 update to OfficeBase_M5_crm
+
 Changed Transformations
 
 Stefan 05.01.2017 update to OfficeBase_M5_op

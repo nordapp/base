@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 /**
  * @author Administrator
  * @version 1.0
- * @created 17-Jan-2017 17:15:41
+ * @created 20-Jan-2017 13:20:15
  */
 
- @Service(value="org.i3xx.cloud.data.object.domain.DAO_Creator_Service")
-public class DAO_Creator_Service {
+ @Service(value="DAO_Object_Creator_Service")
+public class DAO_Object_Creator_Service {
 
-	private static DAO_Creator_Service daoCreatorService = null;
+	private static DAO_Object_Creator_Service daoCreatorService = null;
 
 	 @Autowired
 	private ObidService obidService;
@@ -20,7 +20,7 @@ public class DAO_Creator_Service {
 	 @Autowired
 	private OblogService oblogService;
 
-	public DAO_Creator_Service(){
+	public DAO_Object_Creator_Service(){
 
 	}
 
@@ -35,10 +35,12 @@ public class DAO_Creator_Service {
 	public void deleteObject(String className, long guid){
 		if (className!=null && className.equalsIgnoreCase("Obid")){
 			 obidService.delete(guid);
+			return;
 		}
 	
 		if (className!=null && className.equalsIgnoreCase("Oblog")){
 			 oblogService.delete(guid);
+			return;
 		}
 		throw new IllegalArgumentException(className+" is not a valid argument.");
 	}
@@ -126,10 +128,10 @@ public class DAO_Creator_Service {
 		throw new IllegalArgumentException(className+" is not a valid argument.");
 	}
 
-	public static DAO_Creator_Service of(){
+	public static DAO_Object_Creator_Service of(){
 		//singleton
 		if(daoCreatorService==null)
-		  daoCreatorService = new DAO_Creator_Service();
+		  daoCreatorService = new DAO_Object_Creator_Service();
 		return daoCreatorService;
 	}
 
@@ -141,11 +143,13 @@ public class DAO_Creator_Service {
 	public void saveObject(String className, Object obj){
 		if (className!=null && className.equalsIgnoreCase("Obid")){
 			 obidService.save((Obid)obj);
+			return;
 		}
 	
 		if (className!=null && className.equalsIgnoreCase("Oblog")){
 			 oblogService.save((Oblog)obj);
+			return;
 		}
 		throw new IllegalArgumentException(className+" is not a valid argument.");
 	}
-}//end DAO_Creator_Service
+}//end DAO_Object_Creator_Service

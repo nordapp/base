@@ -12,7 +12,7 @@ Package
   version="1.0"
   author="Stefan Hauptmann"
   alias=""
-  name="org"
+  name="com"
   stereotype=""
   
 Package
@@ -52,7 +52,7 @@ Package
   version="1.0"
   author="Stefan Hauptmann"
   alias=""
-  name="object"
+  name="op"
   stereotype=""
   
 Package
@@ -65,29 +65,29 @@ Package
   name="domain"
   stereotype=""
   
-  
+ 
   Class
   {
-	XRef{namespace="SpringClassGeneratorService" name="Class" source="{289499A4-AD3B-4fc2-A1D0-53D6AD1AB3E8}"}
+	XRef{namespace="Op" name="Package" source="{BD535DB4-86CD-4452-B876-5AFC6135C74B}"}
     notes=""
   scope="Public"
   version="1.0"
   author="Stefan Hauptmann"
   alias=""
-    name="DAO_Creator_Service"
+    name="DAO_Op_Creator_Service"
     stereotype="dao generator"
     language="Java"
 	
 	Tag
 	{
 	  name="annotations"
-	  value="@Service(value=\"org-i3xx-cloud-data-object-domain-DAO_Creator_Service\")"
+	  value="@Service(value=\"DAO_Op_Creator_Service\")"
 	}
 	
 	Attribute
 	{
 	  name="daoCreatorService"
-	  type="DAO_Creator_Service"
+	  type="DAO_Op_Creator_Service"
 	  scope="private"
 	  default="null"
 	  static="true"
@@ -95,8 +95,8 @@ Package
 	
 	Attribute
 {
-  name="obidService"
-  type="ObidService"
+  name="opadresseService"
+  type="OpadresseService"
   scope="Private"
   
   Tag
@@ -107,8 +107,152 @@ Package
 }
 Attribute
 {
-  name="oblogService"
-  type="OblogService"
+  name="opbetraegeService"
+  type="OpbetraegeService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="opeinzelbeitService"
+  type="OpeinzelbeitService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="opgesellantService"
+  type="OpgesellantService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="opgesellauftService"
+  type="OpgesellauftService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="opheadpService"
+  type="OpheadpService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="opmainService"
+  type="OpmainService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="oppraemiemahnService"
+  type="OppraemiemahnService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="oppraemieprt1Service"
+  type="Oppraemieprt1Service"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="oppraemieprt2Service"
+  type="Oppraemieprt2Service"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="oppraemieprt3Service"
+  type="Oppraemieprt3Service"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="oppraemietxtService"
+  type="OppraemietxtService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="opvermittlerService"
+  type="OpvermittlerService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="opzahlinfoService"
+  type="OpzahlinfoService"
   scope="Private"
   
   Tag
@@ -122,12 +266,12 @@ Attribute
 	{
 	  name="of"
 	  stereotype="built in"
-	  type="DAO_Creator_Service"
+	  type="DAO_Op_Creator_Service"
 	  static="true"
 	  
 	  code="//singleton
 if(daoCreatorService==null)
-  daoCreatorService = new DAO_Creator_Service();
+  daoCreatorService = new DAO_Op_Creator_Service();
 return daoCreatorService;"
 	}
 	
@@ -151,12 +295,60 @@ return daoCreatorService;"
 		type="long"
 	  }
 	  
-	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
-	return obidService.getObject(guid);
+	  code="if (className!=null && className.equalsIgnoreCase(\"Opadresse\")){
+	return opadresseService.getObject(guid);
 }
 
-if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
-	return oblogService.getObject(guid);
+if (className!=null && className.equalsIgnoreCase(\"Opbetraege\")){
+	return opbetraegeService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opeinzelbeit\")){
+	return opeinzelbeitService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellant\")){
+	return opgesellantService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellauft\")){
+	return opgesellauftService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opheadp\")){
+	return opheadpService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opmain\")){
+	return opmainService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemiemahn\")){
+	return oppraemiemahnService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt1\")){
+	return oppraemieprt1Service.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt2\")){
+	return oppraemieprt2Service.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt3\")){
+	return oppraemieprt3Service.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemietxt\")){
+	return oppraemietxtService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opvermittler\")){
+	return opvermittlerService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opzahlinfo\")){
+	return opzahlinfoService.getObject(guid);
 }
 throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 	}
@@ -180,12 +372,60 @@ throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 		type="String"
 	  }
 	  
-	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
-	return obidService.getObject(uuid);
+	  code="if (className!=null && className.equalsIgnoreCase(\"Opadresse\")){
+	return opadresseService.getObject(uuid);
 }
 
-if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
-	return oblogService.getObject(uuid);
+if (className!=null && className.equalsIgnoreCase(\"Opbetraege\")){
+	return opbetraegeService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opeinzelbeit\")){
+	return opeinzelbeitService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellant\")){
+	return opgesellantService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellauft\")){
+	return opgesellauftService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opheadp\")){
+	return opheadpService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opmain\")){
+	return opmainService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemiemahn\")){
+	return oppraemiemahnService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt1\")){
+	return oppraemieprt1Service.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt2\")){
+	return oppraemieprt2Service.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt3\")){
+	return oppraemieprt3Service.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemietxt\")){
+	return oppraemietxtService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opvermittler\")){
+	return opvermittlerService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opzahlinfo\")){
+	return opzahlinfoService.getObject(uuid);
 }
 throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 	}
@@ -221,12 +461,60 @@ throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 		type="String"
 	  }
 	  
-	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
-	return obidService.getOrCreateObject(guid, uuid, history);
+	  code="if (className!=null && className.equalsIgnoreCase(\"Opadresse\")){
+	return opadresseService.getOrCreateObject(guid, uuid, history);
 }
 
-if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
-	return oblogService.getOrCreateObject(guid, uuid, history);
+if (className!=null && className.equalsIgnoreCase(\"Opbetraege\")){
+	return opbetraegeService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opeinzelbeit\")){
+	return opeinzelbeitService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellant\")){
+	return opgesellantService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellauft\")){
+	return opgesellauftService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opheadp\")){
+	return opheadpService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opmain\")){
+	return opmainService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemiemahn\")){
+	return oppraemiemahnService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt1\")){
+	return oppraemieprt1Service.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt2\")){
+	return oppraemieprt2Service.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt3\")){
+	return oppraemieprt3Service.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemietxt\")){
+	return oppraemietxtService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opvermittler\")){
+	return opvermittlerService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opzahlinfo\")){
+	return opzahlinfoService.getOrCreateObject(guid, uuid, history);
 }
 throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 	}
@@ -250,12 +538,60 @@ throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 		type="String"
 	  }
 	  
-	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
-	return obidService.getOrCreateObject(uuid);
+	  code="if (className!=null && className.equalsIgnoreCase(\"Opadresse\")){
+	return opadresseService.getOrCreateObject(uuid);
 }
 
-if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
-	return oblogService.getOrCreateObject(uuid);
+if (className!=null && className.equalsIgnoreCase(\"Opbetraege\")){
+	return opbetraegeService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opeinzelbeit\")){
+	return opeinzelbeitService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellant\")){
+	return opgesellantService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellauft\")){
+	return opgesellauftService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opheadp\")){
+	return opheadpService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opmain\")){
+	return opmainService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemiemahn\")){
+	return oppraemiemahnService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt1\")){
+	return oppraemieprt1Service.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt2\")){
+	return oppraemieprt2Service.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt3\")){
+	return oppraemieprt3Service.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemietxt\")){
+	return oppraemietxtService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opvermittler\")){
+	return opvermittlerService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opzahlinfo\")){
+	return opzahlinfoService.getOrCreateObject(uuid);
 }
 throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 	}
@@ -285,12 +621,60 @@ throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 		type="String"
 	  }
 	  
-	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
-	return obidService.getOrCreateObject(uuid, history);
+	  code="if (className!=null && className.equalsIgnoreCase(\"Opadresse\")){
+	return opadresseService.getOrCreateObject(uuid, history);
 }
 
-if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
-	return oblogService.getOrCreateObject(uuid, history);
+if (className!=null && className.equalsIgnoreCase(\"Opbetraege\")){
+	return opbetraegeService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opeinzelbeit\")){
+	return opeinzelbeitService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellant\")){
+	return opgesellantService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellauft\")){
+	return opgesellauftService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opheadp\")){
+	return opheadpService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opmain\")){
+	return opmainService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemiemahn\")){
+	return oppraemiemahnService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt1\")){
+	return oppraemieprt1Service.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt2\")){
+	return oppraemieprt2Service.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt3\")){
+	return oppraemieprt3Service.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemietxt\")){
+	return oppraemietxtService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opvermittler\")){
+	return opvermittlerService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opzahlinfo\")){
+	return opzahlinfoService.getOrCreateObject(uuid, history);
 }
 throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 	}
@@ -315,12 +699,74 @@ throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 		type="Object"
 	  }
 	  
-	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
-	 obidService.save((Obid)obj);
+	  code="if (className!=null && className.equalsIgnoreCase(\"Opadresse\")){
+	 opadresseService.save((Opadresse)obj);
+	return;
 }
 
-if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
-	 oblogService.save((Oblog)obj);
+if (className!=null && className.equalsIgnoreCase(\"Opbetraege\")){
+	 opbetraegeService.save((Opbetraege)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opeinzelbeit\")){
+	 opeinzelbeitService.save((Opeinzelbeit)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellant\")){
+	 opgesellantService.save((Opgesellant)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellauft\")){
+	 opgesellauftService.save((Opgesellauft)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opheadp\")){
+	 opheadpService.save((Opheadp)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opmain\")){
+	 opmainService.save((Opmain)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemiemahn\")){
+	 oppraemiemahnService.save((Oppraemiemahn)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt1\")){
+	 oppraemieprt1Service.save((Oppraemieprt1)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt2\")){
+	 oppraemieprt2Service.save((Oppraemieprt2)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt3\")){
+	 oppraemieprt3Service.save((Oppraemieprt3)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemietxt\")){
+	 oppraemietxtService.save((Oppraemietxt)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opvermittler\")){
+	 opvermittlerService.save((Opvermittler)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opzahlinfo\")){
+	 opzahlinfoService.save((Opzahlinfo)obj);
+	return;
 }
 throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 	}
@@ -345,12 +791,812 @@ throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 		type="long"
 	  }
 	  
-	  code="if (className!=null && className.equalsIgnoreCase(\"Obid\")){
-	 obidService.delete(guid);
+	  code="if (className!=null && className.equalsIgnoreCase(\"Opadresse\")){
+	 opadresseService.delete(guid);
+	return;
 }
 
-if (className!=null && className.equalsIgnoreCase(\"Oblog\")){
-	 oblogService.delete(guid);
+if (className!=null && className.equalsIgnoreCase(\"Opbetraege\")){
+	 opbetraegeService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opeinzelbeit\")){
+	 opeinzelbeitService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellant\")){
+	 opgesellantService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opgesellauft\")){
+	 opgesellauftService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opheadp\")){
+	 opheadpService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opmain\")){
+	 opmainService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemiemahn\")){
+	 oppraemiemahnService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt1\")){
+	 oppraemieprt1Service.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt2\")){
+	 oppraemieprt2Service.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemieprt3\")){
+	 oppraemieprt3Service.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Oppraemietxt\")){
+	 oppraemietxtService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opvermittler\")){
+	 opvermittlerService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Opzahlinfo\")){
+	 opzahlinfoService.delete(guid);
+	return;
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
+	}
+  }
+ 
+}
+ 
+}
+Package
+{
+  notes=""
+  scope="Public"
+  version="1.0"
+  author="Administrator"
+  alias=""
+  name="stat"
+  stereotype=""
+  
+Package
+{
+  notes=""
+  scope="Public"
+  version="1.0"
+  author="Administrator"
+  alias=""
+  name="domain"
+  stereotype=""
+  
+ 
+  Class
+  {
+	XRef{namespace="Stat" name="Package" source="{55047AE8-4145-45b2-8D41-1EDC95949D5A}"}
+    notes=""
+  scope="Public"
+  version="1.0"
+  author="Administrator"
+  alias=""
+    name="DAO_Stat_Creator_Service"
+    stereotype="dao generator"
+    language="Java"
+	
+	Tag
+	{
+	  name="annotations"
+	  value="@Service(value=\"DAO_Stat_Creator_Service\")"
+	}
+	
+	Attribute
+	{
+	  name="daoCreatorService"
+	  type="DAO_Stat_Creator_Service"
+	  scope="private"
+	  default="null"
+	  static="true"
+	}
+	
+	Attribute
+{
+  name="statgesell1Service"
+  type="Statgesell1Service"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="statgesell1bwService"
+  type="Statgesell1bwService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="statgesell2Service"
+  type="Statgesell2Service"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="statgesell2bwService"
+  type="Statgesell2bwService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="statkunde1Service"
+  type="Statkunde1Service"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="statkunde1bwService"
+  type="Statkunde1bwService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="statkunde2Service"
+  type="Statkunde2Service"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="statkunde2bwService"
+  type="Statkunde2bwService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="statpolice1Service"
+  type="Statpolice1Service"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="statpolice1bwService"
+  type="Statpolice1bwService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="statsparte1Service"
+  type="Statsparte1Service"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+Attribute
+{
+  name="statsparte1bwService"
+  type="Statsparte1bwService"
+  scope="Private"
+  
+  Tag
+  {
+	name="annotations"
+	value="@Autowired"
+  }
+}
+	
+	Operation
+	{
+	  name="of"
+	  stereotype="built in"
+	  type="DAO_Stat_Creator_Service"
+	  static="true"
+	  
+	  code="//singleton
+if(daoCreatorService==null)
+  daoCreatorService = new DAO_Stat_Creator_Service();
+return daoCreatorService;"
+	}
+	
+	
+	
+	Operation
+	{
+	  name="getObject"
+	  stereotype="dao generator type"
+	  type="Object"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
+		name="guid"
+		type="long"
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Statgesell1\")){
+	return statgesell1Service.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell1bw\")){
+	return statgesell1bwService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2\")){
+	return statgesell2Service.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2bw\")){
+	return statgesell2bwService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1\")){
+	return statkunde1Service.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1bw\")){
+	return statkunde1bwService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2\")){
+	return statkunde2Service.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2bw\")){
+	return statkunde2bwService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1\")){
+	return statpolice1Service.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1bw\")){
+	return statpolice1bwService.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1\")){
+	return statsparte1Service.getObject(guid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1bw\")){
+	return statsparte1bwService.getObject(guid);
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
+	}
+	
+	
+	Operation
+	{
+	  name="getObject"
+	  stereotype="dao generator type"
+	  type="Object"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
+		name="uuid"
+		type="String"
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Statgesell1\")){
+	return statgesell1Service.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell1bw\")){
+	return statgesell1bwService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2\")){
+	return statgesell2Service.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2bw\")){
+	return statgesell2bwService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1\")){
+	return statkunde1Service.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1bw\")){
+	return statkunde1bwService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2\")){
+	return statkunde2Service.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2bw\")){
+	return statkunde2bwService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1\")){
+	return statpolice1Service.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1bw\")){
+	return statpolice1bwService.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1\")){
+	return statsparte1Service.getObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1bw\")){
+	return statsparte1bwService.getObject(uuid);
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
+	}
+	
+	
+	Operation
+	{
+	  name="getOrCreateObject"
+	  stereotype="dao generator type"
+	  type="Object"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
+		name="guid"
+		type="long"
+	  }
+	  
+	  Parameter
+	  {
+		name="uuid"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
+		name="history"
+		type="String"
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Statgesell1\")){
+	return statgesell1Service.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell1bw\")){
+	return statgesell1bwService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2\")){
+	return statgesell2Service.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2bw\")){
+	return statgesell2bwService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1\")){
+	return statkunde1Service.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1bw\")){
+	return statkunde1bwService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2\")){
+	return statkunde2Service.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2bw\")){
+	return statkunde2bwService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1\")){
+	return statpolice1Service.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1bw\")){
+	return statpolice1bwService.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1\")){
+	return statsparte1Service.getOrCreateObject(guid, uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1bw\")){
+	return statsparte1bwService.getOrCreateObject(guid, uuid, history);
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
+	}
+	
+	
+	Operation
+	{
+	  name="getOrCreateObject"
+	  stereotype="dao generator type"
+	  type="Object"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
+		name="uuid"
+		type="String"
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Statgesell1\")){
+	return statgesell1Service.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell1bw\")){
+	return statgesell1bwService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2\")){
+	return statgesell2Service.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2bw\")){
+	return statgesell2bwService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1\")){
+	return statkunde1Service.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1bw\")){
+	return statkunde1bwService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2\")){
+	return statkunde2Service.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2bw\")){
+	return statkunde2bwService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1\")){
+	return statpolice1Service.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1bw\")){
+	return statpolice1bwService.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1\")){
+	return statsparte1Service.getOrCreateObject(uuid);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1bw\")){
+	return statsparte1bwService.getOrCreateObject(uuid);
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
+	}
+	
+	
+	Operation
+	{
+	  name="getOrCreateObject"
+	  stereotype="dao generator type"
+	  type="Object"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
+		name="uuid"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
+		name="history"
+		type="String"
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Statgesell1\")){
+	return statgesell1Service.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell1bw\")){
+	return statgesell1bwService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2\")){
+	return statgesell2Service.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2bw\")){
+	return statgesell2bwService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1\")){
+	return statkunde1Service.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1bw\")){
+	return statkunde1bwService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2\")){
+	return statkunde2Service.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2bw\")){
+	return statkunde2bwService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1\")){
+	return statpolice1Service.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1bw\")){
+	return statpolice1bwService.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1\")){
+	return statsparte1Service.getOrCreateObject(uuid, history);
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1bw\")){
+	return statsparte1bwService.getOrCreateObject(uuid, history);
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
+	}
+	
+	
+	
+	Operation
+	{
+	  name="saveObject"
+	  stereotype="dao generator type"
+	  type="void"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
+		name="obj"
+		type="Object"
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Statgesell1\")){
+	 statgesell1Service.save((Statgesell1)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell1bw\")){
+	 statgesell1bwService.save((Statgesell1bw)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2\")){
+	 statgesell2Service.save((Statgesell2)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2bw\")){
+	 statgesell2bwService.save((Statgesell2bw)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1\")){
+	 statkunde1Service.save((Statkunde1)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1bw\")){
+	 statkunde1bwService.save((Statkunde1bw)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2\")){
+	 statkunde2Service.save((Statkunde2)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2bw\")){
+	 statkunde2bwService.save((Statkunde2bw)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1\")){
+	 statpolice1Service.save((Statpolice1)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1bw\")){
+	 statpolice1bwService.save((Statpolice1bw)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1\")){
+	 statsparte1Service.save((Statsparte1)obj);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1bw\")){
+	 statsparte1bwService.save((Statsparte1bw)obj);
+	return;
+}
+throw new IllegalArgumentException(className+\" is not a valid argument.\");"
+	}
+	
+	
+	
+	Operation
+	{
+	  name="deleteObject"
+	  stereotype="dao generator type"
+	  type="void"
+	  
+	  Parameter
+	  {
+		name="className"
+		type="String"
+	  }
+	  
+	  Parameter
+	  {
+		name="guid"
+		type="long"
+	  }
+	  
+	  code="if (className!=null && className.equalsIgnoreCase(\"Statgesell1\")){
+	 statgesell1Service.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell1bw\")){
+	 statgesell1bwService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2\")){
+	 statgesell2Service.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statgesell2bw\")){
+	 statgesell2bwService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1\")){
+	 statkunde1Service.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde1bw\")){
+	 statkunde1bwService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2\")){
+	 statkunde2Service.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statkunde2bw\")){
+	 statkunde2bwService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1\")){
+	 statpolice1Service.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statpolice1bw\")){
+	 statpolice1bwService.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1\")){
+	 statsparte1Service.delete(guid);
+	return;
+}
+
+if (className!=null && className.equalsIgnoreCase(\"Statsparte1bw\")){
+	 statsparte1bwService.delete(guid);
+	return;
 }
 throw new IllegalArgumentException(className+\" is not a valid argument.\");"
 	}
