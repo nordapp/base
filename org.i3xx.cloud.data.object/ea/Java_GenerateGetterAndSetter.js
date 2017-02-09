@@ -1,7 +1,6 @@
 
 /*
- * Note: The script uses the IsTransient field of the attribute properties. If the property is set it is stored as 'StyleEx: volatile=1'
-
+ * 
  * Script Name: GenerateGetterAndSetter
  * Author: Stefan Hauptmann
  * Purpose: Generate getter and setter functions from attributes
@@ -102,9 +101,10 @@ function processAttribute(theElement, theAttribute) {
 			var theMethod = findByName(theElement.Methods, getterName);
 			
 			if( theMethod == null ) {
-				theMethod = theElement.Methods.AddNew(getterName, "String");
+				theMethod = theElement.Methods.AddNew(getterName, theAttribute.Type);
 			}
 			
+			theMethod.ReturnType = theAttribute.Type;
 			theMethod.Stereotype = "property get";
 			theMethod.Code = "return " + theAttribute.Name + ";\n";
 			theMethod.Update();
@@ -120,6 +120,7 @@ function processAttribute(theElement, theAttribute) {
 			}
 			
 			theMethod.Stereotype = "property set";
+			theMethod.ReturnType = "void";
 			theMethod.Code = "this." + theAttribute.Name + " = " + theAttribute.Name + ";\n";
 			theMethod.Update();
 			
@@ -132,7 +133,7 @@ function processAttribute(theElement, theAttribute) {
 			theParameter.Default = "";
 			theParameter.IsConst = true;
 			theParameter.Kind = "";
-			theParameter.Type = "String";
+			theParameter.Type = theAttribute.Type;
 			theParameter.Update();
 		}
 	
