@@ -1,6 +1,7 @@
 
 /*
- * 
+ * Note: The script uses the IsTransient field of the attribute properties. If the property is set it is stored as 'StyleEx: volatile=1'
+
  * Script Name: GenerateGetterAndSetter
  * Author: Stefan Hauptmann
  * Purpose: Generate getter and setter functions from attributes
@@ -66,40 +67,31 @@ function processElement(theElement) {
 		}//fi
 	}//for
 	
-	/*
-	p = findByName( table, "id" );
-	if( p > -1 ) {
-		table.Attributes.DeleteAt(p, true);
-	}
-	p = findByName( table, "up" );
-	if( p > -1 ) {
-		table.Attributes.DeleteAt(p, true);
-	}
-	p = findByName( table, "uuid" );
-	if( p == -1 ) {
-		var fld = table.Attributes.AddNew("uuid", "varchar");
-		fld.Stereotype = "column";
-		fld.isUnique = true;
-		fld.Length = 36;
-		fld.Update();
-	}
-	p = findByName( table, "history" );
-	if( p == -1 ) {
-		var fld = table.Attributes.AddNew("history", "varchar");
-		fld.Stereotype = "column";
-		fld.Length = 36;
-		fld.Update();
-	}
-	*/
 }
 
 function processAttribute(theElement, theAttribute) {
 	
 	//format the name
 	var name = theAttribute.Name;
-	var reg = /^[a-zA-Z]+/;
+	var cont = true;
 	
-	if( name.search(reg) != -1 ) {
+	//do not continue if IsTransient (volatile=1)
+	var styleEx = theAttribute.StyleEx;
+	var arr = styleEx.split(";");
+	for(var i=0;arr!=null && i<arr.length;i++) {
+		if(arr[i]==null)
+			continue;
+		
+		var brr = arr[i].split("=", 2);
+		if(brr.length<2)
+			continue;
+		
+		if(brr[0]=="volatile" && brr[1]=="1")
+			cont = false;
+	}//for
+	
+	
+	if( cont ) {
 		name = name.substring(0,1).toUpperCase() + name.substring(1);
 		
 		Session.Output("Process attribute " + name + " generate getter and setter." );
