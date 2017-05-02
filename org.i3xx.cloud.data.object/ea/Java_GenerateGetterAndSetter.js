@@ -45,6 +45,8 @@ function main()
 			processAttribute(theElement, theAttribute);
 		}
 	}
+	
+	Session.Output( "Done processing" );
 }
 
 function filterElement(theElement) {
@@ -89,6 +91,10 @@ function processAttribute(theElement, theAttribute) {
 			cont = false;
 	}//for
 	
+	//do not continue if IsConst and IsStatic
+	if( theAttribute.IsStatic && theAttribute.IsConst ) {
+		cont = false;
+	}
 	
 	if( cont ) {
 		name = name.substring(0,1).toUpperCase() + name.substring(1);
@@ -137,6 +143,8 @@ function processAttribute(theElement, theAttribute) {
 			theParameter.Update();
 		}
 	
+	}else{
+		Session.Output("Skip attribute " + name + " ." );
 	}//fi
 }
 
