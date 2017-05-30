@@ -12,7 +12,7 @@ public class SerialProtocol {
 	/** The single partner is 1 */
 	public static final int PARTNER = 1;
 	
-	/** The protocol type is 5 */
+	/** The protocol type is 6 */
 	public static final int TYPE = 6;
 	
 	/** The initial data is 100 */
