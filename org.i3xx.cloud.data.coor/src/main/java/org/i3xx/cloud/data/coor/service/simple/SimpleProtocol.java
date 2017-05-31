@@ -10,7 +10,7 @@ import org.i3xx.cloud.data.coor.service.threeway.LogWriter;
 public class SimpleProtocol {
 
 	
-	/** The single partner is 1 */
+	/** The single partner per default is 1 */
 	public static final int PARTNER = 1;
 	
 	/** The protocol type is 5 */
@@ -26,6 +26,7 @@ public class SimpleProtocol {
 	public static final int DATA_OVERFLOW = 105;
 	
 	private List<LogData> list;
+	private int partner;
 	
 	/**
 	 * @param log
@@ -40,6 +41,7 @@ public class SimpleProtocol {
 	 */
 	public SimpleProtocol() {
 		list = new ArrayList<LogData>();
+		partner = PARTNER;
 	}
 	
 	/**
@@ -47,7 +49,24 @@ public class SimpleProtocol {
 	 */
 	public SimpleProtocol(String log) {
 		list = new ArrayList<LogData>();
+		partner = PARTNER;
 		parse(log);
+	}
+	
+	/**
+	 * @param partner
+	 * @return
+	 */
+	public SimpleProtocol setPartner(int partner){
+		this.partner = partner;
+		return this;
+	}
+	
+	/**
+	 * @return
+	 */
+	public int getPartner() {
+		return partner;
 	}
 	
 	/**
@@ -75,7 +94,7 @@ public class SimpleProtocol {
 	 * @return
 	 */
 	public SimpleProtocol ensureInit() {
-		if(list.isEmpty())
+		if(isEmpty())
 			setInit();
 		return this;
 	}
@@ -83,12 +102,32 @@ public class SimpleProtocol {
 	/**
 	 * @return
 	 */
-	public int getCurrent() {
+	public boolean isEmpty() {
 		if(list.isEmpty())
+			return true;
+		
+		//search for the type
+		for(int i=(list.size()-1);i>-1;i--)
+			if(list.get(i).getPartner()==partner)
+				return false;
+		
+		return true;
+	}
+	
+	/**
+	 * @return
+	 */
+	public int getCurrent() {
+		if(isEmpty())
 			return 0;
 		
-		LogData ldat = list.get(list.size()-1);
-		return ldat.getData();
+		//search for the partner
+		for(int i=(list.size()-1);i>-1;i--)
+			if(list.get(i).getPartner()==partner)
+				return list.get(i).getData();
+		
+		//nothing found
+		return 0;
 	}
 	
 	/**
@@ -137,7 +176,7 @@ public class SimpleProtocol {
 	 * @return
 	 */
 	public SimpleProtocol setInit() {
-		list.add(new LogData(PARTNER, TYPE, DATA_INIT));
+		list.add(new LogData(partner, TYPE, DATA_INIT));
 		return this;
 	}
 	
@@ -145,7 +184,7 @@ public class SimpleProtocol {
 	 * @return
 	 */
 	public SimpleProtocol setValid() {
-		list.add(new LogData(PARTNER, TYPE, DATA_VALID));
+		list.add(new LogData(partner, TYPE, DATA_VALID));
 		return this;
 	}
 	
@@ -153,7 +192,7 @@ public class SimpleProtocol {
 	 * @return
 	 */
 	public SimpleProtocol setOverflow() {
-		list.add(new LogData(PARTNER, TYPE, DATA_OVERFLOW));
+		list.add(new LogData(partner, TYPE, DATA_OVERFLOW));
 		return this;
 	}
 	

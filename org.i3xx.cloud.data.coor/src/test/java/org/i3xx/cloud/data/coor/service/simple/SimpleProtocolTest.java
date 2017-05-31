@@ -41,6 +41,10 @@ public class SimpleProtocolTest {
 		assertTrue( sim.setNext().getCurrent()==SimpleProtocol.DATA_OVERFLOW );
 		assertTrue( sim.setNext().getCurrent()==SimpleProtocol.DATA_OVERFLOW );
 		
+		sim = sim.setPartner(2);
+		assertTrue( sim.ensureInit().setInit().isInit() );
+		assertTrue( sim.ensureInit().setValid().isValid() );
+		assertTrue( sim.ensureInit().setOverflow().isOverflow() );
 	}
 
 }
