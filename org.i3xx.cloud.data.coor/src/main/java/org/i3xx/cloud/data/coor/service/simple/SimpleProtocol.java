@@ -19,11 +19,14 @@ public class SimpleProtocol {
 	/** The initial data is 100 */
 	public static final int DATA_INIT = 100;
 	
-	/** The valid data is 100 */
+	/** The valid data is 101 */
 	public static final int DATA_VALID = 101;
 	
 	/** The valid data is 105 */
 	public static final int DATA_OVERFLOW = 105;
+	
+	/** The valid data is 109 */
+	public static final int DATA_ERROR = 109;
 	
 	private List<LogData> list;
 	private int partner;
@@ -144,6 +147,7 @@ public class SimpleProtocol {
 		case DATA_VALID:
 			setOverflow();
 			break;
+		case DATA_ERROR:
 		case DATA_OVERFLOW:
 			default:
 				//does nothing
@@ -175,6 +179,13 @@ public class SimpleProtocol {
 	/**
 	 * @return
 	 */
+	public boolean isError() {
+		 return getCurrent()==DATA_ERROR;
+	}
+	
+	/**
+	 * @return
+	 */
 	public SimpleProtocol setInit() {
 		list.add(new LogData(partner, TYPE, DATA_INIT));
 		return this;
@@ -193,6 +204,14 @@ public class SimpleProtocol {
 	 */
 	public SimpleProtocol setOverflow() {
 		list.add(new LogData(partner, TYPE, DATA_OVERFLOW));
+		return this;
+	}
+	
+	/**
+	 * @return
+	 */
+	public SimpleProtocol setError() {
+		list.add(new LogData(partner, TYPE, DATA_ERROR));
 		return this;
 	}
 	
