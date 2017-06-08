@@ -1,11 +1,27 @@
 package org.i3xx.cloud.data.coor.service.threeway;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LogParser {
 	
 	private List<LogData> list;
-
+	
+	/**
+	 * @param log
+	 * @return
+	 * @throws IllegalArgumentException
+	 */
+	public final static LogParser of(String log) {
+		LogParser parser = new LogParser();
+		parser.setList( new ArrayList<LogData>() );
+		parser.parse(log);
+		return parser;
+	}
+	
+	/**
+	 * 
+	 */
 	public LogParser() {
 		list = null;
 	}
