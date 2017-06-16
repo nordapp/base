@@ -1,11 +1,11 @@
 
 
 /*
- * Script Name: AddQueryToInterface
- * Version: 1.0.0
+ * Script Name: AddDbColumns
+ * Version: 1.0.1
  * Author: Stefan Hauptmann
- * Purpose: Adding the fields 'uuid' and 'history' to a database table and removing the fields 'id' and 'up'
- * Date: 14.06.2017
+ * Purpose: Adding the query'
+ * Date: 22.12.2016
  */
 
 var tpFilter = "Interface";
@@ -61,11 +61,12 @@ function processQuery(theElement) {
 	Session.Output( "Working " + theElement.MetaType + ": " + theElement.Name + " (methods=" + theElement.Methods.Count + ")");
 	
 	var elementType = theElement.Name.substring(0, ( theElement.Name.length - 10) ); //cut Repository
-	var theMethod = findByName( theElement.Methods, "queryByGuidGreaterThanEqual" );
+	var theMethod = findByName( theElement.Methods, "queryByGuidGreaterThanEqualOrderByGuidAsc" );
 	
 	if( theMethod == null ) {
-		theMethod = theElement.Methods.AddNew("queryByGuidGreaterThanEqual", "long");
+		theMethod = theElement.Methods.AddNew("queryByGuidGreaterThanEqualOrderByGuidAsc", "long");
 	}
+	//theMethod.Name = "queryByGuidGreaterThanEqualOrderByGuidAsc";
 	theMethod.Stereotype = "query";
 	theMethod.ReturnType = "List<" + elementType + ">";
 	theMethod.Update();
