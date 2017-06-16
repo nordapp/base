@@ -73,7 +73,7 @@ function processQuery(theElement) {
 	
 	var theParameter = findByName(theMethod.Parameters, "newVal");
 	if( theParameter == null ){
-		theParameter = theMethod.Parameters.AddNew( "newVal", "" );
+		theParameter = theMethod.Parameters.AddNew( "newVal", "long" );
 	}//fi
 	
 	theParameter.Name = "newVal";
