@@ -91,6 +91,11 @@ function processTable(table) {
 		//fld.isUnique = true;
 		//fld.Length = 36;
 		fld.Update();
+	}else{
+		var fld = table.Attributes.GetAt(p);
+		fld.Type = "bigint";
+		//fld.Length = 36;
+		fld.Update();
 	}
 	
 	/*
