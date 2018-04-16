@@ -91,10 +91,18 @@ public class SimpleProtocol {
 	}
 
 	/**
+	 * @return
+	 */
+	public int getPartner() {
+		return partner;
+	}
+
+	/**
 	 * @param type the type to set
 	 */
-	public void setType(int type) {
+	public SimpleProtocol setType(int type) {
 		this.type = type;
+		return this;
 	}
 	
 	/**
@@ -102,13 +110,6 @@ public class SimpleProtocol {
 	 */
 	public int getType() {
 		return type;
-	}
-
-	/**
-	 * @return
-	 */
-	public int getPartner() {
-		return partner;
 	}
 	
 	/**
