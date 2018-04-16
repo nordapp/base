@@ -42,6 +42,14 @@ public class SerialProtocol {
 	 * @param log
 	 * @return
 	 */
+	public static SerialProtocol of() {
+		return new SerialProtocol();
+	}
+	
+	/**
+	 * @param log
+	 * @return
+	 */
 	public static SerialProtocol of(String log) {
 		return new SerialProtocol(log);
 	}

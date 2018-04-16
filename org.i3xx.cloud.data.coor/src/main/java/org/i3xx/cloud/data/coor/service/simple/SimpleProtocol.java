@@ -28,8 +28,30 @@ public class SimpleProtocol {
 	/** The valid data is 109 */
 	public static final int DATA_ERROR = 109;
 	
+	/** The list of protocol data */
 	private List<LogData> list;
+	
+	/**
+	 * The partner of this protocol.
+	 * 
+	 * Only the matching partner is used to get the
+	 * current entry.
+	 */
 	private int partner;
+	
+	/** 
+	 * The type of this protocol
+	 * Note: the type is irrelevant for the SimpleProtocol,
+	 * but can be used outside the protocol for several reasons. 
+	 */
+	private int type;
+	
+	/**
+	 * @return
+	 */
+	public static SimpleProtocol of() {
+		return new SimpleProtocol();
+	}
 	
 	/**
 	 * @param log
@@ -45,6 +67,7 @@ public class SimpleProtocol {
 	public SimpleProtocol() {
 		list = new ArrayList<LogData>();
 		partner = PARTNER;
+		type = TYPE;
 	}
 	
 	/**
@@ -53,7 +76,9 @@ public class SimpleProtocol {
 	public SimpleProtocol(String log) {
 		list = new ArrayList<LogData>();
 		partner = PARTNER;
-		parse(log);
+		type = TYPE;
+		
+		this.parse(log);
 	}
 	
 	/**
@@ -64,7 +89,21 @@ public class SimpleProtocol {
 		this.partner = partner;
 		return this;
 	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(int type) {
+		this.type = type;
+	}
 	
+	/**
+	 * @return the type
+	 */
+	public int getType() {
+		return type;
+	}
+
 	/**
 	 * @return
 	 */
@@ -187,7 +226,7 @@ public class SimpleProtocol {
 	 * @return
 	 */
 	public SimpleProtocol setInit() {
-		list.add(new LogData(partner, TYPE, DATA_INIT));
+		list.add(new LogData(partner, type, DATA_INIT));
 		return this;
 	}
 	
@@ -195,7 +234,7 @@ public class SimpleProtocol {
 	 * @return
 	 */
 	public SimpleProtocol setValid() {
-		list.add(new LogData(partner, TYPE, DATA_VALID));
+		list.add(new LogData(partner, type, DATA_VALID));
 		return this;
 	}
 	
@@ -203,7 +242,7 @@ public class SimpleProtocol {
 	 * @return
 	 */
 	public SimpleProtocol setOverflow() {
-		list.add(new LogData(partner, TYPE, DATA_OVERFLOW));
+		list.add(new LogData(partner, type, DATA_OVERFLOW));
 		return this;
 	}
 	
@@ -211,7 +250,7 @@ public class SimpleProtocol {
 	 * @return
 	 */
 	public SimpleProtocol setError() {
-		list.add(new LogData(partner, TYPE, DATA_ERROR));
+		list.add(new LogData(partner, type, DATA_ERROR));
 		return this;
 	}
 	

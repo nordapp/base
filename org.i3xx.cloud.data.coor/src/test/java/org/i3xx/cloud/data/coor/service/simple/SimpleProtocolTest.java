@@ -19,7 +19,7 @@ public class SimpleProtocolTest {
 	@Test
 	public void test() {
 		
-		SimpleProtocol sim = SimpleProtocol.of("").ensureInit();
+		SimpleProtocol sim = SimpleProtocol.of().ensureInit();
 		
 		assertTrue( sim.ensureInit().setInit().isInit() );
 		assertTrue( sim.ensureInit().setInit().isInit() );

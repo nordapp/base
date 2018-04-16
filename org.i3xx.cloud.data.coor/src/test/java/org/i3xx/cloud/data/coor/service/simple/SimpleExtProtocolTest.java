@@ -19,7 +19,7 @@ public class SimpleExtProtocolTest {
 	@Test
 	public void testA() {
 		
-		SimpleExtProtocol ext = SimpleExtProtocol.of("");
+		SimpleExtProtocol ext = SimpleExtProtocol.of();
 		ext.setInit().setNext().setNext();
 		assertEquals( ext.toString(), "1-7-100-1-7-101-1-7-105-" );
 		

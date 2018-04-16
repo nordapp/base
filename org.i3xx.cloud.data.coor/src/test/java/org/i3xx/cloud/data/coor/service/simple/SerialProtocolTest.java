@@ -19,7 +19,7 @@ public class SerialProtocolTest {
 	@Test
 	public void test() {
 		
-		SerialProtocol ser = SerialProtocol.of("").ensureInit();
+		SerialProtocol ser = SerialProtocol.of().ensureInit();
 		assertTrue( ser.size()==1 );
 		assertTrue( ser.getCurrent()==100 );
 		assertTrue( ser.isValue(0, 100) );

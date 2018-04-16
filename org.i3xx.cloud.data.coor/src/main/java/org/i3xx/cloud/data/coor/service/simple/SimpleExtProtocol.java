@@ -31,6 +31,14 @@ public class SimpleExtProtocol {
 	 * @param log
 	 * @return
 	 */
+	public static SimpleExtProtocol of() {
+		return new SimpleExtProtocol();
+	}
+	
+	/**
+	 * @param log
+	 * @return
+	 */
 	public static SimpleExtProtocol of(String log) {
 		return new SimpleExtProtocol(log);
 	}
