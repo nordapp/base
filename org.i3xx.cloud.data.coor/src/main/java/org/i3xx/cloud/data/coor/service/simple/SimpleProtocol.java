@@ -145,6 +145,20 @@ public class SimpleProtocol {
 	/**
 	 * @return
 	 */
+	public SimpleProtocol ensureData() {
+		if(isEmpty())
+			return this;
+		
+		LogData data = list.get(list.size()-1);
+		partner = data.getPartner();
+		type = data.getType();
+		
+		return this;
+	}
+	
+	/**
+	 * @return
+	 */
 	public boolean isEmpty() {
 		if(list.isEmpty())
 			return true;
