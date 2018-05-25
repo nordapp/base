@@ -25,10 +25,10 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</dependency>
 	
-	<dependency>
+	<!-- <dependency>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-data-jpa</artifactId>
-	</dependency>
+	</dependency> -->
 	
 	<!-- Logging section -->
 	
@@ -40,10 +40,12 @@
 	<dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-api</artifactId>
+		<version>1.7.21</version>
 	</dependency>
 	<dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-log4j12</artifactId>
+		<version>1.7.21</version>
 	</dependency>
 	
 	<!-- Test section -->
@@ -51,6 +53,7 @@
     <dependency>
 	    <groupId>junit</groupId>
 	    <artifactId>junit</artifactId>
+	    <version>4.12</version>
 	    <scope>test</scope>
     </dependency>
 	
@@ -84,14 +87,13 @@
   
   <dependencyManagement>
    <dependencies>
-      <dependency>
-        <!-- Import dependency management from Spring Boot -->
+      <!-- <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
         <version>1.4.0.RELEASE</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
+      </dependency> -->
    </dependencies>
   </dependencyManagement>
   

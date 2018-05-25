@@ -1,8 +1,6 @@
 package org.i3xx.cloud.data.object.domain;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import javax.persistence.Transient;
 import org.i3xx.util.basic.core.IGeneratorService;
 
@@ -12,15 +10,12 @@ import org.i3xx.util.basic.core.IGeneratorService;
  * @created 20-Jan-2017 15:10:58
  */
 
- @Service
 public class OblogService implements IGeneratorService<Oblog> {
 
-
-	 @Autowired
 	private OblogRepository oblogRepository;
 
-	public OblogService(){
-
+	public OblogService(OblogRepository oblogRepository){
+		this.oblogRepository = oblogRepository;
 	}
 
 	public void finalize() throws Throwable {

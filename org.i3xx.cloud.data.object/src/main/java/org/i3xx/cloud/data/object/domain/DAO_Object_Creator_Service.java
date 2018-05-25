@@ -1,27 +1,22 @@
 package org.i3xx.cloud.data.object.domain;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 /**
  * @author Administrator
  * @version 1.0
  * @created 20-Jan-2017 15:10:57
  */
 
- @Service(value="DAO_Object_Creator_Service")
 public class DAO_Object_Creator_Service {
 
 	private static DAO_Object_Creator_Service daoCreatorService = null;
 
-	 @Autowired
 	private ObidService obidService;
 
-	 @Autowired
 	private OblogService oblogService;
 
-	public DAO_Object_Creator_Service(){
-
+	public DAO_Object_Creator_Service(ObidService obidService, OblogService oblogService){
+		this.obidService = obidService;
+		this.oblogService = oblogService;
 	}
 
 	public void finalize() throws Throwable {
@@ -128,10 +123,15 @@ public class DAO_Object_Creator_Service {
 		throw new IllegalArgumentException(className+" is not a valid argument.");
 	}
 
-	public static DAO_Object_Creator_Service of(){
+	/**
+	 * @param obidService
+	 * @param oblogService
+	 * @return
+	 */
+	public static DAO_Object_Creator_Service of(ObidService obidService, OblogService oblogService){
 		//singleton
 		if(daoCreatorService==null)
-		  daoCreatorService = new DAO_Object_Creator_Service();
+		  daoCreatorService = new DAO_Object_Creator_Service(obidService, oblogService);
 		return daoCreatorService;
 	}
 

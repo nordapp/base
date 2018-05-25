@@ -5,17 +5,13 @@ import java.util.List;
 import org.i3xx.cloud.data.object.domain.Obid;
 import org.i3xx.cloud.data.object.domain.ObidRepository;
 import org.i3xx.cloud.data.object.util.UuidTool;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service("CreateObjectService")
 public class CreateObjectServiceImpl implements CreateObjectService {
 
-	@Autowired
 	ObidRepository obidRepository;
 	
-	public CreateObjectServiceImpl() {
-		
+	public CreateObjectServiceImpl(ObidRepository obidRepository) {
+		this.obidRepository = obidRepository;
 	}
 	
 	/**

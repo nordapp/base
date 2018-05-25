@@ -1,14 +1,13 @@
 package org.i3xx.cloud.data.object.domain;
 
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
 
 /**
  * @author Administrator
  * @version 1.0
  * @created 20-Jan-2017 15:10:58
  */
-public interface OblogRepository extends CrudRepository<Oblog, Long> {
+public interface OblogRepository {
 
 	/**
 	 * 
@@ -34,5 +33,20 @@ public interface OblogRepository extends CrudRepository<Oblog, Long> {
 	 * @param newVal
 	 */
 	List<Oblog> queryByGuid(long newVal);
-
+	
+	/**
+	 * @param guid
+	 */
+	Oblog findOne(Long guid);
+	
+	/**
+	 * @param guid
+	 */
+	void delete(Long guid);
+	
+	/**
+	 * @param oblog
+	 * @return
+	 */
+	Oblog save(Oblog oblog);
 }
