@@ -1,14 +1,13 @@
 package org.i3xx.cloud.data.object.domain;
 
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
 
 /**
  * @author Administrator
  * @version 1.0
  * @created 20-Jan-2017 15:10:57
  */
-public interface ObidRepository extends CrudRepository<Obid, Long> {
+public interface ObidRepository {
 
 	/**
 	 * 
@@ -34,5 +33,19 @@ public interface ObidRepository extends CrudRepository<Obid, Long> {
 	 * @param newVal
 	 */
 	List<Obid> queryByGuid(long newVal);
-
+	
+	/**
+	 * @param guid
+	 */
+	Obid findOne(Long guid);
+	
+	/**
+	 * @param guid
+	 */
+	void delete(Long guid);
+	
+	/**
+	 * @param obid
+	 */
+	Obid save(Obid obid);
 }

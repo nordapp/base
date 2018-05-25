@@ -28,10 +28,10 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	    <version>2.1.0</version>
 	</dependency>
 	
-	<dependency>
+	<!-- <dependency>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-data-jpa</artifactId>
-	</dependency>
+	</dependency> -->
 	
 	<!-- Logging section -->
 	
@@ -43,10 +43,12 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	<dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-api</artifactId>
+		<version>1.7.5</version>
 	</dependency>
 	<dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-log4j12</artifactId>
+		<version>1.7.5</version>
 	</dependency>
 	
 	<!-- Test section -->
@@ -54,6 +56,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <dependency>
 	    <groupId>junit</groupId>
 	    <artifactId>junit</artifactId>
+	    <version>4.12</version>
 	    <scope>test</scope>
     </dependency>
 	
@@ -87,14 +90,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   
   <dependencyManagement>
    <dependencies>
-      <dependency>
-        <!-- Import dependency management from Spring Boot -->
+      <!-- <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
         <version>1.4.0.RELEASE</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
+      </dependency> -->
    </dependencies>
   </dependencyManagement>
   

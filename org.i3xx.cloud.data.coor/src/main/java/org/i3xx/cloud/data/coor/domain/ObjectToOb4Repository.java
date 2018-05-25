@@ -2,9 +2,7 @@ package org.i3xx.cloud.data.coor.domain;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
-
-public interface ObjectToOb4Repository extends CrudRepository<ObjectToOb4, Long> {
+public interface ObjectToOb4Repository {
 
 	/**
 	 * 

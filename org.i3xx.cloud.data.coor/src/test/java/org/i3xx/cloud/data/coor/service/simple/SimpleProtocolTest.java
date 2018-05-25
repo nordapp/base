@@ -17,7 +17,7 @@ public class SimpleProtocolTest {
 	}
 
 	@Test
-	public void test() {
+	public void testA() {
 		
 		SimpleProtocol sim = SimpleProtocol.of().ensureInit();
 		
@@ -45,6 +45,14 @@ public class SimpleProtocolTest {
 		assertTrue( sim.ensureInit().setInit().isInit() );
 		assertTrue( sim.ensureInit().setValid().isValid() );
 		assertTrue( sim.ensureInit().setOverflow().isOverflow() );
+	}
+	
+	@Test
+	public void testB() {
+		String log = "1-8-100-1-8-101-";
+		SimpleProtocol sim = SimpleProtocol.of(log).ensureData();
+		
+		assertEquals( 8, sim.getType() );
 	}
 
 }
