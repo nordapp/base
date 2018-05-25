@@ -4,22 +4,19 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import org.i3xx.cloud.data.base.domain.ChildRelationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
 public class ChildRelationService {
 	
 	//private static final Logger log = LoggerFactory.getLogger(ChildService.class);
 	
-	@Autowired
 	ChildRelationRepository repo;
 	
 	/**
 	 * @param id
 	 * @throws IOException
 	 */
-	public ChildRelationService() {
+	public ChildRelationService(ChildRelationRepository repo) {
+		this.repo = repo;
 	}
 	
 	/**

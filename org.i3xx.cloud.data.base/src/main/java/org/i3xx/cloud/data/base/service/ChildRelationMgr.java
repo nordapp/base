@@ -14,14 +14,15 @@ import java.util.Set;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import javax.transaction.Transactional;
-
 import org.i3xx.cloud.data.base.domain.ChildRelation;
 import org.i3xx.cloud.data.base.domain.ChildRelationRepository;
+
+//import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Transactional
+//@Transactional
 public class ChildRelationMgr {
 	
 	private static final Logger log = LoggerFactory.getLogger(ChildRelationService.class);

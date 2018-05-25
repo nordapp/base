@@ -2,15 +2,20 @@ package org.i3xx.cloud.data.base.domain;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
-
-public interface ChildRelationRepository extends CrudRepository<ChildRelation, String> {
+public interface ChildRelationRepository {
 	
 	/**
-	 * Search a ChildRelation by it's id
+	 * Get the object by it's uuid
 	 * 
-	 * @param reg
+	 * @param uuid
 	 * @return
 	 */
 	List<ChildRelation> findByUuid(String uuid);
+	
+	/**
+	 * Save the object
+	 * 
+	 * @param childRelation
+	 */
+	void save(ChildRelation childRelation);
 }
