@@ -1,0 +1,5 @@
+04.12.2018 sh,
+
+We do not use OR-mapping by default any longer.
+These classes and interfaces are used by the statistic and must be supported.
+

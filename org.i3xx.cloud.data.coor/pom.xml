@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.i3xx.cloud.data</groupId>
   <artifactId>org.i3xx.cloud.data.coor</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <name>NordApp :: data :: coor</name>
   <description>Spring data project. Coordinates the data processed by two independent processes</description>
   
@@ -22,7 +22,13 @@
 	<dependency>
 		<groupId>org.i3xx.cloud.data</groupId>
 		<artifactId>org.i3xx.cloud.data.object</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.eclipse.persistence</groupId>
+	    <artifactId>javax.persistence</artifactId>
+	    <version>2.1.0</version>
 	</dependency>
 	
 	<!-- <dependency>
@@ -33,23 +39,25 @@
 	<!-- Logging section -->
 	
 	<dependency>
-		<groupId>log4j</groupId>
-		<artifactId>log4j</artifactId>
-		<version>1.2.17</version>
-	</dependency>
-	<dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-api</artifactId>
-		<version>1.7.21</version>
-	</dependency>
-	<dependency>
-		<groupId>org.slf4j</groupId>
-		<artifactId>slf4j-log4j12</artifactId>
 		<version>1.7.21</version>
 	</dependency>
 	
 	<!-- Test section -->
   	
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-log4j12</artifactId>
+		<version>1.7.21</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.17</version>
+	    <scope>test</scope>
+	</dependency>
     <dependency>
 	    <groupId>junit</groupId>
 	    <artifactId>junit</artifactId>

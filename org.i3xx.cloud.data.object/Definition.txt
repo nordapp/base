@@ -1,9 +1,9 @@
 The system is built using the following rules
 
-ง1 Each object has it's own UUID that is always unique and not null
+ยง1 Each object has it's own UUID that is always unique and not null
 
-ง2 Each object has a history that is a UUID but must not be unique but must be not null
+ยง2 Each object has a history that is a UUID but must not be unique but must be not null
 
-ง3 Each history is a common object with a UUID
+ยง3 Each history is a common object with a UUID
 
-ง4 To build a history, clone the object and put the UUID as value to the history field. Then set a new UUID.
+ยง4 To build a history, clone the object and put the UUID as value to the history field. Then set a new UUID.
